@@ -72,3 +72,5 @@
 │       └── tikape-web-opiskelijat-1.0-SNAPSHOT.jar
 ├── tmc-langs.log
 └── Videos
+
+Muokataas vähän komentoriviä
