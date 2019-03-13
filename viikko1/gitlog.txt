@@ -1,0 +1,55 @@
+
+commit a8b482ae231433430a44f9acf76838772ef48739
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:29:15 2019 +0200
+
+    poistettiin toinen.txt
+
+ toinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 598855612eecba72991e9b674b931a03058042de
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:26:50 2019 +0200
+
+    paljon tekstiä
+
+ tiedosto.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 630bbb2e0c930e1ad11b038d1a068672a61b9eb2
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:24:43 2019 +0200
+
+    stuff
+
+ stuff/jokin_tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2b0ce154a8adb46ff7e4975469e9f53f479d4f5a
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:23:12 2019 +0200
+
+    kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 0f4f8167b8580e3bb4b276f7dc6b4d856d8f2d48
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:22:29 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit fd09aa8519aec248903bb08261fdbe0ba9dff815
+Author: HegePI <19744083+HegePI@users.noreply.github.com>
+Date:   Wed Mar 13 13:21:30 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)

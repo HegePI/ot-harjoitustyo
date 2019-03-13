@@ -1,0 +1,74 @@
+.
+├── Desktop -> /home/ad/home/h/hepulli/Desktop
+├── Documents -> /home/ad/home/h/hepulli/Documents
+├── Downloads -> /home/ad/home/h/hepulli/Downloads
+├── kurssit
+│   └── _ot2019
+│       └── viikko1
+│           └── Unicafe
+│               ├── pom.xml
+│               └── src
+│                   ├── main
+│                   │   ├── java
+│                   │   │   └── com
+│                   │   │       └── mycompany
+│                   │   │           └── unicafe
+│                   │   │               ├── Kassapaate.java
+│                   │   │               ├── Maksukortti.java
+│                   │   │               └── Paaohjelma.java
+│                   │   └── resources
+│                   └── test
+│                       └── java
+│                           └── com
+│                               └── mycompany
+│                                   └── unicafe
+│                                       └── MaksukorttiTest.java
+├── Music
+├── NetBeansProjects
+├── Pictures
+├── Public
+├── public_html
+├── Templates
+├── tikape-web-opiskelijat
+│   ├── opiskelijat.db
+│   ├── pom.xml
+│   ├── src
+│   │   └── main
+│   │       ├── java
+│   │       │   └── tikape
+│   │       │       ├── database
+│   │       │       │   ├── collector
+│   │       │       │   │   └── OpiskelijaCollector.java
+│   │       │       │   ├── Collector.java
+│   │       │       │   ├── Dao.java
+│   │       │       │   ├── Database.java
+│   │       │       │   └── OpiskelijaDao.java
+│   │       │       ├── Main.java
+│   │       │       └── pojo
+│   │       │           └── Opiskelija.java
+│   │       └── resources
+│   │           └── templates
+│   │               └── index.html
+│   └── target
+│       ├── classes
+│       │   ├── templates
+│       │   │   └── index.html
+│       │   └── tikape
+│       │       ├── database
+│       │       │   ├── collector
+│       │       │   │   └── OpiskelijaCollector.class
+│       │       │   ├── Collector.class
+│       │       │   ├── Dao.class
+│       │       │   ├── Database.class
+│       │       │   └── OpiskelijaDao.class
+│       │       ├── Main.class
+│       │       └── pojo
+│       │           └── Opiskelija.class
+│       ├── generated-sources
+│       │   └── annotations
+│       ├── maven-archiver
+│       │   └── pom.properties
+│       ├── test-classes
+│       └── tikape-web-opiskelijat-1.0-SNAPSHOT.jar
+├── tmc-langs.log
+└── Videos
