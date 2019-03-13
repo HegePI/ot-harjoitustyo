@@ -1,4 +1,4 @@
-# *Ohjelmistotekniikan harjoitustyö*
+# Ohjelmistotekniikan harjoitustyö
 
 sisältää __*komentorivi.txt*__ tiedoston ja __*gitlog.txt*__ tiedoston
 
