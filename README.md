@@ -1,6 +1,6 @@
 # Ohjelmistotekniikan harjoitustyö
 
-sisältää *komentorivi.txt* tiedoston ja *gitlog.txt* tiedoston
+sisältää _*komentorivi.txt*_ tiedoston ja _*gitlog.txt*_ tiedoston
 
 [komnetorivi.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/viikko1/laskarit/komentorivi.txt)
 
