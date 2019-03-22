@@ -1,4 +1,4 @@
-# Vaatimuusmäärittely
+# Vaatimusmäärittely
 
 ## **Sudoku -sovellus**
 
@@ -20,25 +20,25 @@ Julkaistaan myöhemmin.
 
 #### Ennen kirjautumista
 
-*Mahdollisuus kirjautua sisään tai luoda uusi käyttäjä peliin.
-..*Jos luo uuden käyttäjän niin käyttäjä kirjautuu suoraan sisään.
+* Mahdollisuus kirjautua sisään tai luoda uusi käyttäjä peliin.
+..* Jos luo uuden käyttäjän niin käyttäjä kirjautuu suoraan sisään.
 
 #### Kirjautumisen jälkeen
 
-*Mahdollisuus valita pelin vaikeustaso.
+* Mahdollisuus valita pelin vaikeustaso.
 
 * Pelin valinnan jälkeen aukeaa näkymä, jossa peliä pelataan.
-..*Käyttäjä voi palata takaisin pelin valinta näkymään peli näkymästä.
+..* Käyttäjä voi palata takaisin pelin valinta näkymään peli näkymästä.
 
-*Mahdollisuus kirjautua ulos sovelluksesta.
+* Mahdollisuus kirjautua ulos sovelluksesta.
 
 ### Jatkokehitys ideoita
 
 Ajanpuitteissa ohjelmaa voidaan täydentää seuraavilla toiminnalisuuksilla:
 
-*Pisteytys järjestelmä, joka talletetaan tietokantaan tai tiedostoon.
-..*Käyttäjien listaaminen pisteiden perusteella.
+* Pisteytys järjestelmä, joka talletetaan tietokantaan tai tiedostoon.
+..* Käyttäjien listaaminen pisteiden perusteella.
 
-*Mahdollisuus tallentaa keskeneräisen pelin tilanne ja jatkaa sitä myöhemmässä vaiheessa.
-..*Mahdollisuus tallentaa useampia keskeneräisiä pelejä.
+* Mahdollisuus tallentaa keskeneräisen pelin tilanne ja jatkaa sitä myöhemmässä vaiheessa.
+..* Mahdollisuus tallentaa useampia keskeneräisiä pelejä.
 
