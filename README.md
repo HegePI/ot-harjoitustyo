@@ -6,3 +6,7 @@ _[komnetorivi.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/viikko1
 
 _[gitlog.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/viikko1/laskarit/gitlog.txt)_
 
+## Dokumentaatio
+
+[Vaatmuusmäärittely](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/vaatimuusmaarittely.md)
+
