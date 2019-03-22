@@ -22,7 +22,7 @@ Julkaistaan myöhemmin.
 
 * Mahdollisuus kirjautua sisään tai luoda uusi käyttäjä peliin.
 
-... Jos luo uuden käyttäjän niin käyttäjä kirjautuu suoraan sisään.
+...Jos luo uuden käyttäjän niin käyttäjä kirjautuu suoraan sisään.
 
 #### Kirjautumisen jälkeen
 
