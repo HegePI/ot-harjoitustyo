@@ -27,7 +27,7 @@ Julkaistaan myöhemmin.
 
 *Mahdollisuus valita pelin vaikeustaso.
 
-*Pelin valinnan jälkeen aukeaa näkymä, jossa peliä pelataan.
+* Pelin valinnan jälkeen aukeaa näkymä, jossa peliä pelataan.
 ..*Käyttäjä voi palata takaisin pelin valinta näkymään peli näkymästä.
 
 *Mahdollisuus kirjautua ulos sovelluksesta.
