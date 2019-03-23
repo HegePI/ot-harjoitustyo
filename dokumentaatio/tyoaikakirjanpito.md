@@ -8,5 +8,6 @@ __Mitä tehtiin__
 * Sovelluksen toteutuksen suunnittelu
 
 __Aikaa kului__
+
 2h
 
