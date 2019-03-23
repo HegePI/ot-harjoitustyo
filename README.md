@@ -2,9 +2,9 @@
 
 sisältää __*komentorivi.txt*__ tiedoston ja __*gitlog.txt*__ tiedoston
 
-_[komnetorivi.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/viikko1/laskarit/komentorivi.txt)_
+_[komnetorivi.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)_
 
-_[gitlog.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/viikko1/laskarit/gitlog.txt)_
+_[gitlog.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)_
 
 ## Dokumentaatio
 
