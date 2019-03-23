@@ -1,6 +1,12 @@
-# Työaikakirjanpito
+# Työaikakalenteri
 
-| Pvm | aikaa käytetty | Mitä tehtiin |
-| --- | -------------- | ------------ |
-| 22.3 | 2h | -Vaatimumäärittelyn luominen,
-sovelluksen toteuttamisen suunnittelu |
+## Pe 22.3.19
+
+__Mitä tehtiin__
+
+* Sovelluksen vaatimusmäärittelyn luominen
+* Sovelluksen toteutuksen suunnittelu
+
+__Aikaa kului__
+2h
+
