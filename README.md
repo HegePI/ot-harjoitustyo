@@ -10,3 +10,5 @@ _[gitlog.txt](https://github.com/HegePI/ot-harjoitustyo/blob/master/laskarit/vii
 
 [Vaatmuusmäärittely](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/vaatimuusmaarittely.md)
 
+[Työaikakalenteri](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakalenteri.md)
+
