@@ -17,14 +17,17 @@ __Mitä tehtiin__
 
 * Työaikakalenterin luominen
 
+* Viikko 2 laskareiden tekeminen, JUnit -testauksen harjoittelu
+
 __Aikaa kului__
 
-1h
+2,5h
 
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
 | ------- | -------------- |
 | 22.3.19 | 2h             |
-|Yhteensä | 2h             |
+| 23.3.19 | 2,5h             |
+|Yhteensä | 4,5h             |
 
