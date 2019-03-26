@@ -16,12 +16,23 @@ __Aikaa kului__
 __Mitä tehtiin__
 
 * Työaikakalenterin luominen
-
 * Viikko 2 laskareiden tekeminen, JUnit -testauksen harjoittelu
 
 __Aikaa kului__
 
 2,5h
+
+## Ti 26.3.19
+
+__Mitä tehtiin__
+
+* viikko 2 laskarit loppuun, JUnit -testauksen harjoittelua
+* Sudoku sovelluksen suunnittelu, kuva mahdollisesta sovellus näkymästä lisätty
+
+__Aikaa kului__
+
+1,5h
+
 
 ## Koonnos
 
@@ -29,5 +40,6 @@ __Aikaa kului__
 | ------- | -------------- |
 | 22.3.19 | 2h             |
 | 23.3.19 | 2,5h             |
+| 26.3.19 | |
 |Yhteensä | 4,5h             |
 
