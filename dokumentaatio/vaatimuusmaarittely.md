@@ -14,7 +14,9 @@ suoritetut pelit.
 
 ### Käyttöliittymäluonnos
 
-Julkaistaan myöhemmin.
+![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/alustava_nakyma.png)
+
+*Sovellusnäkymä selviää, kun sovelluksen tarkempi totetus selkeää.
 
 ### Perusversion tarjoama toiminnallisuus
 
