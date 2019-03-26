@@ -28,8 +28,8 @@ public class Maksukortti {
     @Override
     public String toString() {
         System.out.println(saldo);
-        int euroa = saldo;
-        int senttia = (saldo * 100) % 100;
+        int euroa = saldo / 100;
+        int senttia = saldo % 100;
         return "saldo: " + euroa + "." + senttia;
     }
 

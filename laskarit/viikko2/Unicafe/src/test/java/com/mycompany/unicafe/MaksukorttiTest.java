@@ -10,7 +10,7 @@ public class MaksukorttiTest {
 
     @Before
     public void setUp() {
-        kortti = new Maksukortti(10);
+        kortti = new Maksukortti(1000);
     }
 
     @Test
@@ -20,40 +20,40 @@ public class MaksukorttiTest {
 
     @Test
     public void saldoAlussaOikein() {
-        assertEquals("saldo: 10.0", kortti.toString());
+        assertEquals(1000, kortti.saldo());
     }
 
     @Test
     public void saldonLisaaminenOikein() {
-        kortti.lataaRahaa(5);
+        kortti.lataaRahaa(500);
 
         assertEquals("saldo: 15.0", kortti.toString());
     }
 
     @Test
     public void saldonVahentaminenToimii() {
-        kortti.otaRahaa(5);
+        kortti.otaRahaa(500);
 
         assertEquals("saldo: 5.0", kortti.toString());
     }
 
     @Test
     public void eiMeneNegatiiviselle() {
-        kortti.otaRahaa(12);
+        kortti.otaRahaa(1200);
 
         assertEquals("saldo: 10.0", kortti.toString());
     }
 
     @Test
     public void trueKunRiittaa() {
-        boolean riittaa = kortti.otaRahaa(5);
+        boolean riittaa = kortti.otaRahaa(500);
 
         assertEquals(riittaa, true);
     }
 
     @Test
     public void falseKunEiRiita() {
-        boolean riittaa = kortti.otaRahaa(12);
+        boolean riittaa = kortti.otaRahaa(1200);
 
         assertEquals(riittaa, false);
     }
