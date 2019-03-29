@@ -1,0 +1,49 @@
+Kuvat kansion sekvenssikaaviot on tehty sivulla https://www.websequencediagrams.com/
+Alla on kaavioiden määrittelyt.
+
+sekvenssi_V1.png
+
+Main -> Machine: new Machine()
+Machine -> Fueltank: new FuelTank()
+Fueltank -> Fueltank: .fill(40)
+Machine -> Engine: new Engine(tank)
+
+Main -> Machine: machine.drive()
+Machine -> Engine: .start()
+Engine -> Fueltank: tank.consume(5)
+Machine -> Engine: isRunning()
+Engine -> Fueltank: tank.contentsLeft()
+Fueltank -> Engine: 35
+Engine -> Machine: true
+Machine -> Engine: .useEnergy()
+Engine -> Fueltank: tank.consume(10)
+
+------------------------------------------------
+sekvenssi_V2.png
+
+Main -> HKLLaitehallinto: new HKLLaitehallinto()
+Main -> Lataajalaite: rautatientori = new Lataajalaite()
+Main -> Lukijalaite: ratikka6 = new Lukijalaite()
+Main -> Lukijalaite: bussi244 = new Lukijalaite()
+Main -> HKLLaitehallinto: .lisaaLataaja(rautatientori)
+HKLLaitehallinto -> HKLLaitehallinto: lataajat.add(rautatientori)
+Main -> HKLLaitehallinto: .lisaaLataaja(ratikka6)
+HKLLaitehallinto -> HKLLaitehallinto: .lisaaLukija(ratikka6)
+Main -> HKLLaitehallinto: .lisaaLukija(bussi244)
+Main -> Kioski: lippuLuukku = new Kioski()
+Main -> Kioski: artonKortti = lippuluukku
+Kioski -> Matkakortti : .ostaMatkakortti("Arto")
+Matkakortti -> Matkakortti: uusikortti = new Matkakortti("Arto")
+Matkakortti --> Kioski: return uusiKortti
+Main -> Lataajalaite: rautatientori.lataaArvoa(artonKortti, 3)
+Lataajalaite -> Matkakortti: artonKortti.kasvataArvoa(3)
+Main -> Lukijalaite: ratikka6.ostaLippu(artonKortti, 0)
+Lukijalaite -> Matkakortti: artonKortti.getArvo()
+Matkakortti --> Lukijalaite: 3
+Lukijalaite -> Matkakortti: ArtonKortti.vahennaArvoa(1,5)
+Matkakortti -> Matkakortti: artonKortti.arvo -= 1,5
+Lukijalaite --> Main: return true
+Main -> Lukijalaite: bussi244.ostaLippu(artonKortti, 2)
+Lukijalaite -> Matkakortti: artoKortti.getArvo()
+Matkakortti --> Lukijalaite: 1,5
+Lukijalaite -> Main: return false

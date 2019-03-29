@@ -1,0 +1,34 @@
+Kuvat kansiossa olevat monopoli -kuvat on tehty yuml.me -sivua hyödyntäen.
+Alla on tekstinä kuvien määrittelyt.
+
+%2F%2F Monopoli_V1
+[nopat] heittää <-.- [pelaaja]
+[pelaaja]1 - 1[pelinappula]
+[pelinappula] -.-> sijaitsee [ruutu | seuraavaRuutu: Ruutu]
+[ruutu | seuraavaRuutu: Ruutu] * - 1 [pelilauta]
+[nopat] -.-> liikuttaa [pelinappula]
+
+---------------------------------------------------------------------------------------------
+
+%2F%2F Monopoli_V2
+[nopat] <-.-heita [pelaaja | rahaMaara: Integer; omistukset: RuutuList]
+[pelinappula | sijainti: Ruutu] 1-1 [pelaaja | rahaMaara: Integer; omistukset: RuutuList]
+[pelinappula | sijainti: Ruutu] -.- [aloitusRuutu | toiminto: toiminto]
+[pelinappula | sijainti: Ruutu] -.- [vankilaRuutu | toiminto: toiminto]
+[pelinappula | sijainti: Ruutu] -.- [sattumaRuutu | nostaKortti()]
+[pelinappula | sijainti: Ruutu] -.- [yhteismaaRuutu | nostaKortti()]
+[pelinappula | sijainti: Ruutu] -.- [asemaLaituriRuutu | toiminto: toiminto]
+[pelinappula | sijainti: Ruutu] -.- [katuRuutu | talot: Integer; hotellit: Integer; toiminto: toiminto]
+[yhteismaaRuutu | nostaKortti()] - [kortti | toiminto: toiminto]
+[sattumaRuutu | nostaKortti()] - [kortti | toiminto: toiminto]
+[aloitusRuutu | toiminto: toiminto] 1-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[vankilaRuutu | toiminto: toiminto] 1-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[sattumaRuutu | nostaKortti()] *-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[yhteismaaRuutu | nostaKortti()] *-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[asemaLaituriRuutu | toiminto: toiminto] *-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[katuRuutu | talot: Integer; hotellit: Integer; toiminto: toiminto] *-1 [pelilauta | aloitusSijainti: Integer; vankilaSijainti: Integer]
+[nopat] -.-> liikuta [pelinappula | sijainti: Ruutu]
+
+
+
+
