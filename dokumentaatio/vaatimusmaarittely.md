@@ -9,8 +9,12 @@ valita vaikeusasteen ennen pelin aloittamista.
 
 ### Käyttäjät 
 
-Pelissä on vain normaaleja käyttäjiä. Käyttäjien tiedot talletetaan järjestelmään. Talletettuja tietoja ovat aluksi vain nimi ja 
+Pelissä on vain normaaleja käyttäjiä. Käyttäjien tiedot talletetaan järjestelmään. Talletettuja tietoja ovat aluksi vain nimi, salasana ja 
 suoritetut pelit.
+
+### Sudokut
+
+Pelissä on erilaisia sudokuja vaihtelevilla vaikeusasteilla. Sudokusta talletetaan tietokantaan sudoku, vaikeusaste ja onko se suoritettu vai ei.
 
 ### Käyttöliittymäluonnos
 

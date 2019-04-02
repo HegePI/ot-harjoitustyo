@@ -33,6 +33,28 @@ __Aikaa kului__
 
 1h
 
+## La 30.3.19
+
+__Mitä tehtiin__
+
+* Sovelluslogiikan ohjelmointia
+* Tietokannan käyttöönotto
+
+__Aikaa kului__
+
+4h 
+
+## Ti 2.4.19
+
+__Mitä tehtiin__
+
+* Dao -luokkien toteutus (userDao, sudokuDao)
+* userDaoTest -testien toteutus
+
+__Aikaa kului__
+
+6h
+
 
 ## Koonnos
 
@@ -41,5 +63,7 @@ __Aikaa kului__
 | 22.3.19 | 1h             |
 | 23.3.19 | 1,5h             |
 | 26.3.19 | 1h               |
-|Yhteensä | 3,5h             |
+| 30.3.19 | 4h |
+| 2.4.19 | 6h |
+|Yhteensä | 13,5h             |
 
