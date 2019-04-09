@@ -10,5 +10,7 @@ Sovellus mahdollistaa käyttäjien pelata sudoku pelejä.
 
 [Työaikakalenteri](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakalenteri.md)
 
+[Arkkitehtuuri suunnitelma](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 
 
