@@ -1,19 +1,21 @@
-package sudokuApp;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import logic.Sudoku;
 
-public class sudokuDao {
+public class Sudokudao {
 
     private final Database database;
 
-    public sudokuDao(Database database) {
+    public Sudokudao(Database database) {
         this.database = database;
     }
 
-    public boolean addSudoku(sudoku s) throws SQLException {
+    public boolean addSudoku(Sudoku s) throws SQLException {
         boolean succes;
 
         try (Connection con = database.getConnection()) {
@@ -37,9 +39,8 @@ public class sudokuDao {
         return succes;
     }
 
-    public sudoku getById(int id) {
-        sudoku s = null;
-
+    public Sudoku getById(int id) {
+        Sudoku s = null;
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT difficulty, completed, sudoku FROM Sudoku WHERE id = ?");
             stmnt.setInt(1, id);
@@ -49,7 +50,7 @@ public class sudokuDao {
             String sudokuString = rs.getString("sudoku");
             int[][] sudokuArray = new int[9][9];
             int index = 0;
-            
+
             for (int y = 0; y < 9; y++) {
                 for (int x = 0; x < 9; x++) {
                     sudokuArray[y][x] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
@@ -57,12 +58,46 @@ public class sudokuDao {
                 }
             }
 
-            s = new sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+            s = new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+
+            rs.close();
+            stmnt.close();
+            con.close();
 
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
         return s;
+    }
+
+    public ArrayList<Sudoku> getAll() throws SQLException {
+        ArrayList<Sudoku> sudokus = new ArrayList<>();
+        try (Connection con = database.getConnection()) {
+            PreparedStatement stmnt = con.prepareStatement("SELECT difficulty, completed, sudoku FROM Sudoku");
+            ResultSet rs = stmnt.executeQuery();
+
+            while (rs.next()) {
+
+                String sudokuString = rs.getString("sudoku");
+                int[][] sudokuArray = new int[9][9];
+                int index = 0;
+                for (int y = 0; y < 9; y++) {
+                    for (int x = 0; x < 9; x++) {
+                        sudokuArray[y][x] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
+                        index++;
+                    }
+                }
+                sudokus.add(new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray));
+            }
+
+            rs.close();
+            stmnt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+        return sudokus;
     }
 
     public boolean deleteById(int id) throws SQLException {

@@ -55,6 +55,18 @@ __Aikaa kului__
 
 6h
 
+## Ti 9.4.19
+
+__Mitä tehtiin__
+
+* Dao -luokkien täydennystä ja projektin rakenteen selventämistä
+* Login ja create user näkymien suunnittelua
+* LIsää yksikkötestien tekemistä
+
+__Aikaa Kului__
+
+8h
+
 
 ## Koonnos
 
@@ -65,5 +77,6 @@ __Aikaa kului__
 | 26.3.19 | 1h |
 | 30.3.19 | 4h |
 | 2.4.19 | 6h |
-|Yhteensä | 13,5h |
+| 9.4.19 | 8h |
+|Yhteensä | 21,5h |
 

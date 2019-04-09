@@ -4,3 +4,15 @@
 /laskarit/viikko2/Unicafe/nbproject/
 /sudokuApp/target/
 /sudokuApp/nbproject/
+/sudokuApp/.settings
+/sudokuApp/.vscode
+/sudokuApp/.classpath
+/sudokuApp/.project
+/sudokuapp/nbproject/
+/sudokuapp/target/
+..gitignore.swp
+.vscode/
+dokumentaatio/kuvat/luokkakaavio.drawio
+laskarit/viikko2/Unicafe/.classpath
+laskarit/viikko2/Unicafe/.project
+laskarit/viikko2/Unicafe/.settings/

@@ -1,20 +1,21 @@
-package sudokuApp;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+import logic.User;
 
-public class userDao {
+public class Userdao {
 
     private final Database database;
 
-    public userDao(Database db) {
+    public Userdao(Database db) {
         this.database = db;
     }
 
-    public boolean addUser(user newUser) throws SQLException {
+    public boolean addUser(User newUser) throws SQLException {
         boolean succes;
 
         try (Connection con = database.getConnection()) {
@@ -36,8 +37,8 @@ public class userDao {
         return succes;
     }
 
-    public ArrayList<user> getAll() {
-        ArrayList<user> users = new ArrayList<>();
+    public ArrayList<User> getAll() {
+        ArrayList<User> users = new ArrayList<>();
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT * FROM User");
@@ -45,7 +46,7 @@ public class userDao {
             ResultSet rs = stmnt.executeQuery();
 
             while (rs.next()) {
-                user user = new user(rs.getString("name"), rs.getString("pswd"));
+                User user = new User(rs.getString("name"), rs.getString("pswd"));
                 users.add(user);
             }
 
@@ -59,8 +60,8 @@ public class userDao {
         return users;
     }
 
-    public user getByNameAndPswd(String name, String pswd) throws SQLException {
-        user user = null;
+    public User getByNameAndPswd(String name, String pswd) throws SQLException {
+        User user = null;
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT * FROM User WHERE name = ? and pswd = ?");
@@ -69,7 +70,7 @@ public class userDao {
 
             ResultSet rs = stmnt.executeQuery();
 
-            user = new user(rs.getString("name"), rs.getString("pswd"));
+            user = new User(rs.getString("name"), rs.getString("pswd"));
 
             stmnt.close();
             rs.close();
@@ -82,8 +83,8 @@ public class userDao {
         return user;
     }
 
-    public user getById(int id) throws SQLException {
-        user user = null;
+    public User getById(int id) throws SQLException {
+        User user = null;
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT name, pswd FROM User WHERE id = ?");
@@ -91,7 +92,7 @@ public class userDao {
 
             ResultSet rs = stmnt.executeQuery();
 
-            user = new user(rs.getString("name"), rs.getString("pswd"));
+            user = new User(rs.getString("name"), rs.getString("pswd"));
 
             rs.close();
             stmnt.close();

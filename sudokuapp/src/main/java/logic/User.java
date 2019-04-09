@@ -1,11 +1,11 @@
-package sudokuApp;
+package logic;
 
-public class user {
+public class User {
 
     private String userName;
     private String pswd;
 
-    public user(String userName, String pswd) {
+    public User(String userName, String pswd) {
         this.userName = userName;
         this.pswd = pswd;
     }
@@ -37,7 +37,7 @@ public class user {
         return hash;
     }
 
-    public boolean equals(user u) {
+    public boolean equals(User u) {
         if (this.userName.equals(u.getUserName()) && this.pswd.equals(u.getPswd())) {
             return true;
         }

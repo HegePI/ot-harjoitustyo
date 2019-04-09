@@ -1,12 +1,15 @@
-package sudokuApp;
+package logic;
 
-public class sudoku {
+import java.util.Arrays;
+import java.util.Objects;
+
+public class Sudoku {
 
     private boolean completed;
     private String difficulty;
     private int[][] sudoku;
 
-    public sudoku(boolean completed, String difficulty, int[][] sudoku) {
+    public Sudoku(boolean completed, String difficulty, int[][] sudoku) {
         this.completed = completed;
         this.difficulty = difficulty;
         this.sudoku = sudoku;
@@ -58,6 +61,20 @@ public class sudoku {
             }
         }
         return sudoku;
+    }
+
+    public boolean equals(Sudoku s) {
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                if (this.sudoku[y][x] != s.getSudoku()[y][x]) {
+                    return false;
+                }
+            }
+        }
+        if (this.completed == s.isCompleted() && this.difficulty.equals(s.getDifficulty())) {
+            return true;
+        }
+        return false;
     }
 
 }

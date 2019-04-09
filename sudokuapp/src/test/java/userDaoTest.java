@@ -3,20 +3,19 @@ import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sudokuApp.Database;
-import sudokuApp.user;
-import sudokuApp.userDao;
+import dao.Database;
+import logic.User;
+import dao.Userdao;
 import java.util.*;
 
 public class userDaoTest {
 
     Database db;
-    userDao users;
+    Userdao users;
 
     public userDaoTest() throws ClassNotFoundException {
         db = new Database();
-        users = new userDao(db);
-
+        users = new Userdao(db);
     }
 
     @Before
@@ -26,9 +25,9 @@ public class userDaoTest {
 
     @Test
     public void canAddUserToDB() throws SQLException {
-        user user1 = new user("helppo", "heikki");
-        boolean succes = users.addUser(user1);
-        user user2 = users.getById(1);
+        User user1 = new User("helppo", "heikki");
+        users.addUser(user1);
+        User user2 = users.getById(1);
         boolean sameUsers = false;
 
         if (user1.equals(user2)) {
@@ -41,12 +40,12 @@ public class userDaoTest {
     @Test
     public void canGetAllUsers() throws SQLException {
 
-        users.addUser(new user("a", "b"));
-        users.addUser(new user("c", "d"));
-        users.addUser(new user("e", "f"));
-        users.addUser(new user("g", "h"));
+        users.addUser(new User("a", "b"));
+        users.addUser(new User("c", "d"));
+        users.addUser(new User("e", "f"));
+        users.addUser(new User("g", "h"));
 
-        ArrayList<user> userList = users.getAll();
+        ArrayList<User> userList = users.getAll();
 
         Assert.assertEquals(userList.size(), 4);
     }
@@ -54,10 +53,10 @@ public class userDaoTest {
     @Test
     public void userByUsernameAndPswd() throws SQLException {
 
-        user user1 = new user("t", "t");
+        User user1 = new User("t", "t");
         users.addUser(user1);
 
-        user user2 = users.getByNameAndPswd("t", "t");
+        User user2 = users.getByNameAndPswd("t", "t");
 
         boolean sameUsers = false;
 
@@ -71,13 +70,13 @@ public class userDaoTest {
     @Test
     public void userById() throws SQLException {
 
-        user user1 = new user("b", "b");
+        User user1 = new User("b", "b");
 
-        users.addUser(new user("a", "a")); //1
+        users.addUser(new User("a", "a")); //1
         users.addUser(user1); //2
-        users.addUser(new user("c", "c")); //3
+        users.addUser(new User("c", "c")); //3
 
-        user user2 = users.getById(2);
+        User user2 = users.getById(2);
 
         boolean sameUsers = false;
 
@@ -91,15 +90,15 @@ public class userDaoTest {
     @Test
     public void canDeleteAll() throws SQLException {
 
-        users.addUser(new user("a", "a"));
-        users.addUser(new user("b", "b"));
-        users.addUser(new user("c", "c"));
-        users.addUser(new user("d", "d"));
-        users.addUser(new user("e", "e"));
+        users.addUser(new User("a", "a"));
+        users.addUser(new User("b", "b"));
+        users.addUser(new User("c", "c"));
+        users.addUser(new User("d", "d"));
+        users.addUser(new User("e", "e"));
 
         users.deleteAll();
 
-        ArrayList<user> userList = users.getAll();
+        ArrayList<User> userList = users.getAll();
 
         Assert.assertEquals(userList.size(), 0);
     }
@@ -107,9 +106,9 @@ public class userDaoTest {
     @Test
     public void canDeleteById() throws SQLException {
 
-        user user1 = new user("a", "a");
-        user user2 = new user("b", "b");
-        user user3 = new user("c", "c");
+        User user1 = new User("a", "a");
+        User user2 = new User("b", "b");
+        User user3 = new User("c", "c");
 
         users.addUser(user1); //id: 1
         users.addUser(user2); //id: 2
@@ -117,7 +116,7 @@ public class userDaoTest {
 
         users.deleteById(2);
 
-        ArrayList<user> userList2 = users.getAll();
+        ArrayList<User> userList2 = users.getAll();
 
         boolean deleted = false;
 
