@@ -2,7 +2,7 @@
 
 Sovellus mahdollistaa käyttäjien pelata sudoku pelejä.
 
-[sudokuApp](https://github.com/HegePI/ot-harjoitustyo/tree/master/sudokuApp)
+[sudokuApp](https://github.com/HegePI/ot-harjoitustyo/tree/master/sudokuapp)
 
 ## Dokumentaatio
 
