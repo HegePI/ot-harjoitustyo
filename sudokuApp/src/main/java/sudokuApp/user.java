@@ -1,8 +1,5 @@
 package sudokuApp;
 
-import java.sql.*;
-import java.util.Objects;
-
 public class user {
 
     private String userName;

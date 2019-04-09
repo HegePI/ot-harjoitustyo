@@ -105,7 +105,6 @@ public class userDaoTest {
     }
 
     @Test
-
     public void canDeleteById() throws SQLException {
 
         user user1 = new user("a", "a");
