@@ -24,6 +24,7 @@ public class Sudokuui extends Application {
     private Sudokudao sd;
     private Database db;
 
+    @Override
     public void init() throws ClassNotFoundException {
         this.service = new SudokuService();
         this.db = new Database();
@@ -47,6 +48,7 @@ public class Sudokuui extends Application {
         Sudoku s1 = new Sudoku(false, "easy", sa);
         sd.addSudoku(s1);
         Sudoku s2 = sd.getById(1);
+        System.out.println(s2.toString());
         window.setTitle("login -ikkuna");
 
         GridPane loginForm = loginForm();
