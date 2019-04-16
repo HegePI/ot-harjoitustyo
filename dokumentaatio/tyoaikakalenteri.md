@@ -72,7 +72,7 @@ __Aikaa Kului__
 __Mitä tehtiin__
 
 * SudokuSolverin lisäys ja databasen täydennys
-*Sudokusolver testi
+* Sudokusolver testi
 
 __Aikaa kului__
 
