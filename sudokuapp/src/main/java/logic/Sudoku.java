@@ -1,18 +1,17 @@
 package logic;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class Sudoku {
 
     private boolean completed;
     private String difficulty;
     private int[][] sudoku;
+    private SudokuSolver suso;
 
     public Sudoku(boolean completed, String difficulty, int[][] sudoku) {
         this.completed = completed;
         this.difficulty = difficulty;
         this.sudoku = sudoku;
+        this.suso = new SudokuSolver();
     }
 
     public boolean isCompleted() {
@@ -21,6 +20,10 @@ public class Sudoku {
 
     public String getDifficulty() {
         return difficulty;
+    }
+
+    public void setSudoku(int[][] sudoku) {
+        this.sudoku = sudoku;
     }
 
     public int[][] getSudoku() {
@@ -61,6 +64,12 @@ public class Sudoku {
             }
         }
         return sudoku;
+    }
+
+    public void solve() {
+        setCompleted(true);
+        int[][] solvedSudoku = suso.solve(this.sudoku);
+        setSudoku(solvedSudoku);
     }
 
     public boolean equals(Sudoku s) {

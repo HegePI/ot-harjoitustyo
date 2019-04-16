@@ -49,6 +49,11 @@ public class Sudokuui extends Application {
         sd.addSudoku(s1);
         Sudoku s2 = sd.getById(1);
         System.out.println(s2.toString());
+
+        s2.solve();
+        System.out.println(s2.toString());
+
+
         window.setTitle("login -ikkuna");
 
         GridPane loginForm = loginForm();

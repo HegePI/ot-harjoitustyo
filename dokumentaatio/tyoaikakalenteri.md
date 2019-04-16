@@ -67,6 +67,17 @@ __Aikaa Kului__
 
 8h
 
+## Ti 16.4.19
+
+__Mitä tehtiin__
+
+* SudokuSolverin lisäys ja databasen täydennys
+*Sudokusolver testi
+
+__Aikaa kului__
+
+4h
+
 
 ## Koonnos
 
@@ -78,5 +89,6 @@ __Aikaa Kului__
 | 30.3.19 | 4h |
 | 2.4.19 | 6h |
 | 9.4.19 | 8h |
-|Yhteensä | 21,5h |
+| 16.4.19 | 4h |
+|Yhteensä | 25,5h |
 
