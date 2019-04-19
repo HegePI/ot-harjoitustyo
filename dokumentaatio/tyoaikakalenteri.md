@@ -78,6 +78,17 @@ __Aikaa kului__
 
 4h
 
+## To 18.4.19
+
+__Mitä tehtiin__
+
+* JavaFx Opettelua
+* Käyttöliittymän suunnittelua
+* SudokuSrvicen toteutusta
+
+__Aikaa kului__
+
+4h
 
 ## Koonnos
 
@@ -90,5 +101,6 @@ __Aikaa kului__
 | 2.4.19 | 6h |
 | 9.4.19 | 8h |
 | 16.4.19 | 4h |
-|Yhteensä | 25,5h |
+| 18.4.19 | 4h |
+|Yhteensä | 29,5h |
 

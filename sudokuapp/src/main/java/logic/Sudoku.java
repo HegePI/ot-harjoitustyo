@@ -2,6 +2,7 @@ package logic;
 
 public class Sudoku {
 
+    private int id;
     private boolean completed;
     private String difficulty;
     private int[][] sudoku;
@@ -12,6 +13,14 @@ public class Sudoku {
         this.difficulty = difficulty;
         this.sudoku = sudoku;
         this.suso = new SudokuSolver();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isCompleted() {

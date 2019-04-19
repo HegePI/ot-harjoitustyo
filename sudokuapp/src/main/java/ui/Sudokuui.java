@@ -1,8 +1,6 @@
 package ui;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,83 +10,110 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import logic.Sudoku;
 import logic.SudokuService;
-import dao.Sudokudao;
-import dao.Database;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logic.User;
 
 public class Sudokuui extends Application {
 
     private logic.SudokuService service;
-    private Sudokudao sd;
-    private Database db;
+    private User loggedUser;
+    private Stage window;
+    private Notification notification;
+    private Loginui loginView;
+    private NewUserui newUserView;
+    private Gameui gameView;
+    private Menuui menuView;
 
     @Override
     public void init() throws ClassNotFoundException {
-        this.service = new SudokuService();
-        this.db = new Database();
-        this.sd = new dao.Sudokudao(db);
+        service = new SudokuService();
+        notification = new Notification();
+        loginView = new Loginui();
+        newUserView = new NewUserui();
+        gameView = new Gameui();
+        menuView = new Menuui();
     }
 
     @Override
     public void start(Stage window) throws Exception {
-
-        int[][] sa = {
-            {0, 0, 0, 5, 0, 7, 0, 0, 0},
-            {0, 0, 2, 4, 0, 6, 3, 0, 0},
-            {0, 9, 0, 0, 1, 0, 0, 2, 0},
-            {2, 7, 0, 0, 0, 0, 0, 6, 8},
-            {0, 0, 3, 0, 0, 0, 1, 0, 0},
-            {1, 4, 0, 0, 0, 0, 0, 9, 3},
-            {0, 6, 0, 0, 4, 0, 0, 5, 0},
-            {0, 0, 9, 2, 0, 5, 6, 0, 0},
-            {0, 0, 0, 9, 0, 3, 0, 0, 0}
-        };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
-        sd.addSudoku(s1);
-        Sudoku s2 = sd.getById(1);
-        System.out.println(s2.toString());
-
-        s2.solve();
-        System.out.println(s2.toString());
-
+        this.window = window;
 
         window.setTitle("login -ikkuna");
 
         GridPane loginForm = loginForm();
         GridPane newUserForm = newUserForm();
-        loginUiControls(loginForm, window);
-        newUserUiControls(newUserForm, window);
+
         Scene loginScene = new Scene(loginForm, 800, 800);
-        Scene newUserScene = new Scene(newUserForm, 800, 800);
-        window.setScene(newUserScene);
+        Scene createUserScene = new Scene(newUserForm, 800, 800);
+
+        loginUiControls(loginForm);
+        newUserUiControls(newUserForm);
+
+        Button newUser = new Button("Luo uusi käyttäjä");
+        newUser.setPrefHeight(40);
+        newUser.setPrefWidth(140);
+        loginForm.setHalignment(newUser, HPos.CENTER);
+        loginForm.setMargin(newUser, new Insets(20, 0, 20, 0));
+        newUser.setOnAction(e -> window.setScene(createUserScene));
+        loginForm.add(newUser, 0, 5, 2, 1);
+
+        Button back = new Button("takaisin");
+        back.setPrefHeight(40);
+        back.setPrefWidth(100);
+        newUserForm.setHalignment(newUser, HPos.CENTER);
+        newUserForm.setMargin(newUser, new Insets(20, 0, 20, 0));
+        back.setOnAction(e -> window.setScene(loginScene));
+        newUserForm.add(back, 0, 4, 2, 1);
+
+        window.setScene(loginScene);
         window.show();
     }
 
-    public GridPane loginForm() {
+    public static GridPane loginForm() {
         GridPane loginForm = new GridPane();
         loginForm.setAlignment(Pos.CENTER);
-        loginForm.setPadding(new Insets(40, 40, 40, 40));
-        loginForm.setHgap(40);
-        loginForm.setVgap(40);
-        ColumnConstraints cc1 = new ColumnConstraints(150, 150, Double.MAX_VALUE);
+        loginForm.setPadding(new Insets(20, 20, 20, 20));
+        loginForm.setHgap(30);
+        loginForm.setVgap(30);
+        ColumnConstraints cc1 = new ColumnConstraints(100, 100, Double.MAX_VALUE);
         cc1.setHalignment(HPos.RIGHT);
-        ColumnConstraints cc2 = new ColumnConstraints(200, 200, Double.MAX_VALUE);
+        ColumnConstraints cc2 = new ColumnConstraints(150, 150, Double.MAX_VALUE);
         cc2.setHgrow(Priority.ALWAYS);
         loginForm.getColumnConstraints().addAll(cc1, cc2);
         return loginForm;
     }
 
-    public void loginUiControls(GridPane gp, Stage window) {
-        setHeader(gp);
-        setNameField(gp);
-        setPasswordField(gp);
-        setLoginButton(gp, window);
-        setCreateUserButton(gp, window);
+    public void loginUiControls(GridPane loginForm) {
+        setLoginHeader(loginForm);
+        TextField name = setLoginNameField(loginForm);
+        PasswordField pswd = setLoginPasswordField(loginForm);
+
+        Button login = new Button("Kirjaudu sisään");
+        login.setPrefSize(160, 40);
+        login.setOnAction(e -> {
+            try {
+                if (name.getText().isEmpty() || pswd.getText().isEmpty()) {
+                    String message = "Anna sekä käyttäjänimi että salasana";
+                    notification.Message(message);
+                } else {
+                    loggedUser = service.Login(name.getText(), pswd.getText());
+                    System.out.println("Käyttäjä " + loggedUser.toString() + " kirjautui sisään");
+                    window.setScene(gameView.getScene());
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        loginForm.add(login, 0, 4, 2, 1);
+        loginForm.setHalignment(login, HPos.CENTER);
+        loginForm.setMargin(login, new Insets(20, 0, 20, 0));
     }
 
-    private void setHeader(GridPane gp) {
+    private void setLoginHeader(GridPane gp) {
         Label header = new Label("Sudokuapp");
         header.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         gp.add(header, 0, 0, 2, 1);
@@ -96,7 +121,7 @@ public class Sudokuui extends Application {
         gp.setMargin(header, new Insets(20, 0, 20, 0));
     }
 
-    private void setNameField(GridPane gp) {
+    private TextField setLoginNameField(GridPane gp) {
         Label name = new Label("Käyttäjänimi: ");
         gp.add(name, 0, 1);
 
@@ -104,34 +129,18 @@ public class Sudokuui extends Application {
         nameField.setPrefHeight(40);
         gp.add(nameField, 1, 1);
 
+        return nameField;
     }
 
-    private void setPasswordField(GridPane gp) {
+    private PasswordField setLoginPasswordField(GridPane gp) {
         Label password = new Label("Salasana: ");
         gp.add(password, 0, 2);
 
-        TextField passwordField = new TextField();
+        PasswordField passwordField = new PasswordField();
         passwordField.setPrefHeight(40);
         gp.add(passwordField, 1, 2);
-    }
 
-    private void setLoginButton(GridPane gp, Stage window) {
-        Button submit = new Button("login");
-        submit.setPrefHeight(40);
-        submit.setDefaultButton(true);
-        submit.setPrefWidth(100);
-        gp.add(submit, 0, 4, 2, 1);
-        gp.setHalignment(submit, HPos.CENTER);
-        gp.setMargin(submit, new Insets(20, 0, 20, 0));
-    }
-
-    private void setCreateUserButton(GridPane gp, Stage window) {
-        Button newUser = new Button("Luo uusi käyttäjä");
-        newUser.setPrefHeight(40);
-        newUser.setPrefWidth(200);
-        gp.add(newUser, 0, 5, 2, 1);
-        gp.setHalignment(newUser, HPos.CENTER);
-        gp.setMargin(newUser, new Insets(20, 0, 20, 0));
+        return passwordField;
     }
 
     private GridPane newUserForm() {
@@ -146,15 +155,26 @@ public class Sudokuui extends Application {
         cc2.setHgrow(Priority.ALWAYS);
         newUserForm.getColumnConstraints().addAll(cc1, cc2);
         return newUserForm;
-
     }
 
-    private void newUserUiControls(GridPane newUserForm, Stage window) {
+    private void newUserUiControls(GridPane newUserForm) {
         newUserLabel(newUserForm);
-        newUserNameField(newUserForm);
-        newUserPasswordField(newUserForm);
-        newUserCreateButton(newUserForm);
+        TextField name = newUserNameField(newUserForm);
+        TextField pswd = newUserPasswordField(newUserForm);
+        Button create = new Button("Luo käyttäjä");
+        create.setPrefSize(200, 40);
 
+        create.setOnAction(e -> {
+            try {
+                service.CreateNewUser(name.getText(), pswd.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        newUserForm.add(create, 0, 3, 2, 1);
+        newUserForm.setHalignment(create, HPos.CENTER);
+        newUserForm.setMargin(create, new Insets(20, 0, 20, 0));
     }
 
     private void newUserLabel(GridPane newUserForm) {
@@ -166,40 +186,25 @@ public class Sudokuui extends Application {
 
     }
 
-    private void newUserNameField(GridPane newUserForm) {
+    private TextField newUserNameField(GridPane newUserForm) {
         Label name = new Label("Käyttäjänimi: ");
         newUserForm.add(name, 0, 1);
 
         TextField nameField = new TextField();
         nameField.setPrefHeight(40);
         newUserForm.add(nameField, 1, 1);
+
+        return nameField;
     }
 
-    private void newUserPasswordField(GridPane newUserForm) {
+    private TextField newUserPasswordField(GridPane newUserForm) {
         Label password = new Label("Käyttäjänimi: ");
         newUserForm.add(password, 0, 2);
 
         TextField passwordField = new TextField();
         passwordField.setPrefHeight(40);
         newUserForm.add(passwordField, 1, 2);
-    }
-
-    private void newUserCreateButton(GridPane newUserForm) {
-        Button newUser = new Button("Luo uusi käyttäjä");
-        newUser.setPrefHeight(40);
-        newUser.setPrefWidth(200);
-        newUserForm.add(newUser, 0, 3, 2, 1);
-        newUserForm.setHalignment(newUser, HPos.CENTER);
-        newUserForm.setMargin(newUser, new Insets(20, 0, 20, 0));
-    }
-
-    private void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
+        return passwordField;
     }
 
     public static void main(String[] args) {

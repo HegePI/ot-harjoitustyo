@@ -23,46 +23,23 @@ public class SudokuService {
         lukija = new Scanner(System.in);
     }
 
-    public void testUsers() throws SQLException {
-        users.addUser(new User("teemu", "pulli"));
-        users.addUser(new User("ville", "pulli"));
-        users.addUser(new User("heikki", "pulli"));
-        users.addUser(new User("eetu", "pulli"));
+    public boolean CreateNewUser(String name, String pswd) throws SQLException {
+        boolean succes = false;
 
-        User user = users.getById(3);
-        System.out.println(user.toString());
+        User newUser = new User(name, pswd);
+        succes = users.addUser(newUser);
 
-        ArrayList<User> userList = users.getAll();
-        for (int i = 0; i < userList.size(); i++) {
-            System.out.println(userList.get(i));
-        }
-        users.deleteById(2);
+        return succes;
+
     }
 
-    public void testSudokus() throws SQLException {
-        int[][] test = {
-            {0, 0, 0, 5, 0, 7, 0, 0, 0},
-            {0, 0, 2, 4, 0, 6, 3, 0, 0},
-            {0, 9, 0, 0, 1, 0, 0, 2, 0},
-            {2, 7, 0, 0, 0, 0, 0, 6, 8},
-            {0, 0, 3, 0, 0, 0, 1, 0, 0},
-            {1, 4, 0, 0, 0, 0, 0, 9, 3},
-            {0, 6, 0, 0, 4, 0, 0, 5, 0},
-            {0, 0, 9, 2, 0, 5, 6, 0, 0},
-            {0, 0, 0, 9, 0, 3, 0, 0, 0}
-        };
-        Sudoku s1 = new Sudoku(false, "easy", test);
-        System.out.println(s1.toString());
-        if (sudokus.addSudoku(s1)) {
-            System.out.println("Lisättiin sudoku");
-        } else {
-            System.out.println("Epäonnistui");
-        }
-
-        Sudoku s2 = sudokus.getById(1);
-        System.out.println(s2.toString());
-
-        sudokus.deleteAll();
+    public User Login(String name, String pswd) throws SQLException {
+        User user = users.getByNameAndPswd(name, pswd);
+        return user;
     }
 
+    public Sudoku getSudoku(int id) {
+        Sudoku sudoku = sudokus.getById(id);
+        return sudoku;
+    }
 }

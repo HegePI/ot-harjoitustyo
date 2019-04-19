@@ -59,6 +59,7 @@ public class Sudokudao {
             }
 
             s = new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+            s.setId(rs.getInt("id"));
 
             rs.close();
             stmnt.close();
@@ -73,7 +74,7 @@ public class Sudokudao {
     public ArrayList<Sudoku> getAll() throws SQLException {
         ArrayList<Sudoku> sudokus = new ArrayList<>();
         try (Connection con = database.getConnection()) {
-            PreparedStatement stmnt = con.prepareStatement("SELECT difficulty, completed, sudoku FROM Sudoku");
+            PreparedStatement stmnt = con.prepareStatement("SELECT * FROM Sudoku");
             ResultSet rs = stmnt.executeQuery();
 
             while (rs.next()) {
@@ -87,7 +88,9 @@ public class Sudokudao {
                         index++;
                     }
                 }
-                sudokus.add(new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray));
+                Sudoku s = new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+                s.setId(rs.getInt("id"));
+                sudokus.add(s);
             }
 
             rs.close();
@@ -98,6 +101,26 @@ public class Sudokudao {
             System.out.println("Exception: " + e);
         }
         return sudokus;
+    }
+
+    public boolean save(Sudoku sudoku) throws SQLException {
+        boolean succes = true;
+
+        try (Connection con = database.getConnection()) {
+            PreparedStatement stmnt = con.prepareStatement("UPDATE Sudoku SET sudoku = ? WHERE id = ?");
+            stmnt.setString(1, sudoku.sudokuToString());
+            stmnt.setInt(2, sudoku.getId());
+            stmnt.execute();
+
+            stmnt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+            succes = false;
+        }
+        return succes;
+
     }
 
     public boolean deleteById(int id) throws SQLException {
