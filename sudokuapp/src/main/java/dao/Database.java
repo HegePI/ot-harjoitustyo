@@ -5,14 +5,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import logic.Sudoku;
+import dao.Sudokudao;
 import org.sqlite.SQLiteConfig;
 
 public class Database {
 
     SQLiteConfig config;
 
-    public Database() throws ClassNotFoundException {
+    public Database() throws ClassNotFoundException, SQLException {
         this.config = new SQLiteConfig();
+        File file = new File("sudoku.db");
+        if (!file.exists()) {
+            initdb(file);
+        }
     }
 
     public Connection getConnection() throws SQLException {
@@ -38,7 +44,7 @@ public class Database {
                 + " difficulty VARCHAR(10),"
                 + " completed Integer,"
                 + " sudoku VARCHAR(90),"
-                + " FOREIGN KEY (id.)"
+                + " FOREIGN KEY (id)"
                 + " REFERENCES User(id)"
                 + " ON DELETE CASCADE);";
 
@@ -57,5 +63,25 @@ public class Database {
             System.out.println("Exception: " + e.getMessage());
 
         }
+        setDefaultSudokus();
+    }
+
+    private void setDefaultSudokus() throws SQLException {
+        Sudokudao sd = new Sudokudao(this);
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        Sudoku s1 = new Sudoku(false, "easy", sa);
+
+        sd.addSudoku(s1);
+
     }
 }

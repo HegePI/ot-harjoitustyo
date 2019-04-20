@@ -16,7 +16,7 @@ public class SudokuService {
     static Scanner lukija;
     static User loggedIn;
 
-    public SudokuService() throws ClassNotFoundException {
+    public SudokuService() throws ClassNotFoundException, SQLException {
         db = new Database();
         users = new Userdao(db);
         sudokus = new Sudokudao(db);

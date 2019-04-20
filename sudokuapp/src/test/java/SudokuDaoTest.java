@@ -13,7 +13,7 @@ public class SudokuDaoTest {
     Database db;
     dao.Sudokudao sudokuDao;
 
-    public SudokuDaoTest() throws ClassNotFoundException {
+    public SudokuDaoTest() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         sudokuDao = new Sudokudao(db);
     }

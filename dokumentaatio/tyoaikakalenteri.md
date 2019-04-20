@@ -90,6 +90,17 @@ __Aikaa kului__
 
 4h
 
+## Pe 19.4.19
+
+__Mitä tehtiin__
+
+* Kkäyttöliittymän luomista/suunnittelua
+* Toiminnallisuuksien lisäämistä
+
+__Aikaa kului__
+
+6h
+
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
@@ -102,5 +113,6 @@ __Aikaa kului__
 | 9.4.19 | 8h |
 | 16.4.19 | 4h |
 | 18.4.19 | 4h |
-|Yhteensä | 29,5h |
+| 19.4.19 | 6h |
+|Yhteensä | 35,5h |
 

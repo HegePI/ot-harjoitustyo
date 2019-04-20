@@ -13,7 +13,7 @@ public class userDaoTest {
     Database db;
     Userdao users;
 
-    public userDaoTest() throws ClassNotFoundException {
+    public userDaoTest() throws ClassNotFoundException, SQLException {
         db = new Database();
         users = new Userdao(db);
     }

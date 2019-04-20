@@ -14,11 +14,12 @@ import logic.SudokuService;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.Parent;
 import logic.User;
 
 public class Sudokuui extends Application {
 
-    private logic.SudokuService service;
+    private SudokuService service;
     private User loggedUser;
     private Stage window;
     private Notification notification;
@@ -27,8 +28,12 @@ public class Sudokuui extends Application {
     private Gameui gameView;
     private Menuui menuView;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
-    public void init() throws ClassNotFoundException {
+    public void init() throws ClassNotFoundException, SQLException {
         service = new SudokuService();
         notification = new Notification();
         loginView = new Loginui();
@@ -41,56 +46,46 @@ public class Sudokuui extends Application {
     public void start(Stage window) throws Exception {
         this.window = window;
 
-        window.setTitle("login -ikkuna");
-
-        GridPane loginForm = loginForm();
-        GridPane newUserForm = newUserForm();
-
-        Scene loginScene = new Scene(loginForm, 800, 800);
-        Scene createUserScene = new Scene(newUserForm, 800, 800);
-
-        loginUiControls(loginForm);
-        newUserUiControls(newUserForm);
-
-        Button newUser = new Button("Luo uusi käyttäjä");
-        newUser.setPrefHeight(40);
-        newUser.setPrefWidth(140);
-        loginForm.setHalignment(newUser, HPos.CENTER);
-        loginForm.setMargin(newUser, new Insets(20, 0, 20, 0));
-        newUser.setOnAction(e -> window.setScene(createUserScene));
-        loginForm.add(newUser, 0, 5, 2, 1);
-
-        Button back = new Button("takaisin");
-        back.setPrefHeight(40);
-        back.setPrefWidth(100);
-        newUserForm.setHalignment(newUser, HPos.CENTER);
-        newUserForm.setMargin(newUser, new Insets(20, 0, 20, 0));
-        back.setOnAction(e -> window.setScene(loginScene));
-        newUserForm.add(back, 0, 4, 2, 1);
-
-        window.setScene(loginScene);
+        if (loggedUser == null) {
+            setUpLoginView();
+        } else {
+            setUpMenuView();
+        }
         window.show();
     }
 
-    public static GridPane loginForm() {
-        GridPane loginForm = new GridPane();
-        loginForm.setAlignment(Pos.CENTER);
-        loginForm.setPadding(new Insets(20, 20, 20, 20));
-        loginForm.setHgap(30);
-        loginForm.setVgap(30);
-        ColumnConstraints cc1 = new ColumnConstraints(100, 100, Double.MAX_VALUE);
-        cc1.setHalignment(HPos.RIGHT);
-        ColumnConstraints cc2 = new ColumnConstraints(150, 150, Double.MAX_VALUE);
-        cc2.setHgrow(Priority.ALWAYS);
-        loginForm.getColumnConstraints().addAll(cc1, cc2);
-        return loginForm;
+    private void setUpLoginView() {
+        window.setScene(loginView.getScene());
+        window.setTitle("login-ikkuna");
+        TextField name = setLoginNameField(loginView.getGridPane());
+        PasswordField pswd = setLoginPasswordField(loginView.getGridPane());
+        setLoginButton(loginView.getGridPane(), name, pswd);
+        setCreateUserButton(loginView.getGridPane());
+
     }
 
-    public void loginUiControls(GridPane loginForm) {
-        setLoginHeader(loginForm);
-        TextField name = setLoginNameField(loginForm);
-        PasswordField pswd = setLoginPasswordField(loginForm);
+    private TextField setLoginNameField(GridPane loginForm) {
+        Label name = new Label("Käyttäjänimi: ");
+        loginForm.add(name, 0, 1);
+        TextField nameField = new TextField();
+        nameField.setPrefHeight(40);
+        loginForm.add(nameField, 1, 1);
+        return nameField;
+    }
 
+    private PasswordField setLoginPasswordField(GridPane loginForm) {
+        Label password = new Label("Salasana: ");
+        loginForm.add(password, 0, 2);
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPrefHeight(40);
+        loginForm.add(passwordField, 1, 2);
+
+        return passwordField;
+
+    }
+
+    private void setLoginButton(GridPane gridPane, TextField name, PasswordField pswd) {
         Button login = new Button("Kirjaudu sisään");
         login.setPrefSize(160, 40);
         login.setOnAction(e -> {
@@ -100,93 +95,42 @@ public class Sudokuui extends Application {
                     notification.Message(message);
                 } else {
                     loggedUser = service.Login(name.getText(), pswd.getText());
-                    System.out.println("Käyttäjä " + loggedUser.toString() + " kirjautui sisään");
-                    window.setScene(gameView.getScene());
+                    setUpMenuView();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Exception: " + ex.getMessage());
             }
         });
 
-        loginForm.add(login, 0, 4, 2, 1);
-        loginForm.setHalignment(login, HPos.CENTER);
-        loginForm.setMargin(login, new Insets(20, 0, 20, 0));
+        loginView.getGridPane().add(login, 0, 4, 2, 1);
+        loginView.getGridPane().setHalignment(login, HPos.CENTER);
+        loginView.getGridPane().setMargin(login, new Insets(20, 0, 20, 0));
     }
 
-    private void setLoginHeader(GridPane gp) {
-        Label header = new Label("Sudokuapp");
-        header.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        gp.add(header, 0, 0, 2, 1);
-        gp.setHalignment(header, HPos.CENTER);
-        gp.setMargin(header, new Insets(20, 0, 20, 0));
-    }
-
-    private TextField setLoginNameField(GridPane gp) {
-        Label name = new Label("Käyttäjänimi: ");
-        gp.add(name, 0, 1);
-
-        TextField nameField = new TextField();
-        nameField.setPrefHeight(40);
-        gp.add(nameField, 1, 1);
-
-        return nameField;
-    }
-
-    private PasswordField setLoginPasswordField(GridPane gp) {
-        Label password = new Label("Salasana: ");
-        gp.add(password, 0, 2);
-
-        PasswordField passwordField = new PasswordField();
-        passwordField.setPrefHeight(40);
-        gp.add(passwordField, 1, 2);
-
-        return passwordField;
-    }
-
-    private GridPane newUserForm() {
-        GridPane newUserForm = new GridPane();
-        newUserForm.setAlignment(Pos.CENTER);
-        newUserForm.setPadding(new Insets(40, 40, 40, 40));
-        newUserForm.setHgap(40);
-        newUserForm.setVgap(40);
-        ColumnConstraints cc1 = new ColumnConstraints(150, 150, Double.MAX_VALUE);
-        cc1.setHalignment(HPos.RIGHT);
-        ColumnConstraints cc2 = new ColumnConstraints(200, 200, Double.MAX_VALUE);
-        cc2.setHgrow(Priority.ALWAYS);
-        newUserForm.getColumnConstraints().addAll(cc1, cc2);
-        return newUserForm;
-    }
-
-    private void newUserUiControls(GridPane newUserForm) {
-        newUserLabel(newUserForm);
-        TextField name = newUserNameField(newUserForm);
-        TextField pswd = newUserPasswordField(newUserForm);
-        Button create = new Button("Luo käyttäjä");
-        create.setPrefSize(200, 40);
-
-        create.setOnAction(e -> {
-            try {
-                service.CreateNewUser(name.getText(), pswd.getText());
-            } catch (SQLException ex) {
-                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    private void setCreateUserButton(GridPane gridPane) {
+        Button newUser = new Button("Luo uusi käyttäjä");
+        newUser.setPrefSize(160, 40);
+        newUser.setOnAction(e -> {
+            setUpNewUserView();
         });
 
-        newUserForm.add(create, 0, 3, 2, 1);
-        newUserForm.setHalignment(create, HPos.CENTER);
-        newUserForm.setMargin(create, new Insets(20, 0, 20, 0));
-    }
-
-    private void newUserLabel(GridPane newUserForm) {
-        Label header = new Label("Luo uusi käyttäjä");
-        header.setFont(Font.font("Arial", FontWeight.BOLD, 24));
-        newUserForm.add(header, 0, 0, 2, 1);
-        newUserForm.setHalignment(header, HPos.CENTER);
-        newUserForm.setMargin(header, new Insets(20, 0, 20, 0));
+        loginView.getGridPane().add(newUser, 0, 5, 2, 1);
+        loginView.getGridPane().setHalignment(newUser, HPos.CENTER);
+        loginView.getGridPane().setMargin(newUser, new Insets(20, 0, 20, 0));
 
     }
 
-    private TextField newUserNameField(GridPane newUserForm) {
+    private void setUpNewUserView() {
+        window.setScene(newUserView.getScene());
+        window.setTitle("Luo uusi käyttäjä");
+
+        TextField name = userNameField(newUserView.getGridPane());
+        TextField pswd = userPasswordField(newUserView.getGridPane());
+        createUserButton(newUserView.getGridPane(), name, pswd);
+        newBackButton(newUserView.getGridPane());
+    }
+
+    private TextField userNameField(GridPane newUserForm) {
         Label name = new Label("Käyttäjänimi: ");
         newUserForm.add(name, 0, 1);
 
@@ -197,7 +141,7 @@ public class Sudokuui extends Application {
         return nameField;
     }
 
-    private TextField newUserPasswordField(GridPane newUserForm) {
+    private TextField userPasswordField(GridPane newUserForm) {
         Label password = new Label("Käyttäjänimi: ");
         newUserForm.add(password, 0, 2);
 
@@ -207,8 +151,71 @@ public class Sudokuui extends Application {
         return passwordField;
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    private void createUserButton(GridPane gridPane, TextField name, TextField pswd) {
+        Button createUser = new Button("Luo käyttäjä");
+        createUser.setPrefSize(200, 40);
+
+        createUser.setOnAction(e -> {
+            try {
+                service.CreateNewUser(name.getText(), pswd.getText());
+                loggedUser = service.Login(name.getText(), pswd.getText());
+                setUpMenuView();
+            } catch (SQLException ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+        });
+        gridPane.add(createUser, 0, 3, 2, 1);
+        gridPane.setHalignment(createUser, HPos.CENTER);
+        gridPane.setMargin(createUser, new Insets(20, 0, 20, 0));
+    }
+
+    private void newBackButton(GridPane gridPane) {
+        Button back = new Button("takaisin login -ikkunaan");
+        back.setPrefSize(200, 40);
+
+        back.setOnAction(e -> {
+            setUpLoginView();
+        });
+        gridPane.add(back, 0, 4, 2, 1);
+        gridPane.setHalignment(back, HPos.CENTER);
+        gridPane.setMargin(back, new Insets(20, 0, 20, 0));
+    }
+
+    private void setGameView() {
+        window.setScene(gameView.getScene());
+        window.setTitle("Pelinäkymä");
+    }
+
+    private void setUpMenuView() {
+        window.setScene(menuView.getScene());
+        window.setTitle("Pelivalikko");
+        setMenuBar(menuView.getBorderPane());
+    }
+
+    private void setMenuBar(BorderPane borderPane) {
+        MenuBar menu = new MenuBar();
+        setInfoMenu(menu);
+        borderPane.setTop(menu);
+
+    }
+
+    private void setInfoMenu(MenuBar menu) {
+        Menu info = new Menu();
+        info.setText(loggedUser.getUserName() + " logged in");
+
+        MenuItem logout = new MenuItem("Kirjaudu ulos");
+        logout.setOnAction(e -> {
+            loggedUser = null;
+            setUpLoginView();
+        });
+
+        MenuItem personalSudokus = new MenuItem("pelinäkymään");
+        personalSudokus.setOnAction(e -> {
+            setGameView();
+        });
+
+        info.getItems().addAll(logout, personalSudokus);
+        menu.getMenus().add(info);
     }
 
 }
