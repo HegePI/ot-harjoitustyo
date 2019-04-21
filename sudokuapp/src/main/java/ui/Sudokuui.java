@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.GridLayout;
+import java.util.*;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -14,7 +16,10 @@ import logic.SudokuService;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Parent;
+import logic.Sudoku;
 import logic.User;
 
 public class Sudokuui extends Application {
@@ -186,10 +191,11 @@ public class Sudokuui extends Application {
         window.setTitle("Pelinäkymä");
     }
 
-    private void setUpMenuView() {
+    private void setUpMenuView() throws SQLException {
         window.setScene(menuView.getScene());
         window.setTitle("Pelivalikko");
         setMenuBar(menuView.getBorderPane());
+        listSudokusInMenu();
     }
 
     private void setMenuBar(BorderPane borderPane) {
@@ -209,13 +215,34 @@ public class Sudokuui extends Application {
             setUpLoginView();
         });
 
-        MenuItem personalSudokus = new MenuItem("pelinäkymään");
+        MenuItem personalSudokus = new MenuItem("Keskeneräiset sudokut");
         personalSudokus.setOnAction(e -> {
             setGameView();
         });
 
         info.getItems().addAll(logout, personalSudokus);
         menu.getMenus().add(info);
+    }
+
+    private void listSudokusInMenu() throws SQLException {
+        System.out.println("Luodaan sudokut menuun");
+        ArrayList<Sudoku> allSudokus = service.getAllSudokus();
+        for (int i = 0; i < allSudokus.size(); i++) {
+            sudokuInMenu(allSudokus.get(i), i);
+        }
+
+    }
+
+    private void sudokuInMenu(Sudoku s, int row) {
+        System.out.println(s.toString());
+        Label sudoku = new Label(s.getId() + ", " + s.getDifficulty());
+        Button play = new Button("pelaa");
+        play.setOnAction(e -> {
+            setGameView();
+        });
+        menuView.getGridPane().add(sudoku, 1, row + 1);
+        menuView.getGridPane().add(play, 2, row + 1);
+
     }
 
 }

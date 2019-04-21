@@ -42,4 +42,9 @@ public class SudokuService {
         Sudoku sudoku = sudokus.getById(id);
         return sudoku;
     }
+
+    public ArrayList<Sudoku> getAllSudokus() throws SQLException {
+        ArrayList<Sudoku> sudokus = this.sudokus.getAll();
+        return sudokus;
+    }
 }

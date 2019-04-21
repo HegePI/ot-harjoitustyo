@@ -94,12 +94,22 @@ __Aikaa kului__
 
 __Mitä tehtiin__
 
-* Kkäyttöliittymän luomista/suunnittelua
+* Käyttöliittymän luomista/suunnittelua
 * Toiminnallisuuksien lisäämistä
 
 __Aikaa kului__
 
-6h
+## La 20.4.19
+
+__Mitä tehtiin__
+
+* Database -olion luonnin yhteydessä tietokanta alustetaan
+perus sudokuilla
+* Pelivalikon luomista/suunnittelua
+
+__Aikaa kului__
+
+4h
 
 ## Koonnos
 
@@ -114,5 +124,6 @@ __Aikaa kului__
 | 16.4.19 | 4h |
 | 18.4.19 | 4h |
 | 19.4.19 | 6h |
+| 20.4.19 | 4h |
 |Yhteensä | 35,5h |
 

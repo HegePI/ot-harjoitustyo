@@ -105,82 +105,13 @@ public class SudokuSolver {
     }
 
     private boolean bigSlotFree(int[][] sudoku, int row, int column, int value) {
-        if (row < 3) {
-            if (column < 3) {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else if (column < 6) {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 3; j < 6; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else {
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 6; j < 9; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            }
-        } else if (row < 6) {
-            if (column < 3) {
-                for (int i = 3; i < 6; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else if (column < 6) {
-                for (int i = 3; i < 6; i++) {
-                    for (int j = 3; j < 6; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else {
-                for (int i = 3; i < 6; i++) {
-                    for (int j = 6; j < 9; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            }
-        } else {
-            if (column < 3) {
-                for (int i = 6; i < 9; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else if (column < 6) {
-                for (int i = 6; i < 9; i++) {
-                    for (int j = 3; j < 6; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
-                }
-            } else {
-                for (int i = 6; i < 9; i++) {
-                    for (int j = 6; j < 9; j++) {
-                        if (sudoku[i][j] == value) {
-                            return false;
-                        }
-                    }
+        int rowIndex = (row / 3) * 3;
+        int columnIndex = (column / 3) * 3;
+
+        for (int r = rowIndex; r < rowIndex + 3; r++) {
+            for (int c = columnIndex; c < columnIndex + 3; c++) {
+                if (sudoku[r][c] == value) {
+                    return false;
                 }
             }
         }
