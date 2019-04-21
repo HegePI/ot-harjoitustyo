@@ -20,7 +20,7 @@ Pelissä on erilaisia sudokuja vaihtelevilla vaikeusasteilla. Sudokusta talletet
 
 ![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/alustava_nakyma.png)
 
-*Pelinäkymä selkeytyy, kun sovelluksen tarkempi totetus selkeää.
+* Pelinäkymä selkeytyy, kun sovelluksen tarkempi totetus selkeää.
 
 ### Perusversion tarjoama toiminnallisuus
 

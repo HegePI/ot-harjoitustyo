@@ -99,8 +99,15 @@ public class Sudokuui extends Application {
                     String message = "Anna sekä käyttäjänimi että salasana";
                     notification.Message(message);
                 } else {
-                    loggedUser = service.Login(name.getText(), pswd.getText());
-                    setUpMenuView();
+                    User user = service.Login(name.getText(), pswd.getText());
+                    if (user == null) {
+                        String message = "Käyttäjänimi tai salasana väärin. Olethan luonut jo käyttäjän?";
+                        notification.Message(message);
+
+                    } else {
+                        loggedUser = user;
+                        setUpMenuView();
+                    }
                 }
             } catch (SQLException ex) {
                 System.out.println("Exception: " + ex.getMessage());

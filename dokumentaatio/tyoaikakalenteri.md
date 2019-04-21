@@ -111,6 +111,16 @@ __Aikaa kului__
 
 4h
 
+## Su 21.4.19
+
+__Mitä tehtiin__
+
+* SudokuSolverin yksinkertaistaminen
+
+__Aikaa kului__
+
+4h
+
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
