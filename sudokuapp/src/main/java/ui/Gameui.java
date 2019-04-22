@@ -13,7 +13,7 @@ import javafx.scene.text.FontWeight;
 
 public class Gameui {
 
-    GridPane gameLayout;
+    private GridPane gameLayout;
 
     public Scene getScene() {
 

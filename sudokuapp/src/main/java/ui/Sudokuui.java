@@ -1,24 +1,17 @@
 package ui;
 
-import java.awt.GridLayout;
 import java.util.*;
+import javafx.scene.canvas.Canvas;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import logic.SudokuService;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Parent;
 import logic.Sudoku;
 import logic.User;
 
@@ -193,11 +186,6 @@ public class Sudokuui extends Application {
         gridPane.setMargin(back, new Insets(20, 0, 20, 0));
     }
 
-    private void setGameView() {
-        window.setScene(gameView.getScene());
-        window.setTitle("Pelinäkymä");
-    }
-
     private void setUpMenuView() throws SQLException {
         window.setScene(menuView.getScene());
         window.setTitle("Pelivalikko");
@@ -224,7 +212,7 @@ public class Sudokuui extends Application {
 
         MenuItem personalSudokus = new MenuItem("Keskeneräiset sudokut");
         personalSudokus.setOnAction(e -> {
-            setGameView();
+            System.out.println("Näytetään käyttäjän sudokut");
         });
 
         info.getItems().addAll(logout, personalSudokus);
@@ -245,10 +233,40 @@ public class Sudokuui extends Application {
         Label sudoku = new Label(s.getId() + ", " + s.getDifficulty());
         Button play = new Button("pelaa");
         play.setOnAction(e -> {
-            setGameView();
+            try {
+                setGameView(s);
+            } catch (SQLException ex) {
+                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         menuView.getGridPane().add(sudoku, 1, row + 1);
         menuView.getGridPane().add(play, 2, row + 1);
+    }
+
+    private void setGameView(Sudoku s) throws SQLException {
+        window.setScene(gameView.getScene());
+        window.setTitle("Pelinäkymä");
+
+        showSudoku(s);
+        setSaveButton();
+    }
+
+    private void showSudoku(Sudoku s) {
+        System.out.println(s.toString());
+        Canvas canvas = new Canvas(100, 100);
+    }
+
+    private void setSaveButton() throws SQLException {
+        Button logout = new Button("kirjaudu ulos");
+        logout.setOnAction(e -> {
+            try {
+                setUpMenuView();
+            } catch (SQLException ex) {
+                Logger.getLogger(Sudokuui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        gameView.getGridPane().add(logout, 0, 0);
 
     }
 
