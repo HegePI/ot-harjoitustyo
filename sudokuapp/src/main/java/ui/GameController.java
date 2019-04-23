@@ -124,7 +124,9 @@ public class GameController implements Initializable {
                     nro = Integer.parseInt(event.getCharacter());
                     if (nro == 0) {
                         info.setText("0 ei kelpaa sudokuun >:(");
-
+                    } else {
+                        s.setCell(selectedRow, selectedCol, nro);
+                        drawSudoku(canvas.getGraphicsContext2D());
                     }
                 } catch (Exception e) {
                     info.setText("Kirjaimet eivät kelpaa");

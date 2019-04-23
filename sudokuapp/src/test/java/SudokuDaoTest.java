@@ -37,7 +37,7 @@ public class SudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
         boolean success = sudokuDao.addSudoku(s1);
         Assert.assertEquals(true, success);
     }
@@ -55,7 +55,7 @@ public class SudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
         sudokuDao.addSudoku(s1);
 
         boolean success = false;
@@ -81,9 +81,9 @@ public class SudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
-        Sudoku s2 = new Sudoku(false, "normal", sa);
-        Sudoku s3 = new Sudoku(false, "hard", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
+        Sudoku s2 = new Sudoku("normal", sa);
+        Sudoku s3 = new Sudoku("hard", sa);
 
         sudokuDao.addSudoku(s1);
         sudokuDao.addSudoku(s2);
@@ -107,7 +107,7 @@ public class SudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
         sudokuDao.addSudoku(s1);
         sudokuDao.deleteById(1);
         Sudoku s2 = sudokuDao.getById(1);
@@ -128,9 +128,9 @@ public class SudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
-        Sudoku s2 = new Sudoku(false, "normal", sa);
-        Sudoku s3 = new Sudoku(false, "hard", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
+        Sudoku s2 = new Sudoku("normal", sa);
+        Sudoku s3 = new Sudoku("hard", sa);
 
         sudokuDao.addSudoku(s1);
         sudokuDao.addSudoku(s2);

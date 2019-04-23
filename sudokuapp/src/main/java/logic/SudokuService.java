@@ -1,9 +1,8 @@
 package logic;
 
 import dao.Database;
-import logic.User;
-import logic.Sudoku;
 import dao.Sudokudao;
+import dao.UserSudokuDao;
 import dao.Userdao;
 import java.sql.*;
 import java.util.*;
@@ -13,6 +12,7 @@ public class SudokuService {
     static Database db;
     static Userdao users;
     static Sudokudao sudokus;
+    static UserSudokuDao usd;
     static Scanner lukija;
     static User loggedIn;
 
@@ -46,5 +46,10 @@ public class SudokuService {
     public ArrayList<Sudoku> getAllSudokus() throws SQLException {
         ArrayList<Sudoku> sudokus = this.sudokus.getAll();
         return sudokus;
+    }
+
+    public void play(Sudoku s, int userId) throws SQLException {
+        UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku());
+        usd.add(us);
     }
 }

@@ -20,10 +20,9 @@ public class Sudokudao {
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement(
-                    "INSERT INTO Sudoku (difficulty, completed, sudoku) VALUES (?,?,?)");
+                    "INSERT INTO Sudoku (difficulty, sudoku) VALUES (?,?)");
             stmnt.setString(1, s.getDifficulty());
-            stmnt.setBoolean(2, s.isCompleted());
-            stmnt.setString(3, s.sudokuToString());
+            stmnt.setString(2, s.sudokuToString());
 
             stmnt.execute();
 
@@ -58,7 +57,7 @@ public class Sudokudao {
                 }
             }
 
-            s = new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+            s = new Sudoku(rs.getString("difficulty"), sudokuArray);
             s.setId(rs.getInt("id"));
 
             rs.close();
@@ -88,7 +87,7 @@ public class Sudokudao {
                         index++;
                     }
                 }
-                Sudoku s = new Sudoku(rs.getBoolean("completed"), rs.getString("difficulty"), sudokuArray);
+                Sudoku s = new Sudoku(rs.getString("difficulty"), sudokuArray);
                 s.setId(rs.getInt("id"));
                 sudokus.add(s);
             }

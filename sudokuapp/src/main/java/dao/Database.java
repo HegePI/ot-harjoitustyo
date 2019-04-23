@@ -44,6 +44,7 @@ public class Database {
                 + " difficulty VARCHAR(10),"
                 + " completed Integer,"
                 + " sudoku VARCHAR(90),"
+                + " originalSudoku VARCHAR(90),"
                 + " FOREIGN KEY (id)"
                 + " REFERENCES User(id)"
                 + " ON DELETE CASCADE);";
@@ -51,7 +52,6 @@ public class Database {
         String sudokuTable = "CREATE TABLE IF NOT EXISTS Sudoku ("
                 + "id Integer PRIMARY KEY,"
                 + " difficulty VARCHAR(10),"
-                + " completed Integer,"
                 + " sudoku VARCHAR(90));";
 
         try (Connection con = DriverManager.getConnection(path);
@@ -79,7 +79,7 @@ public class Database {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        Sudoku s1 = new Sudoku(false, "easy", sa);
+        Sudoku s1 = new Sudoku("easy", sa);
 
         sd.addSudoku(s1);
 

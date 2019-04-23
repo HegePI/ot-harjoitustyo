@@ -3,13 +3,11 @@ package logic;
 public class Sudoku {
 
     private int id;
-    private boolean completed;
     private String difficulty;
     private int[][] sudoku;
     private SudokuSolver suso;
 
-    public Sudoku(boolean completed, String difficulty, int[][] sudoku) {
-        this.completed = completed;
+    public Sudoku(String difficulty, int[][] sudoku) {
         this.difficulty = difficulty;
         this.sudoku = sudoku;
         this.suso = new SudokuSolver();
@@ -21,10 +19,6 @@ public class Sudoku {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isCompleted() {
-        return completed;
     }
 
     public String getDifficulty() {
@@ -39,8 +33,9 @@ public class Sudoku {
         return sudoku;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setCell(int row, int col, int value) {
+        this.sudoku[row][col] = value;
+
     }
 
     public void setDifficulty(String difficulty) {
@@ -50,7 +45,6 @@ public class Sudoku {
     @Override
     public String toString() {
         String toString = "";
-        toString += "completed: " + completed + "\n";
         toString += "difficulty: " + difficulty + "\n\n";
 
         String sudokuString = "";
@@ -76,7 +70,6 @@ public class Sudoku {
     }
 
     public void solve() {
-        setCompleted(true);
         int[][] solvedSudoku = suso.solve(this.sudoku);
         setSudoku(solvedSudoku);
     }
@@ -89,7 +82,7 @@ public class Sudoku {
                 }
             }
         }
-        if (this.completed == s.isCompleted() && this.difficulty.equals(s.getDifficulty())) {
+        if (this.difficulty.equals(s.getDifficulty())) {
             return true;
         }
         return false;

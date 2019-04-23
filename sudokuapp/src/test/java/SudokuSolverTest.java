@@ -38,8 +38,8 @@ public class SudokuSolverTest {
             {4, 1, 9, 2, 8, 5, 6, 3, 7},
             {5, 2, 7, 9, 6, 3, 8, 1, 4}
         };
-        Sudoku s1 = new Sudoku(true, "a", sudoku);
-        Sudoku s2 = new Sudoku(true, "a", solved);
+        Sudoku s1 = new Sudoku("a", sudoku);
+        Sudoku s2 = new Sudoku("a", solved);
         s1.solve();
 
         boolean same = false;
