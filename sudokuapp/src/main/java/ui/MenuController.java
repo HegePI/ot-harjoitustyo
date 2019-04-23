@@ -13,6 +13,9 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,7 +57,6 @@ public class MenuController implements Initializable {
     }
 
     public void SetUser(User u) {
-        System.out.println("1");
         System.out.println(u.toString());
         this.loggedUser = u;
         User.setText(loggedUser.getUserName() + " logged in");
@@ -88,12 +90,19 @@ public class MenuController implements Initializable {
         sudokus = FXCollections.observableArrayList();
         getSudokus(sudokus);
         sudokuView.setItems(sudokus);
+        sudokuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println(observable.toString() + " selected");
+            }
+        });
 
     }
 
     private void getSudokus(ObservableList sudokus) throws SQLException {
         ArrayList<Sudoku> allSudokus = server.getAllSudokus();
-        
+        sudokus.addAll(allSudokus);
+
     }
 
 }

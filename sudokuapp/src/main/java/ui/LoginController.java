@@ -68,29 +68,19 @@ public class LoginController implements Initializable {
                 System.out.println(loggedUser.toString() + "logged in");
 
                 FXMLLoader loader = new FXMLLoader();
-                System.out.println("1");
                 loader.setLocation(getClass().getResource("/fxml/menu.fxml"));
-                System.out.println("2");
                 loader.load();
-                System.out.println("3");
 
                 MenuController menu = loader.getController();
-                System.out.println("4");
                 menu.SetUser(loggedUser);
-                System.out.println("5");
 
                 Parent root = loader.getRoot();
-                System.out.println("6");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                System.out.println("7");
                 Scene s = new Scene(root);
-                System.out.println("8");
                 window.setTitle("menu");
-                System.out.println("9");
                 window.setScene(s);
-                System.out.println("10");
                 window.show();
-                
+
             }
         }
     }
