@@ -42,7 +42,7 @@ public class Sudokudao {
     public Sudoku getById(int id) {
         Sudoku s = null;
         try (Connection con = database.getConnection()) {
-            PreparedStatement stmnt = con.prepareStatement("SELECT difficulty, completed, sudoku FROM Sudoku WHERE id = ?");
+            PreparedStatement stmnt = con.prepareStatement("SELECT * FROM Sudoku WHERE id = ?");
             stmnt.setInt(1, id);
 
             ResultSet rs = stmnt.executeQuery();

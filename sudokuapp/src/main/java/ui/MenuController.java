@@ -9,11 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,7 +21,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -103,17 +100,24 @@ public class MenuController implements Initializable {
         sudokuView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sudoku s = (Sudoku) sudokuView.getSelectionModel().getSelectedItem();
+                System.out.println("Painettiin " + s.toString());
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/fxml/game.fxml"));
                 try {
-                    System.out.println("Painettiin " + sudokuView.getSelectionModel().getSelectedItems().toString());
-                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/game.fxml"));
-                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    Scene s = new Scene(root);
-                    window.setTitle("pelinäkymä");
-                    window.setScene(s);
-                    window.show();
+                    loader.load();
                 } catch (IOException ex) {
                     Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                GameController c = loader.getController();
+                c.setSudoku(s);
+                Parent root = loader.getRoot();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene ss = new Scene(root);
+                window.setTitle("menu");
+                window.setScene(ss);
+                window.show();
 
             }
         });
