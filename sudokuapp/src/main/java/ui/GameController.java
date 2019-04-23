@@ -8,14 +8,17 @@ package ui;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import logic.Sudoku;
 import logic.SudokuService;
 
@@ -26,13 +29,17 @@ import logic.SudokuService;
  */
 public class GameController implements Initializable {
 
-    private logic.SudokuService server;
+    private final logic.SudokuService server;
     private Sudoku s;
+    int selectedRow;
+    int selectedCol;
 
     @FXML
     private Button back, save;
     @FXML
     private Canvas canvas;
+    @FXML
+    private Label info;
 
     /**
      * Initializes the controller class.
@@ -50,6 +57,8 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        selectedCol = 0;
+        selectedRow = 0;
     }
 
     public void back() {
@@ -72,8 +81,11 @@ public class GameController implements Initializable {
                 context.fillRoundRect(x, y, width, width, 10, 10);
             }
         }
+        context.setStroke(Color.ROYALBLUE);
+        context.setLineWidth(5);
+        context.strokeRoundRect(selectedCol * 50 + 2, selectedRow * 50 + 2, 46, 46, 10, 10);
         setNumbers(context);
-
+        canvas.addEventFilter(MouseEvent.ANY, (e) -> canvas.requestFocus());
     }
 
     private void setNumbers(GraphicsContext context) {
@@ -86,10 +98,38 @@ public class GameController implements Initializable {
                 context.setFont(new Font(20));
                 if (sudoku[row][col] != 0) {
                     context.fillText(sudoku[row][col] + "", x, y);
-
                 }
             }
         }
+    }
 
+    public void canvasCellClicked() {
+        canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                selectedCol = (int) event.getX() / 50;
+                selectedRow = (int) event.getY() / 50;
+                drawSudoku(canvas.getGraphicsContext2D());
+
+            }
+        });
+    }
+
+    public void keyTyped() {
+        canvas.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                int nro = 0;
+                try {
+                    nro = Integer.parseInt(event.getCharacter());
+                    if (nro == 0) {
+                        info.setText("0 ei kelpaa sudokuun >:(");
+
+                    }
+                } catch (Exception e) {
+                    info.setText("Kirjaimet eivät kelpaa");
+                }
+            }
+        });
     }
 }

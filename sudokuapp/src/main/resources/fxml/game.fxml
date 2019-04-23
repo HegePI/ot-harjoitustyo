@@ -15,6 +15,7 @@
         </Label>
         <Button fx:id="back" layoutX="14.0" layoutY="42.0" mnemonicParsing="false" onAction="#back" text="takaisin" />
         <Button fx:id="save" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" onAction="#save" text="tallenna" />
-        <Canvas fx:id="canvas" height="450.0" layoutX="176.0" layoutY="175.0" width="450.0" />
+        <Canvas fx:id="canvas" height="450.0" layoutX="176.0" layoutY="175.0" onKeyTyped="#keyTyped" onMouseClicked="#canvasCellClicked" width="450.0" />
+      <Label fx:id="info" alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="101.0" prefHeight="16.0" prefWidth="368.0" />
     </children>
 </Pane>
