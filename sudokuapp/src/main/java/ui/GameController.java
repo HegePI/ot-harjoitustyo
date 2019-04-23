@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 
 /**
@@ -22,6 +24,8 @@ public class GameController implements Initializable {
 
     @FXML
     private Button back, save;
+    @FXML
+    private Canvas canvas;
 
     /**
      * Initializes the controller class.
@@ -29,6 +33,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        drawSudoku(canvas.getGraphicsContext2D());
     }
 
     public void back() {
@@ -38,5 +43,10 @@ public class GameController implements Initializable {
     public void save() {
         System.out.println("Tallennetaan peli");
 
+    }
+
+    private void drawSudoku(GraphicsContext context) {
+        System.out.println("Alustetaan näkymä");
+        context.fillRoundRect(0, 0, 45, 45, 1, 1);
     }
 }
