@@ -19,6 +19,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Menu;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.Sudoku;
 import logic.SudokuService;
@@ -67,8 +69,8 @@ public class MenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         try {
-            // TODO
             refreshView();
         } catch (SQLException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,6 +96,24 @@ public class MenuController implements Initializable {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 System.out.println(observable.toString() + " selected");
+
+            }
+        });
+        sudokuView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    System.out.println("Painettiin " + sudokuView.getSelectionModel().getSelectedItems().toString());
+                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/game.fxml"));
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene s = new Scene(root);
+                    window.setTitle("pelinäkymä");
+                    window.setScene(s);
+                    window.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         });
 
