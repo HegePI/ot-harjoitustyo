@@ -119,7 +119,29 @@ __Mitä tehtiin__
 
 __Aikaa kului__
 
-4h
+2h
+
+## Ma 22.4.19
+
+__Mitä tehtiin__
+
+* Käyttöliittymän luomista
+* FXML/Scenebuilderin opettelua
+
+__Aikaa kului__
+
+6h
+
+## Ti 23.4.19
+
+__Mitä tehtiin__
+
+* Käyttöliittymän luomista
+* Dao -luokkien ja tietokannan päivittäminen
+
+__Aikaa kului__
+
+8h
 
 ## Koonnos
 
@@ -135,5 +157,8 @@ __Aikaa kului__
 | 18.4.19 | 4h |
 | 19.4.19 | 6h |
 | 20.4.19 | 4h |
-|Yhteensä | 35,5h |
+| 21.4.19 | 2h |
+| 22.4.19 | 6h |
+| 23.4.19 | 8h |
+|Yhteensä | 51,5h |
 
