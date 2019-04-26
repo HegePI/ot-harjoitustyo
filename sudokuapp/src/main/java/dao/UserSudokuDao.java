@@ -76,4 +76,23 @@ public class UserSudokuDao {
         return us;
     }
 
+    public boolean save(UserSudoku us) {
+        boolean succes = false;
+        try (Connection con = database.getConnection()) {
+            PreparedStatement stmnt = con.prepareStatement("UPDATE UserSudoku SET sudoku = ?, completed = ? WHERE id = ? AND user_id = ?");
+            stmnt.setString(1, us.sudokuToString());
+            stmnt.setBoolean(2, us.isCompleted());
+            stmnt.setInt(3, us.getSudokuId());
+            stmnt.setInt(4, us.getUserId());
+
+            succes = stmnt.execute();
+
+        } catch (Exception e) {
+            System.out.println("UserSudokuDao, save(): " + e.getMessage());
+        }
+
+        return succes;
+
+    }
+
 }

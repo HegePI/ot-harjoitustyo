@@ -57,4 +57,14 @@ public class SudokuService {
         UserSudoku us2 = UserSudokuDao.getByIds(s.getSudokuId(), userId);
         return us2;
     }
+
+    public boolean save(UserSudoku us) {
+        boolean succes = UserSudokuDao.save(us);
+        return succes;
+    }
+
+    public User getUserById(int id) throws SQLException {
+        User user = users.getById(id);
+        return user;
+    }
 }

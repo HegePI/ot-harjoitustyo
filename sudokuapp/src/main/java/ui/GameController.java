@@ -5,12 +5,18 @@
  */
 package ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -19,20 +25,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import logic.SudokuService;
 import logic.UserSudoku;
 
-/**
- * FXML Controller class
- *
- * @author heikki
- */
 public class GameController implements Initializable {
 
     private final SudokuService server;
     private UserSudoku us;
-    int selectedRow;
-    int selectedCol;
+    private int selectedRow;
+    private int selectedCol;
 
     @FXML
     private Button back, save;
@@ -41,9 +43,6 @@ public class GameController implements Initializable {
     @FXML
     private Label info;
 
-    /**
-     * Initializes the controller class.
-     */
     public GameController() throws ClassNotFoundException, SQLException {
         this.server = new SudokuService();
     }
@@ -60,13 +59,30 @@ public class GameController implements Initializable {
         selectedRow = 0;
     }
 
-    public void back() {
-        System.out.println("Palataan takaisin valikkoon");
+    public void back(ActionEvent event) throws IOException, SQLException {
+        System.out.println("Takaisin valikkoon");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/menu.fxml"));
+        loader.load();
+
+        MenuController mc = loader.getController();
+        mc.SetUser(server.getUserById(us.getUserId()));
+
+        Parent root = loader.getRoot();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene s = new Scene(root);
+        window.setTitle("menu");
+        window.setScene(s);
+        window.show();
     }
 
     public void save() {
-        System.out.println("Tallennetaan peli");
-
+        boolean succes = server.save(us);
+        if (!succes) {
+            info.setText("Jokin meni pieleen, ei saatu tallennettua");
+        } else {
+            info.setText("Peli tallennettu");
+        }
     }
 
     private void drawSudoku(GraphicsContext context) {
