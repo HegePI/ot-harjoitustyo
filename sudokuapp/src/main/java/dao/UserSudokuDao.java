@@ -15,7 +15,7 @@ public class UserSudokuDao {
     }
 
     public boolean add(UserSudoku us) throws SQLException {
-        boolean succes = false;
+        boolean succes = true;
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement(""
@@ -27,13 +27,14 @@ public class UserSudokuDao {
             stmnt.setString(5, us.originalSudokuToString());
             stmnt.setInt(6, us.getUserId());
 
-            succes = stmnt.execute();
+            stmnt.execute();
 
             stmnt.close();
             con.close();
 
         } catch (Exception e) {
             System.out.println("UserSudokuDao, add() metodi: " + e.getMessage());
+            succes = false;
         }
         return succes;
     }
@@ -91,6 +92,22 @@ public class UserSudokuDao {
 
         return succes;
 
+    }
+
+    public boolean deleteAll() {
+        boolean succes = true;
+        try (Connection con = database.getConnection()) {
+            PreparedStatement stmnt = con.prepareStatement("DELETE FROM UserSudoku");
+
+            stmnt.execute();
+            stmnt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("UserSudokuDao, deleteAll(): " + e.getMessage());
+            succes = false;
+        }
+        return succes;
     }
 
 }

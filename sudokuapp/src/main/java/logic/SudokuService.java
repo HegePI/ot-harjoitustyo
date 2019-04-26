@@ -13,8 +13,6 @@ public class SudokuService {
     static Userdao users;
     static Sudokudao sudokus;
     static UserSudokuDao UserSudokuDao;
-    static Scanner lukija;
-    static User loggedIn;
 
     public SudokuService() throws ClassNotFoundException, SQLException {
         db = new Database();
@@ -106,10 +104,8 @@ public class SudokuService {
         us.setId(s.getSudokuId());
         us.setUserId(userId);
         us.setDifficulty(s.getDifficulty());
-        System.out.println(us.toString());
         UserSudokuDao.add(us);
-        UserSudoku us2 = UserSudokuDao.getByIds(s.getSudokuId(), userId);
-        System.out.println(us2.toString());
+        UserSudoku us2 = UserSudokuDao.getByIds(us.getSudokuId(), us.getUserId());
         return us2;
     }
 

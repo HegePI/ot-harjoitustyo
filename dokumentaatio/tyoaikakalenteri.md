@@ -143,6 +143,22 @@ __Aikaa kului__
 
 8h
 
+## Pe 26.4.19
+
+__Mitä tehtiin__
+
+* SudokuServicen täydennystä
+* Käyttöliittymän täydennystä
+* Tallentamis toiminnallisuuden lisääminen
+* Pelinäkymän täydentämistä
+* Arkkitehtuuri suunnitelma/Vaatimusmäärittelyn päivittämistä
+* Sekvenssikaavioiden lisääminen
+* Testien lisäämistä
+
+__Aikaa kului__
+
+10h
+
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
@@ -160,5 +176,6 @@ __Aikaa kului__
 | 21.4.19 | 2h |
 | 22.4.19 | 6h |
 | 23.4.19 | 8h |
-|Yhteensä | 51,5h |
+| 26.4.19 | 10h |
+|Yhteensä | 61,5h |
 
