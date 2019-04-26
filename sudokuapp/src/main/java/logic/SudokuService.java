@@ -55,10 +55,6 @@ public class SudokuService {
         us.setUserId(userId);
         System.out.println(us);
         System.out.println("luotiin uusi käyttäjän sudoku");
-        try {
-            UserSudokuDao.add(us);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        UserSudokuDao.add(us);
     }
 }

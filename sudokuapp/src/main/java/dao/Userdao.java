@@ -30,7 +30,7 @@ public class Userdao {
 
             succes = true;
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, addUser(): " + e.getMessage());
             succes = false;
         }
 
@@ -55,7 +55,7 @@ public class Userdao {
             rs.close();
             con.close();
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, getAll(): " + e.getMessage());
         }
 
         return users;
@@ -79,7 +79,7 @@ public class Userdao {
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, getByNameAndPswd(): " + e.getMessage());
         }
 
         return user;
@@ -102,7 +102,7 @@ public class Userdao {
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, getById(): " + e.getMessage());
         }
         return user;
     }
@@ -120,7 +120,7 @@ public class Userdao {
             succes = true;
         } catch (Exception e) {
             succes = false;
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, deleteAll(): " + e.getMessage());
         }
         return succes;
     }
@@ -139,7 +139,7 @@ public class Userdao {
             succes = true;
 
         } catch (Exception e) {
-            System.out.println("Exception: " + e);
+            System.out.println("UserDao, deleteById(): " + e.getMessage());
             succes = false;
         }
 

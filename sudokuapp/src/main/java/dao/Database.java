@@ -59,7 +59,7 @@ public class Database {
             stmnt.execute(userSudokuTable);
             stmnt.execute(sudokuTable);
         } catch (Exception e) {
-            System.out.println("Exception: " + e.getMessage());
+            System.out.println("Database, initdb()" + e.getMessage());
 
         }
         setDefaultSudokus();
