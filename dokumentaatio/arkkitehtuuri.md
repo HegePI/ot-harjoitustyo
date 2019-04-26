@@ -1,5 +1,19 @@
 # Kuvaus sovelluksen arkkitehtuurista
 
+## Rakenne
+
+Sovelluksen rakenne on toteutettu kolmitasoarkkitehtuurina, jossa päällimmäisenä on Ui, keskimmäisenä Logic ja alimpaisena DAO. Ui luo käyttöliittymät ikkunat ja välittää käyttäjän viestit logic tason SudokuService -luokalle, joka hoitaa annetun tehtävän antaa palautteen, jonka Ui näyttää käyttäjälle. SudokuService on injektoitu jokaiselle Ui paketin luokalle ja sudokuservicen käytössä on kaikki muut logic paketin luokat ja DAO -paketin luokat.
+
+## Käyttöliittymä
+
+Ui tarjoaa käyttäjälle neljä näkymää, jotka ovat
+* sisäänkirjautumisnäkymä "login"
+* uuden käyttäjän luomisnäkymä "luo uusi käyttäjä"
+* Pelivalikko
+* Pelinäkymä
+
+ Näkymät ovat FXML:llä määritettyjä, jotka aina ladataan resursseista sitä tarvittaessa ja jonka pohjalta luodaan uusi Scene -olio, joka asetetaan Stageen. Jokaisella FXML näkymällä on omat Controller -olionsa, jotka kuuntelevat näkymissä tapahtuvia muutoksia ja reagoivat niihin sovitulla tavalla. Jokaisella Ui luokalla on käytössään SUdokuService -olio server, jonka avulla nämä laittavat käyttäjän pyynnöt eteenpäin.
+
 ## Sovelluslogiikka
 
 Sovelluksen loogisen kokonaisuuden muodostavat luokat User ja Sudoku. User kuvaa käyttäjiä ja Sudoku kuvaa peliin talletettavia ja pelattavia sudokuja. Käyttäjä voi pelata kerrallaan yhtä sudoku peliä ja tallentaa edistymisensä muistiin. 
@@ -16,3 +30,6 @@ Luokkakaavio kuvana:
 
 ![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/luokkakaavio.png)
 
+## Tietojen pysyväistallennus
+
+Tietojen tallentamisesta vastaa dao -paketin sisältämät luokat Database, SudokuDao, UserSudokuDao ja UserDao. Databse vastaa yhteyden luomisesta tietokantaan ja tarvittaessa luo uuden tietokannan, jos sovellusta ajettavassa kansiossa sitä ei löydy. UserDao vastaa henkilöiden tietojen tallenuksesta, SudokuDao yksittäisten sudokujen ja UserSudokuDao vastaa käyttäjän keskeneräisen sudokuntallenuksesta.
