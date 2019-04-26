@@ -52,3 +52,6 @@ Alla on auki esiteltynä osa ohjelman päätoiminnallisuuksita
 ![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/save.png?raw=true)
 
 GameControllerilla oleva UserSudoku -olio on asetettu sille siinä vaiheessa, kun pelaaja aloittaa pelin. Kun pelaaja muuttaa jonkun sudokun ruudun arvoa, niin se päivitetään samantien tähän olioon. UserSudokussa on tiedossa kaksi kaksiulotteista Integer taulua: toinen kertoo pelin nykyisen tilanteen ja toinen alkuetilanteen. Kun pelaaja tallentaa pelin, niin nykyinen tilanne tallentuu ja kaikki loput UserSudoku -olion tiedot pysyvät muuttumattomina
+
+#### Muu toiminnallisuus
+Sovelluksen kaikki toiminnot noudattavat pitkälti samaa kaavaa: Ui kuuntelee syötteitä ja antaa ne SudokuService -olion hoidettaviksi, joka antaa palautteena uuden tilan, jonka mukaan Ui vaihtaa näkymää. Erotuksena muista on sudoku alustan luominen. Sudoku alustan ruudut luodaan GameController luokassa kahden sisäkkäisen for -loopin sisällä. Tällä säästetään rivi mittaa game.fxml tiedostossa. 
