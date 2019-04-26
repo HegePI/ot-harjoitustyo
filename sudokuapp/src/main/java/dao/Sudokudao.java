@@ -58,7 +58,7 @@ public class Sudokudao {
             }
 
             s = new Sudoku(rs.getString("difficulty"), sudokuArray);
-            s.setId(rs.getInt("id"));
+            s.setSudokuId(rs.getInt("id"));
 
             rs.close();
             stmnt.close();
@@ -88,7 +88,7 @@ public class Sudokudao {
                     }
                 }
                 Sudoku s = new Sudoku(rs.getString("difficulty"), sudokuArray);
-                s.setId(rs.getInt("id"));
+                s.setSudokuId(rs.getInt("id"));
                 sudokus.add(s);
             }
 

@@ -44,7 +44,8 @@ public class Database {
                 + " completed Integer,"
                 + " sudoku VARCHAR(90),"
                 + " originalSudoku VARCHAR(90),"
-                + " FOREIGN KEY (id)"
+                + " user_id Integer, "
+                + " FOREIGN KEY (user_id)"
                 + " REFERENCES User(id)"
                 + " ON DELETE CASCADE);";
 
@@ -81,6 +82,5 @@ public class Database {
         Sudoku s1 = new Sudoku("easy", sa);
 
         sd.addSudoku(s1);
-
     }
 }

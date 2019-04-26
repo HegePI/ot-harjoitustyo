@@ -2,7 +2,7 @@ package logic;
 
 public class UserSudoku {
 
-    private int id;
+    private int sudokuId;
     private int userId;
     private boolean completed;
     private String difficulty;
@@ -15,8 +15,8 @@ public class UserSudoku {
         this.originalSudoku = originalSudoku;
     }
 
-    public int getId() {
-        return id;
+    public int getSudokuId() {
+        return sudokuId;
     }
 
     public int getUserId() {
@@ -24,7 +24,11 @@ public class UserSudoku {
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.sudokuId = id;
+    }
+
+    public void setCell(int row, int col, int value) {
+        this.sudoku[row][col] = value;
     }
 
     public void setUserId(int userId) {
@@ -86,4 +90,10 @@ public class UserSudoku {
         }
         return sudokuString;
     }
+
+    @Override
+    public String toString() {
+        return "UserSudoku{" + "sudokuId=" + sudokuId + ", userId=" + userId + ", completed=" + completed + ", difficulty=" + difficulty + ", sudoku=" + sudoku + ", originalSudoku=" + originalSudoku + '}';
+    }
+
 }

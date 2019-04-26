@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import logic.Sudoku;
 import logic.SudokuService;
 import logic.User;
+import logic.UserSudoku;
 
 /**
  * FXML Controller class
@@ -101,9 +102,9 @@ public class MenuController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 Sudoku s = (Sudoku) sudokuView.getSelectionModel().getSelectedItem();
-                System.out.println("Painettiin " + s.toString());
+                UserSudoku us = null;
                 try {
-                    server.play(s, loggedUser.getId());
+                    us = server.play(s, loggedUser.getId());
                 } catch (SQLException ex) {
                     Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -116,7 +117,7 @@ public class MenuController implements Initializable {
                     Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 GameController c = loader.getController();
-                c.setSudoku(s);
+                c.setUserSudoku(us);
                 Parent root = loader.getRoot();
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene ss = new Scene(root);

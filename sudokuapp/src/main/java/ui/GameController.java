@@ -19,8 +19,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import logic.Sudoku;
 import logic.SudokuService;
+import logic.UserSudoku;
 
 /**
  * FXML Controller class
@@ -29,8 +29,8 @@ import logic.SudokuService;
  */
 public class GameController implements Initializable {
 
-    private final logic.SudokuService server;
-    private Sudoku s;
+    private final SudokuService server;
+    private UserSudoku us;
     int selectedRow;
     int selectedCol;
 
@@ -48,15 +48,14 @@ public class GameController implements Initializable {
         this.server = new SudokuService();
     }
 
-    public void setSudoku(Sudoku s) {
-        this.s = s;
+    public void setUserSudoku(UserSudoku s) {
+        this.us = s;
         drawSudoku(canvas.getGraphicsContext2D());
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         selectedCol = 0;
         selectedRow = 0;
     }
@@ -89,7 +88,7 @@ public class GameController implements Initializable {
     }
 
     private void setNumbers(GraphicsContext context) {
-        int[][] sudoku = s.getSudoku();
+        int[][] sudoku = us.getSudoku();
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 int x = col * 50 + 20;
@@ -110,7 +109,6 @@ public class GameController implements Initializable {
                 selectedCol = (int) event.getX() / 50;
                 selectedRow = (int) event.getY() / 50;
                 drawSudoku(canvas.getGraphicsContext2D());
-
             }
         });
     }
@@ -123,9 +121,13 @@ public class GameController implements Initializable {
                 try {
                     nro = Integer.parseInt(event.getCharacter());
                     if (nro == 0) {
-                        info.setText("0 ei kelpaa sudokuun >:(");
+                        info.setText("0 ei kelpaa sudokuun");
                     } else {
-                        s.setCell(selectedRow, selectedCol, nro);
+                        if (us.getOriginalSudoku()[selectedCol][selectedRow] != 0) {
+                            info.setText("Alkuperäistä lukua ei voi muuttaa");
+                        } else {
+                            us.setCell(selectedRow, selectedCol, nro);
+                        }
                         drawSudoku(canvas.getGraphicsContext2D());
                     }
                 } catch (Exception e) {

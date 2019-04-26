@@ -44,17 +44,17 @@ public class SudokuService {
     }
 
     public ArrayList<Sudoku> getAllSudokus() throws SQLException {
-        ArrayList<Sudoku> sudokus = this.sudokus.getAll();
-        return sudokus;
+        ArrayList<Sudoku> allSudokus = this.sudokus.getAll();
+        return allSudokus;
     }
 
-    public void play(Sudoku s, int userId) throws SQLException {
-        System.out.println(s.toString());
-        System.out.println(userId);
+    public UserSudoku play(Sudoku s, int userId) throws SQLException {
         UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku());
+        us.setId(s.getSudokuId());
         us.setUserId(userId);
-        System.out.println(us);
-        System.out.println("luotiin uusi käyttäjän sudoku");
+        us.setDifficulty(s.getDifficulty());
         UserSudokuDao.add(us);
+        UserSudoku us2 = UserSudokuDao.getByIds(s.getSudokuId(), userId);
+        return us2;
     }
 }

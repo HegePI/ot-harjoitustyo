@@ -13,11 +13,11 @@ public class Sudoku {
         this.suso = new SudokuSolver();
     }
 
-    public int getId() {
+    public int getSudokuId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setSudokuId(int id) {
         this.id = id;
     }
 
@@ -31,11 +31,6 @@ public class Sudoku {
 
     public int[][] getSudoku() {
         return sudoku;
-    }
-
-    public void setCell(int row, int col, int value) {
-        this.sudoku[row][col] = value;
-
     }
 
     public void setDifficulty(String difficulty) {
