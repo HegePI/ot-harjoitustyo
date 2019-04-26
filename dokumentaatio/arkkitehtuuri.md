@@ -33,3 +33,14 @@ Luokkakaavio kuvana:
 ## Tietojen pysyväistallennus
 
 Tietojen tallentamisesta vastaa dao -paketin sisältämät luokat Database, SudokuDao, UserSudokuDao ja UserDao. Databse vastaa yhteyden luomisesta tietokantaan ja tarvittaessa luo uuden tietokannan, jos sovellusta ajettavassa kansiossa sitä ei löydy. UserDao vastaa henkilöiden tietojen tallenuksesta, SudokuDao yksittäisten sudokujen ja UserSudokuDao vastaa käyttäjän keskeneräisen sudokuntallenuksesta.
+
+
+## Päätoiminnallisuuksien kuvaukset
+
+Alla on auki esiteltynä osa ohjelman päätoiminnallisuuksita
+
+### Sisäänkirjautuminen
+
+### Uuden käyttäjän luominen
+
+### Pelin tallentaminen
