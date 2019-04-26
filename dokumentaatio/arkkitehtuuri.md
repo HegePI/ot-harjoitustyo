@@ -41,6 +41,8 @@ Alla on auki esiteltynä osa ohjelman päätoiminnallisuuksita
 
 ### Sisäänkirjautuminen
 
+![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/login.png)
+
 ### Uuden käyttäjän luominen
 
 ### Pelin tallentaminen
