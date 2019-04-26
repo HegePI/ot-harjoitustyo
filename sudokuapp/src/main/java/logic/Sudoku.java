@@ -69,6 +69,16 @@ public class Sudoku {
         setSudoku(solvedSudoku);
     }
 
+    /**
+     * kertoo, onko kaksi sudokua samat. true: samat false: ei samat
+     *
+     * @param s
+     *
+     * @see logic.Sudoku
+     *
+     * @return palauttaa true, jos samat sudokut, muuten false
+     *
+     */
     public boolean equals(Sudoku s) {
         for (int y = 0; y < 9; y++) {
             for (int x = 0; x < 9; x++) {

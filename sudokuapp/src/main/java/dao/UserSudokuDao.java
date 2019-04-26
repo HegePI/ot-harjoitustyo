@@ -17,8 +17,6 @@ public class UserSudokuDao {
     public boolean add(UserSudoku us) throws SQLException {
         boolean succes = false;
 
-        System.out.println("Lisätään " + us.toString());
-
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement(""
                     + "INSERT INTO UserSudoku VALUES (?,?,?,?,?,?)");
@@ -77,7 +75,7 @@ public class UserSudokuDao {
     }
 
     public boolean save(UserSudoku us) {
-        boolean succes = false;
+        boolean succes = true;
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("UPDATE UserSudoku SET sudoku = ?, completed = ? WHERE id = ? AND user_id = ?");
             stmnt.setString(1, us.sudokuToString());
@@ -85,10 +83,11 @@ public class UserSudokuDao {
             stmnt.setInt(3, us.getSudokuId());
             stmnt.setInt(4, us.getUserId());
 
-            succes = stmnt.execute();
+            stmnt.execute();
 
         } catch (Exception e) {
             System.out.println("UserSudokuDao, save(): " + e.getMessage());
+            succes = false;
         }
 
         return succes;

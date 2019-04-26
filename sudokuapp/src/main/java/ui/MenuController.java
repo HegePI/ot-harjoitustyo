@@ -1,10 +1,5 @@
 package ui;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -12,8 +7,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,8 +18,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import logic.Sudoku;
@@ -34,18 +27,13 @@ import logic.SudokuService;
 import logic.User;
 import logic.UserSudoku;
 
-/**
- * FXML Controller class
- *
- * @author heikki
- */
 public class MenuController implements Initializable {
 
     private final SudokuService server;
     private User loggedUser;
 
     @FXML
-    private Menu User;
+    private Label User;
     @FXML
     private ListView sudokuView;
     @FXML
@@ -63,12 +51,8 @@ public class MenuController implements Initializable {
         User.setText(loggedUser.getUserName() + " logged in");
     }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         try {
             refreshView();
         } catch (SQLException ex) {
@@ -78,7 +62,11 @@ public class MenuController implements Initializable {
 
     public void logout(ActionEvent event) throws IOException {
         loggedUser = null;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/login.fxml"));
+        loader.load();
+
+        Parent root = loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene s = new Scene(root);
         window.setTitle("login");
@@ -91,13 +79,6 @@ public class MenuController implements Initializable {
         sudokus = FXCollections.observableArrayList();
         getSudokus(sudokus);
         sudokuView.setItems(sudokus);
-        sudokuView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                System.out.println(observable.toString() + " selected");
-
-            }
-        });
         sudokuView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

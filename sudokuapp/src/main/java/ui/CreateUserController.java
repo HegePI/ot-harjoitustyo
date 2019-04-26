@@ -27,13 +27,9 @@ public class CreateUserController implements Initializable {
     private final SudokuService server;
 
     @FXML
-    private TextField userName;
+    private TextField userName, password;
     @FXML
-    private TextField password;
-    @FXML
-    private Button create;
-    @FXML
-    private Button back;
+    private Button create, back;
     @FXML
     private Label info;
 
@@ -41,15 +37,8 @@ public class CreateUserController implements Initializable {
         this.server = new SudokuService();
     }
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     public void createUser() throws SQLException {
@@ -77,7 +66,5 @@ public class CreateUserController implements Initializable {
         window.setTitle("login");
         window.setScene(s);
         window.show();
-
     }
-
 }

@@ -32,7 +32,7 @@
         </Label>
         <Button fx:id="login" alignment="CENTER" contentDisplay="CENTER" layoutX="271.0" layoutY="277.0" mnemonicParsing="false" onAction="#login" text="login" textAlignment="CENTER" />
         <Button fx:id="newUser" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="309.0" mnemonicParsing="false" onAction="#createUser" text="luo uusi käyttäjä" textAlignment="CENTER" />
-        <PasswordField fx:id="password" layoutX="216.0" layoutY="236.0" />
+        <PasswordField fx:id="password" layoutX="215.0" layoutY="236.0" />
         <Label fx:id="info" alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="348.0" prefHeight="26.0" prefWidth="482.0" textAlignment="CENTER">
             <font>
                 <Font size="15.0" />

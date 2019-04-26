@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui;
 
 import java.io.IOException;
@@ -25,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.SudokuService;
 import logic.UserSudoku;
@@ -105,13 +101,19 @@ public class GameController implements Initializable {
 
     private void setNumbers(GraphicsContext context) {
         int[][] sudoku = us.getSudoku();
+        int[][] originalSudoku = us.getOriginalSudoku();
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 int x = col * 50 + 20;
                 int y = row * 50 + 30;
-                context.setFill(Color.BLACK);
-                context.setFont(new Font(20));
-                if (sudoku[row][col] != 0) {
+                if (originalSudoku[row][col] != 0) {
+                    context.setFill(Color.RED);
+                    context.setFont(new Font(20));
+                    context.fillText(originalSudoku[row][col] + "", x, y);
+
+                } else if (sudoku[row][col] != 0) {
+                    context.setFill(Color.BLACK);
+                    context.setFont(new Font(20));
                     context.fillText(sudoku[row][col] + "", x, y);
                 }
             }
@@ -139,7 +141,7 @@ public class GameController implements Initializable {
                     if (nro == 0) {
                         info.setText("0 ei kelpaa sudokuun");
                     } else {
-                        if (us.getOriginalSudoku()[selectedCol][selectedRow] != 0) {
+                        if (us.getOriginalSudoku()[selectedRow][selectedCol] != 0) {
                             info.setText("Alkuperäistä lukua ei voi muuttaa");
                         } else {
                             us.setCell(selectedRow, selectedCol, nro);
