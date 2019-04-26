@@ -54,6 +54,12 @@ public class Sudoku {
         return toString;
     }
 
+    /**
+     * Muodostaa sudokun kaksiulotteiseta esittämismallista String esitysmallin,
+     * joka voidaan tallentaa tietokantaan
+     *
+     * @return sudokun String esitys
+     */
     public String sudokuToString() {
         String sudoku = "";
         for (int y = 0; y < 9; y++) {
@@ -64,6 +70,12 @@ public class Sudoku {
         return sudoku;
     }
 
+    /**
+     * Ratkaisee sen sudokun, joka kutsuu tätä metodia. Metodi ei palauta
+     * kaikkia mahdollisia ratkaisuja, vaan yhden ratkaisun.
+     *
+     *
+     */
     public void solve() {
         int[][] solvedSudoku = suso.solve(this.sudoku);
         setSudoku(solvedSudoku);
@@ -72,7 +84,7 @@ public class Sudoku {
     /**
      * kertoo, onko kaksi sudokua samat. true: samat false: ei samat
      *
-     * @param s
+     * @param s - vertailtava Sudoku -olio
      *
      * @see logic.Sudoku
      *

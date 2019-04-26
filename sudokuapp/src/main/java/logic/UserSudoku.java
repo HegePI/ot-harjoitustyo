@@ -71,6 +71,11 @@ public class UserSudoku {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Muodostaa UserSudoku -olion sudoku taulukosta String esityksen.
+     *
+     * @return palauttaa sudokun String esityksen
+     */
     public String sudokuToString() {
         String sudokuString = "";
         for (int y = 0; y < 9; y++) {
@@ -81,6 +86,11 @@ public class UserSudoku {
         return sudokuString;
     }
 
+    /**
+     * Muodostaa alkuperäisestä sudokusta String esityksen
+     *
+     * @return palauttaa alkuperäisen sudokun String esityksen
+     */
     public String originalSudokuToString() {
         String sudokuString = "";
         for (int y = 0; y < 9; y++) {

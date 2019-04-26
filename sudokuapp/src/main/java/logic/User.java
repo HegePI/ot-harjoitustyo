@@ -40,12 +40,6 @@ public class User {
         return "id: " + id + ", Name: " + userName + ", password: " + pswd;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
     public boolean equals(User u) {
         if (this.userName.equals(u.getUserName()) && this.pswd.equals(u.getPswd())) {
             return true;

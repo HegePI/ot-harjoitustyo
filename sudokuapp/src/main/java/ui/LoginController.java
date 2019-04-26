@@ -41,6 +41,16 @@ public class LoginController implements Initializable {
         // TODO
     }
 
+    /**
+     * Kirjaa käyttäjän sisään, jos tiedot löytyvät tietokannasta ja vaihtaa
+     * näkymän pelivalikkoon.
+     *
+     * @param event Napin painamis tapatuma
+     * @throws SQLException Saattaa palauttaa SQLExceptionin, jos ei saada
+     * yhteyttä tietokantaan tai tietokantaa ei ole olemassa.
+     * @throws IOException Saattaa palauttaa IOExceptionin, jos login.fxml sivua
+     * ei saatu ladattua.
+     */
     public void login(ActionEvent event) throws SQLException, IOException {
         if (userName.getText().isEmpty() || password.getText().isEmpty()) {
             userName.setText("");
@@ -73,6 +83,13 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * Vaihtaa näkymän käyttäjän luomis näkymään.
+     *
+     * @param event Napin painamis tapahtuma
+     * @throws IOException Saattaa palauttaa IOExceptionin, jos login.fxml sivua
+     * ei saatu ladattua.
+     */
     public void createUser(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/createUser.fxml"));
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

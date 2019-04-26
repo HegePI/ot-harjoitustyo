@@ -41,6 +41,13 @@ public class CreateUserController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+    /**
+     * Kutsuu SudokuService -oliota ja luo uuden käyttäjän. Jos ei onnistunut,
+     * ilmoitetaan tästä käyttäjälle.
+     *
+     * @throws SQLException Saattaa palauttaa SQLExceptionin, jos ei saatu
+     * yhteyttä tietokantaan tai jos tietokantaa ei ollut olemassa.
+     */
     public void createUser() throws SQLException {
         System.out.println("Uusi käyttäjä");
         if (userName.getText().isEmpty() || password.getText().isEmpty()) {
@@ -59,6 +66,13 @@ public class CreateUserController implements Initializable {
         }
     }
 
+    /**
+     * Vaihtaa näkymän takaisin sisäänkirjautumisnäkymäksi.
+     *
+     * @param event Napin painamis tapahtuma
+     * @throws IOException Saattaa palauttaa IOExceptionin, jos login.fxml sivua
+     * ei saatu ladattua.
+     */
     public void backToLogin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

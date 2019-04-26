@@ -69,7 +69,6 @@ public class UserSudokuDao {
 
         } catch (Exception e) {
             System.out.println("UserSudokuDao, getById(): " + e.getMessage());
-
         }
         return us;
     }
