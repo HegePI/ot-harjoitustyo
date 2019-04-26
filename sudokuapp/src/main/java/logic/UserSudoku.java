@@ -2,6 +2,8 @@ package logic;
 
 public class UserSudoku {
 
+    private int id;
+    private int userId;
     private boolean completed;
     private String difficulty;
     private int[][] sudoku;
@@ -11,6 +13,26 @@ public class UserSudoku {
         this.completed = false;
         this.sudoku = sudoku;
         this.originalSudoku = originalSudoku;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public boolean isCompleted() {

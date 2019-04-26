@@ -28,6 +28,7 @@ public class userDaoTest {
         User user1 = new User("helppo", "heikki");
         users.addUser(user1);
         User user2 = users.getById(1);
+        System.out.println(user2.toString());
         boolean sameUsers = false;
 
         if (user1.equals(user2)) {
@@ -46,6 +47,9 @@ public class userDaoTest {
         users.addUser(new User("g", "h"));
 
         ArrayList<User> userList = users.getAll();
+        for (int i = 0; i < 4; i++) {
+            System.out.println(userList.get(i).toString());
+        }
 
         Assert.assertEquals(userList.size(), 4);
     }

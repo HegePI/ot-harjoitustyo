@@ -47,6 +47,7 @@ public class Userdao {
 
             while (rs.next()) {
                 User user = new User(rs.getString("name"), rs.getString("pswd"));
+                user.setId(rs.getInt("id"));
                 users.add(user);
             }
 
@@ -71,6 +72,7 @@ public class Userdao {
             ResultSet rs = stmnt.executeQuery();
 
             user = new User(rs.getString("name"), rs.getString("pswd"));
+            user.setId(rs.getInt("id"));
 
             stmnt.close();
             rs.close();
@@ -87,12 +89,13 @@ public class Userdao {
         User user = null;
 
         try (Connection con = database.getConnection()) {
-            PreparedStatement stmnt = con.prepareStatement("SELECT name, pswd FROM User WHERE id = ?");
+            PreparedStatement stmnt = con.prepareStatement("SELECT * FROM User WHERE id = ?");
             stmnt.setInt(1, id);
 
             ResultSet rs = stmnt.executeQuery();
 
             user = new User(rs.getString("name"), rs.getString("pswd"));
+            user.setId(rs.getInt("id"));
 
             rs.close();
             stmnt.close();

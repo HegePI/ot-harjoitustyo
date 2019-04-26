@@ -22,16 +22,27 @@ public class UserSudokuDao {
         this.database = database;
     }
 
-    public void add(UserSudoku us) throws SQLException {
+    public boolean add(UserSudoku us) throws SQLException {
+        boolean succes = false;
 
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement(""
                     + "INSERT INTO UserSudoku VALUES (?,?,?,?,?)");
             stmnt.setString(1, us.getDifficulty());
+            stmnt.setBoolean(2, us.isCompleted());
+            stmnt.setString(3, us.sudokuToString());
+            stmnt.setString(4, us.originalSudokuToString());
+            stmnt.setInt(5, us.getUserId());
+
+            succes = stmnt.execute();
+
+            stmnt.close();
+            con.close();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return succes;
     }
 
 }

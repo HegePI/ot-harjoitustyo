@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import logic.Sudoku;
-import dao.Sudokudao;
 import org.sqlite.SQLiteConfig;
 
 public class Database {

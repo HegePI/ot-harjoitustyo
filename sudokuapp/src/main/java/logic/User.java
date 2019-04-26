@@ -2,6 +2,7 @@ package logic;
 
 public class User {
 
+    private int id;
     private String userName;
     private String pswd;
 
@@ -10,12 +11,20 @@ public class User {
         this.pswd = pswd;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getUserName() {
         return userName;
     }
 
     public String getPswd() {
         return pswd;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setUserName(String userName) {
@@ -28,7 +37,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Name: " + userName + ", password: " + pswd;
+        return "id: " + id + ", Name: " + userName + ", password: " + pswd;
     }
 
     @Override

@@ -102,6 +102,11 @@ public class MenuController implements Initializable {
             public void handle(MouseEvent event) {
                 Sudoku s = (Sudoku) sudokuView.getSelectionModel().getSelectedItem();
                 System.out.println("Painettiin " + s.toString());
+                try {
+                    server.play(s, loggedUser.getId());
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/fxml/game.fxml"));

@@ -12,7 +12,7 @@ public class SudokuService {
     static Database db;
     static Userdao users;
     static Sudokudao sudokus;
-    static UserSudokuDao usd;
+    static UserSudokuDao UserSudokuDao;
     static Scanner lukija;
     static User loggedIn;
 
@@ -20,7 +20,7 @@ public class SudokuService {
         db = new Database();
         users = new Userdao(db);
         sudokus = new Sudokudao(db);
-        lukija = new Scanner(System.in);
+        UserSudokuDao = new UserSudokuDao(db);
     }
 
     public boolean CreateNewUser(String name, String pswd) throws SQLException {
@@ -49,7 +49,16 @@ public class SudokuService {
     }
 
     public void play(Sudoku s, int userId) throws SQLException {
+        System.out.println(s.toString());
+        System.out.println(userId);
         UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku());
-        usd.add(us);
+        us.setUserId(userId);
+        System.out.println(us);
+        System.out.println("luotiin uusi käyttäjän sudoku");
+        try {
+            UserSudokuDao.add(us);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
