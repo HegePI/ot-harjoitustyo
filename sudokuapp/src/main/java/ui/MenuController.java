@@ -33,7 +33,7 @@ public class MenuController implements Initializable {
     private User loggedUser;
 
     @FXML
-    private Label User;
+    private Label user;
     @FXML
     private ListView sudokuView;
     @FXML
@@ -45,10 +45,10 @@ public class MenuController implements Initializable {
         this.server = new SudokuService();
     }
 
-    public void SetUser(User u) {
+    public void setUser(User u) {
         System.out.println(u.toString());
         this.loggedUser = u;
-        User.setText(loggedUser.getUserName() + " logged in");
+        user.setText(loggedUser.getUserName() + " logged in");
     }
 
     @Override

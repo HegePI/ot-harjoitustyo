@@ -57,7 +57,7 @@ public class LoginController implements Initializable {
             password.setText("");
             info.setText("Anna sekä käyttäjänimi että salasana");
         } else {
-            User loggedUser = server.Login(userName.getText(), password.getText());
+            User loggedUser = server.login(userName.getText(), password.getText());
             if (loggedUser == null) {
                 userName.setText("");
                 password.setText("");
@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
                 loader.load();
 
                 MenuController menu = loader.getController();
-                menu.SetUser(loggedUser);
+                menu.setUser(loggedUser);
 
                 Parent root = loader.getRoot();
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

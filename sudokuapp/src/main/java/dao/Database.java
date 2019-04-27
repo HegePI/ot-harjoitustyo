@@ -33,26 +33,9 @@ public class Database {
     private void initdb(File f) throws SQLException {
         System.out.println("Alustetaan tietokanta");
         String path = ("jdbc:sqlite:" + f.getAbsolutePath());
-        String userTable = "CREATE TABLE IF NOT EXISTS User ("
-                + "id Integer PRIMARY KEY,"
-                + " name VARCHAR(15),"
-                + " pswd VARCHAR(15));";
-
-        String userSudokuTable = "CREATE TABLE IF NOT EXISTS UserSudoku ("
-                + "id Integer PRIMARY KEY,"
-                + " difficulty VARCHAR(10),"
-                + " completed Integer,"
-                + " sudoku VARCHAR(90),"
-                + " originalSudoku VARCHAR(90),"
-                + " user_id Integer, "
-                + " FOREIGN KEY (user_id)"
-                + " REFERENCES User(id)"
-                + " ON DELETE CASCADE);";
-
-        String sudokuTable = "CREATE TABLE IF NOT EXISTS Sudoku ("
-                + "id Integer PRIMARY KEY,"
-                + " difficulty VARCHAR(10),"
-                + " sudoku VARCHAR(90));";
+        String userTable = createUserTable();
+        String userSudokuTable = createUserSudokuTable();
+        String sudokuTable = createSudokuTable();
 
         try (Connection con = DriverManager.getConnection(path);
                 Statement stmnt = con.createStatement()) {
@@ -66,7 +49,46 @@ public class Database {
         setDefaultSudokus();
     }
 
+    private String createUserTable() {
+        String userTable = "CREATE TABLE IF NOT EXISTS User ("
+                + "id Integer PRIMARY KEY,"
+                + " name VARCHAR(15),"
+                + " pswd VARCHAR(15));";
+
+        return userTable;
+    }
+
+    private String createUserSudokuTable() {
+        String userSudokuTable = "CREATE TABLE IF NOT EXISTS UserSudoku ("
+                + "id Integer PRIMARY KEY,"
+                + " difficulty VARCHAR(10),"
+                + " completed Integer,"
+                + " sudoku VARCHAR(90),"
+                + " originalSudoku VARCHAR(90),"
+                + " user_id Integer, "
+                + " FOREIGN KEY (user_id)"
+                + " REFERENCES User(id)"
+                + " ON DELETE CASCADE);";
+
+        return userSudokuTable;
+    }
+
+    private String createSudokuTable() {
+        String sudokuTable = "CREATE TABLE IF NOT EXISTS Sudoku ("
+                + "id Integer PRIMARY KEY,"
+                + " difficulty VARCHAR(10),"
+                + " sudoku VARCHAR(90));";
+
+        return sudokuTable;
+    }
+
     private void setDefaultSudokus() throws SQLException {
+        addEasySudoku();
+        addMediumSudoku();
+        addHardSudoku();
+    }
+
+    private void addEasySudoku() throws SQLException {
         Sudokudao sd = new Sudokudao(this);
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
@@ -79,6 +101,29 @@ public class Database {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
+        Sudoku s1 = new Sudoku("easy", sa);
+        sd.addSudoku(s1);
+    }
+
+    private void addMediumSudoku() throws SQLException {
+        Sudokudao sd = new Sudokudao(this);
+        int[][] sa = {
+            {0, 0, 0, 5, 4, 0, 0, 0, 8},
+            {6, 0, 0, 0, 0, 2, 3, 0, 0},
+            {0, 0, 7, 0, 0, 3, 0, 9, 0},
+            {0, 3, 1, 0, 5, 0, 0, 2, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 4, 0, 0, 3, 0, 7, 1, 0},
+            {0, 9, 0, 7, 0, 0, 2, 0, 0},
+            {0, 0, 8, 6, 0, 0, 0, 0, 5},
+            {1, 0, 0, 0, 2, 4, 0, 0, 0}
+        };
+        Sudoku s1 = new Sudoku("medium", sa);
+        sd.addSudoku(s1);
+    }
+
+    private void addHardSudoku() throws SQLException {
+        Sudokudao sd = new Sudokudao(this);
         int[][] sb = {
             {0, 0, 5, 3, 0, 0, 0, 0, 0},
             {8, 0, 0, 0, 0, 0, 0, 2, 0},
@@ -90,10 +135,8 @@ public class Database {
             {0, 0, 4, 0, 0, 0, 0, 3, 0},
             {0, 0, 0, 0, 0, 9, 7, 0, 0}
         };
-        Sudoku s1 = new Sudoku("easy", sa);
-        Sudoku s2 = new Sudoku("Maailman vaikein sudoku", sb);
 
-        sd.addSudoku(s1);
+        Sudoku s2 = new Sudoku("Maailman vaikein sudoku", sb);
         sd.addSudoku(s2);
     }
 }

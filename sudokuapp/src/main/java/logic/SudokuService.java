@@ -9,16 +9,16 @@ import java.util.*;
 
 public class SudokuService {
 
-    static Database db;
-    static Userdao users;
-    static Sudokudao sudokus;
-    static UserSudokuDao UserSudokuDao;
+    private final Database db;
+    private final Userdao users;
+    private final Sudokudao sudokus;
+    private final UserSudokuDao userSudokuDao;
 
     public SudokuService() throws ClassNotFoundException, SQLException {
-        db = new Database();
-        users = new Userdao(db);
-        sudokus = new Sudokudao(db);
-        UserSudokuDao = new UserSudokuDao(db);
+        this.db = new Database();
+        this.users = new Userdao(db);
+        this.sudokus = new Sudokudao(db);
+        this.userSudokuDao = new UserSudokuDao(db);
     }
 
     /**
@@ -34,7 +34,7 @@ public class SudokuService {
      * @throws SQLException - saattaa palauttaa SQLExceptionin, jos ei saa
      * yhteyttä tietokantaan tai tietokantaa ei ole olemassa
      */
-    public boolean CreateNewUser(String name, String pswd) throws SQLException {
+    public boolean createNewUser(String name, String pswd) throws SQLException {
         boolean succes = false;
 
         User newUser = new User(name, pswd);
@@ -54,7 +54,7 @@ public class SudokuService {
      * @throws SQLException saattaa palauttaa SQLExceptionin, jos ei saa
      * yhteyttä tietokantaan tai tietokantaa ei ole olemassa
      */
-    public User Login(String name, String pswd) throws SQLException {
+    public User login(String name, String pswd) throws SQLException {
         User user = users.getByNameAndPswd(name, pswd);
         return user;
     }
@@ -91,7 +91,7 @@ public class SudokuService {
      * tallentaa olion ensin tietokantaa, ja hakee sen sieltä sitten samantein
      * samalla testaten, että lisäys onnistui. Metodi palauttaa luodun
      * UserSudoku -olion. Käyttää tallentamisen apuna UserSudoku -dao oliota
-     * UserSudokuDao.
+     * userSudokuDao.
      *
      * @param s - Sudoku -olio, jota käyttäjä haluaa pelata
      * @param userId - käyttäjän tunniste, joka haluaa pelata sudokua
@@ -104,8 +104,8 @@ public class SudokuService {
         us.setId(s.getSudokuId());
         us.setUserId(userId);
         us.setDifficulty(s.getDifficulty());
-        UserSudokuDao.add(us);
-        UserSudoku us2 = UserSudokuDao.getByIds(us.getSudokuId(), us.getUserId());
+        userSudokuDao.add(us);
+        UserSudoku us2 = userSudokuDao.getByIds(us.getSudokuId(), us.getUserId());
         return us2;
     }
 
@@ -119,7 +119,7 @@ public class SudokuService {
      * true, muuten false
      */
     public boolean save(UserSudoku us) {
-        boolean succes = UserSudokuDao.save(us);
+        boolean succes = userSudokuDao.save(us);
         return succes;
     }
 

@@ -40,7 +40,7 @@ public class SudokuServiceTest {
     public void createUser() throws SQLException {
         String name = "A";
         String pswd = "A";
-        server.CreateNewUser(name, pswd);
+        server.createNewUser(name, pswd);
 
         User user = users.getById(1);
 
@@ -55,9 +55,9 @@ public class SudokuServiceTest {
     public void login() throws SQLException {
         String name = "A";
         String pswd = "A";
-        server.CreateNewUser(name, pswd);
+        server.createNewUser(name, pswd);
 
-        User user = server.Login(name, pswd);
+        User user = server.login(name, pswd);
 
         boolean succes = false;
 

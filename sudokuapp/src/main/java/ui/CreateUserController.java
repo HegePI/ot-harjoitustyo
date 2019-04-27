@@ -55,7 +55,7 @@ public class CreateUserController implements Initializable {
             password.setText("");
             info.setText("Anna sekä käyttäjänimi että salasana");
         } else {
-            boolean success = server.CreateNewUser(userName.getText(), password.getText());
+            boolean success = server.createNewUser(userName.getText(), password.getText());
             userName.setText("");
             password.setText("");
             if (success) {

@@ -5,7 +5,7 @@ public class Sudoku {
     private int id;
     private String difficulty;
     private int[][] sudoku;
-    private SudokuSolver suso;
+    private final SudokuSolver suso;
 
     public Sudoku(String difficulty, int[][] sudoku) {
         this.difficulty = difficulty;

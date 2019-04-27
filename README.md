@@ -1,6 +1,6 @@
 # SudokuApp, Ohjelmistotekniikan harjoitustyö
 
-Sovellus mahdollistaa käyttäjien pelata sudoku pelejä.
+Sovellus mahdollistaa käyttäjien pelata sudoku pelejä ja tallentaa sudoku pelin tilanne.
 
 [sudokuApp](https://github.com/HegePI/ot-harjoitustyo/tree/master/sudokuapp)
 

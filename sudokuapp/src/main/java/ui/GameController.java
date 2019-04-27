@@ -62,7 +62,7 @@ public class GameController implements Initializable {
         loader.load();
 
         MenuController mc = loader.getController();
-        mc.SetUser(server.getUserById(us.getUserId()));
+        mc.setUser(server.getUserById(us.getUserId()));
 
         Parent root = loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
