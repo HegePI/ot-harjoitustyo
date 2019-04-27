@@ -159,6 +159,16 @@ __Aikaa kului__
 
 10h
 
+## La 27.4.19
+
+__Mitä tehtiin__
+
+* Käyttöohje lisättiin
+
+__Aikaa kului__
+
+10h
+
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
