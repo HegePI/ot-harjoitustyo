@@ -46,19 +46,7 @@ public class Sudokudao {
 
             ResultSet rs = stmnt.executeQuery();
 
-            String sudokuString = rs.getString("sudoku");
-            int[][] sudokuArray = new int[9][9];
-            int index = 0;
-
-            for (int y = 0; y < 9; y++) {
-                for (int x = 0; x < 9; x++) {
-                    sudokuArray[y][x] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
-                    index++;
-                }
-            }
-
-            s = new Sudoku(rs.getString("difficulty"), sudokuArray);
-            s.setSudokuId(rs.getInt("id"));
+            s = constructSudoku(rs);
 
             rs.close();
             stmnt.close();
@@ -78,17 +66,7 @@ public class Sudokudao {
 
             while (rs.next()) {
 
-                String sudokuString = rs.getString("sudoku");
-                int[][] sudokuArray = new int[9][9];
-                int index = 0;
-                for (int y = 0; y < 9; y++) {
-                    for (int x = 0; x < 9; x++) {
-                        sudokuArray[y][x] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
-                        index++;
-                    }
-                }
-                Sudoku s = new Sudoku(rs.getString("difficulty"), sudokuArray);
-                s.setSudokuId(rs.getInt("id"));
+                Sudoku s = constructSudoku(rs);
                 sudokus.add(s);
             }
 
@@ -142,4 +120,21 @@ public class Sudokudao {
         return succes;
     }
 
+    private Sudoku constructSudoku(ResultSet rs) throws SQLException {
+        String sudokuString = rs.getString("sudoku");
+        int[][] sudokuArray = new int[9][9];
+        int index = 0;
+
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                sudokuArray[y][x] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
+                index++;
+            }
+        }
+
+        Sudoku s = new Sudoku(rs.getString("difficulty"), sudokuArray);
+        s.setSudokuId(rs.getInt("id"));
+
+        return s;
+    }
 }
