@@ -25,18 +25,22 @@ Sovellus mahdollistaa käyttäjien pelata sudoku pelejä.
 
 ### Testikattavuusraportti
 `mvn test jacoco:report`
+
 testikattavuusraportti löytyy **target/site/jacoco/index.html**
 
 ### Jarrin generointi
 `mvn package`
+
 Jarri löytyy **target/sudokuApp-1.0-SNAPSHOT.jar**
 
 ### Javadoc generointi
 `mvn javadoc:javadoc`
+
 Javadocit löytyvät **target/site/apidocs/index.html**
 
 ### Checkstylen suorittaminen
 `mvn jxr:jxr checkstyle:checkstyle`
+
 Checkstyle raportti löytyy **target/site/checkstyle.html**
 
 
