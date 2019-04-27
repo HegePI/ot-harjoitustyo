@@ -41,10 +41,7 @@ public class UserSudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        UserSudoku us = new UserSudoku(sa, sa);
-        us.setId(1);
-        us.setUserId(1);
-        us.setDifficulty("easy");
+        UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
         boolean succes = usd.add(us);
 
@@ -64,10 +61,7 @@ public class UserSudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        UserSudoku us = new UserSudoku(sa, sa);
-        us.setId(1);
-        us.setUserId(1);
-        us.setDifficulty("easy");
+        UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
         boolean succes = usd.add(us);
 
@@ -93,10 +87,7 @@ public class UserSudokuDaoTest {
             {0, 0, 9, 2, 0, 5, 6, 0, 0},
             {0, 0, 0, 9, 0, 3, 0, 0, 0}
         };
-        UserSudoku us = new UserSudoku(sa, sa);
-        us.setId(1);
-        us.setUserId(1);
-        us.setDifficulty("easy");
+        UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
         boolean succes = usd.add(us);
 

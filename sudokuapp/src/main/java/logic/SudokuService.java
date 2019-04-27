@@ -100,10 +100,7 @@ public class SudokuService {
      * yhteyttä tietokantaan tai tietokantaa ei ole olemassa
      */
     public UserSudoku play(Sudoku s, int userId) throws SQLException {
-        UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku());
-        us.setId(s.getSudokuId());
-        us.setUserId(userId);
-        us.setDifficulty(s.getDifficulty());
+        UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku(), s.getSudokuId(), userId, s.getDifficulty());
         userSudokuDao.add(us);
         UserSudoku us2 = userSudokuDao.getByIds(us.getSudokuId(), us.getUserId());
         return us2;

@@ -48,25 +48,7 @@ public class UserSudokuDao {
             stmnt.setInt(2, userId);
             ResultSet rs = stmnt.executeQuery();
 
-            String sudokuString = rs.getString("sudoku");
-            String originalSudokuString = rs.getString("originalSudoku");
-            int[][] s = new int[9][9];
-            int[][] os = new int[9][9];
-            int index = 0;
-
-            for (int i = 0; i < 9; i++) {
-                for (int j = 0; j < 9; j++) {
-                    s[i][j] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
-                    os[i][j] = Integer.parseInt(Character.toString(originalSudokuString.charAt(index)));
-                    index++;
-                }
-            }
-
-            us = new UserSudoku(s, os);
-            us.setId(rs.getInt("id"));
-            us.setCompleted(rs.getBoolean("completed"));
-            us.setDifficulty(rs.getString("difficulty"));
-            us.setUserId(rs.getInt("user_id"));
+            us = contructUserSudoku(rs);
 
         } catch (Exception e) {
             System.out.println("UserSudokuDao, getById(): " + e.getMessage());
@@ -108,6 +90,27 @@ public class UserSudokuDao {
             succes = false;
         }
         return succes;
+    }
+
+    private UserSudoku contructUserSudoku(ResultSet rs) throws SQLException {
+        UserSudoku us;
+        String sudokuString = rs.getString("sudoku");
+        String originalSudokuString = rs.getString("originalSudoku");
+        int[][] s = new int[9][9];
+        int[][] os = new int[9][9];
+        int index = 0;
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                s[i][j] = Integer.parseInt(Character.toString(sudokuString.charAt(index)));
+                os[i][j] = Integer.parseInt(Character.toString(originalSudokuString.charAt(index)));
+                index++;
+            }
+        }
+
+        us = new UserSudoku(s, os, rs.getInt("id"), rs.getInt("user_id"), rs.getString("difficulty"));
+        us.setCompleted(rs.getBoolean("completed"));
+        return us;
     }
 
 }

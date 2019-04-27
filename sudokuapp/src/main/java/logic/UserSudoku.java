@@ -9,10 +9,13 @@ public class UserSudoku {
     private int[][] sudoku;
     private int[][] originalSudoku;
 
-    public UserSudoku(int[][] sudoku, int[][] originalSudoku) {
+    public UserSudoku(int[][] sudoku, int[][] originalSudoku, int sudokuId, int userId, String difficulty) {
         this.completed = false;
         this.sudoku = sudoku;
         this.originalSudoku = originalSudoku;
+        this.sudokuId = sudokuId;
+        this.userId = userId;
+        this.difficulty = difficulty;
     }
 
     public int getSudokuId() {
