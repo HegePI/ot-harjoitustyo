@@ -37,7 +37,7 @@ public class MenuController implements Initializable {
     @FXML
     private ListView sudokuView;
     @FXML
-    private Button logout;
+    private Button logout, userInfo;
 
     ObservableList sudokus;
 
@@ -46,7 +46,6 @@ public class MenuController implements Initializable {
     }
 
     public void setUser(User u) {
-        System.out.println(u.toString());
         this.loggedUser = u;
         user.setText(loggedUser.getUserName() + " logged in");
     }
@@ -65,6 +64,23 @@ public class MenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/login.fxml"));
         loader.load();
+
+        Parent root = loader.getRoot();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene s = new Scene(root);
+        window.setTitle("login");
+        window.setScene(s);
+        window.show();
+
+    }
+
+    public void userInfo(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/userInfo.fxml"));
+        loader.load();
+
+        UserInfoController uc = loader.getController();
+        uc.setUser(loggedUser);
 
         Parent root = loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

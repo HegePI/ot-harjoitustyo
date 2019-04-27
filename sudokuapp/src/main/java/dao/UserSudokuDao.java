@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import logic.UserSudoku;
 
 public class UserSudokuDao {
@@ -92,6 +93,27 @@ public class UserSudokuDao {
         return succes;
     }
 
+    public ArrayList<UserSudoku> getUsersSudokus(int userId) {
+        System.out.println(userId);
+        ArrayList<UserSudoku> usersSudokus = new ArrayList<>();
+        try (Connection con = database.getConnection()) {
+            PreparedStatement stmnt = con.prepareStatement("SELECT * FROM UserSudoku WHERE user_id = ?");
+            stmnt.setInt(1, userId);
+
+            ResultSet rs = stmnt.executeQuery();
+            while (rs.next()) {
+                usersSudokus.add(contructUserSudoku(rs));
+            }
+            rs.close();
+            stmnt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("UserSudokuDao, getUsersSudokus(): " + e.getMessage());
+        }
+        return usersSudokus;
+    }
+
     private UserSudoku contructUserSudoku(ResultSet rs) throws SQLException {
         UserSudoku us;
         String sudokuString = rs.getString("sudoku");
@@ -110,6 +132,7 @@ public class UserSudokuDao {
 
         us = new UserSudoku(s, os, rs.getInt("id"), rs.getInt("user_id"), rs.getString("difficulty"));
         us.setCompleted(rs.getBoolean("completed"));
+        us.toString();
         return us;
     }
 

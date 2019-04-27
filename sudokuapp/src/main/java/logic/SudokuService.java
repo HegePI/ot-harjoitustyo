@@ -86,6 +86,12 @@ public class SudokuService {
         return allSudokus;
     }
 
+    public ArrayList<UserSudoku> getAllUsersSudokus(int userId) {
+        ArrayList<UserSudoku> usersSudokus = userSudokuDao.getUsersSudokus(userId);
+        return usersSudokus;
+
+    }
+
     /**
      * Luo uuden UserSudoku -olion, joka tallennetaan tietokantaan. Metodi
      * tallentaa olion ensin tietokantaa, ja hakee sen sieltä sitten samantein

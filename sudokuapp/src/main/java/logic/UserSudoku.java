@@ -106,7 +106,19 @@ public class UserSudoku {
 
     @Override
     public String toString() {
-        return "UserSudoku{" + "sudokuId=" + sudokuId + ", userId=" + userId + ", completed=" + completed + ", difficulty=" + difficulty + ", sudoku=" + sudoku + ", originalSudoku=" + originalSudoku + '}';
+        String toString = "";
+        toString += "difficulty: " + difficulty + "\n\n";
+
+        String sudokuString = "";
+
+        for (int y = 0; y < sudoku[0].length; y++) {
+            for (int x = 0; x < sudoku.length; x++) {
+                sudokuString += sudoku[y][x] + " ";
+            }
+            sudokuString += "\n";
+        }
+        toString += sudokuString;
+        return toString;
     }
 
 }
