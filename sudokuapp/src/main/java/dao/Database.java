@@ -21,7 +21,7 @@ public class Database {
     }
 
     public Connection getConnection() throws SQLException {
-        config.enforceForeignKeys(true);
+        //config.enforceForeignKeys(true);
         File file = new File("sudoku.db");
         if (!file.exists()) {
             initdb(file);
@@ -60,15 +60,16 @@ public class Database {
 
     private String createUserSudokuTable() {
         String userSudokuTable = "CREATE TABLE IF NOT EXISTS UserSudoku ("
-                + "id Integer PRIMARY KEY,"
+                + "id Integer,"
                 + " difficulty VARCHAR(10),"
                 + " completed Integer,"
                 + " sudoku VARCHAR(90),"
                 + " originalSudoku VARCHAR(90),"
                 + " user_id Integer, "
+                + " PRIMARY KEY(id, user_id),"
                 + " FOREIGN KEY (user_id)"
                 + " REFERENCES User(id)"
-                + " ON DELETE CASCADE);";
+                + " ON DELETE CASCADE)";
 
         return userSudokuTable;
     }
