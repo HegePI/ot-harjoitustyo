@@ -13,12 +13,14 @@ public class SudokuService {
     private final Userdao users;
     private final Sudokudao sudokus;
     private final UserSudokuDao userSudokuDao;
+    private final SudokuChecker checker;
 
     public SudokuService() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         this.users = new Userdao(db);
         this.sudokus = new Sudokudao(db);
         this.userSudokuDao = new UserSudokuDao(db);
+        this.checker = new SudokuChecker();
     }
 
     /**
@@ -137,5 +139,17 @@ public class SudokuService {
     public User getUserById(int id) throws SQLException {
         User user = users.getById(id);
         return user;
+    }
+
+    /**
+     * Tarkistaa, onko käyttäjän syöttämä sudoku oikein vai ei. Palauttaa true,
+     * jos oikein ja false, jos väärin
+     *
+     * @param sudoku tarkistettava sudoku
+     * @return true, jos oikein ja false, jos väärin
+     */
+    public boolean checkSudoku(UserSudoku sudoku) {
+        boolean correct = checker.checkSudoku(sudoku.getSudoku());
+        return correct;
     }
 }

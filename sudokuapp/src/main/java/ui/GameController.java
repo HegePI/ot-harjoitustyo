@@ -166,6 +166,11 @@ public class GameController implements Initializable {
     }
 
     public void checkSudoku() {
-        System.out.println("tarkistetaan sudoku");
+        boolean wrong = server.checkSudoku(us);
+        if (wrong) {
+            info.setText("Oikein meni");
+        } else {
+            info.setText("Väärin meni");
+        }
     }
 }
