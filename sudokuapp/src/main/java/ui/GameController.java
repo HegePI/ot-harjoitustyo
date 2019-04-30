@@ -20,7 +20,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.SudokuService;
 import logic.UserSudoku;
@@ -33,7 +32,7 @@ public class GameController implements Initializable {
     private int selectedCol;
 
     @FXML
-    private Button back, save;
+    private Button back, save, check;
     @FXML
     private Canvas canvas;
     @FXML
@@ -82,13 +81,24 @@ public class GameController implements Initializable {
     }
 
     private void drawSudoku(GraphicsContext context) {
-        System.out.println("Alustetaan näkymä");
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 int x = col * 50 + 2;
                 int y = row * 50 + 2;
                 int width = 46;
-                context.setFill(Color.WHITE);
+                if (row < 3 || row > 5) {
+                    if (col < 3 || col > 5) {
+                        context.setFill(Color.WHITE);
+                    } else {
+                        context.setFill(Color.GAINSBORO);
+                    }
+                } else {
+                    if (col < 3 || col > 5) {
+                        context.setFill(Color.GAINSBORO);
+                    } else {
+                        context.setFill(Color.WHITE);
+                    }
+                }
                 context.fillRoundRect(x, y, width, width, 10, 10);
             }
         }
@@ -153,5 +163,9 @@ public class GameController implements Initializable {
                 }
             }
         });
+    }
+
+    public void checkSudoku() {
+        System.out.println("tarkistetaan sudoku");
     }
 }

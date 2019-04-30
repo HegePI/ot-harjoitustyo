@@ -21,7 +21,7 @@ public class Database {
     }
 
     public Connection getConnection() throws SQLException {
-        //config.enforceForeignKeys(true);
+        config.enforceForeignKeys(true);
         File file = new File("sudoku.db");
         if (!file.exists()) {
             initdb(file);
