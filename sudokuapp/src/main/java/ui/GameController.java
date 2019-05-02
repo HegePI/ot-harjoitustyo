@@ -148,17 +148,25 @@ public class GameController implements Initializable {
                 int nro = 0;
                 try {
                     if (event.getCharacter().equals("w")) {
-                        selectedRow = selectedRow - 1;
-                        drawSudoku(canvas.getGraphicsContext2D());
+                        if (selectedRow > 0) {
+                            selectedRow = selectedRow - 1;
+                            drawSudoku(canvas.getGraphicsContext2D());
+                        }
                     } else if (event.getCharacter().equals("s")) {
-                        selectedRow = selectedRow + 1;
-                        drawSudoku(canvas.getGraphicsContext2D());
+                        if (selectedRow < 8) {
+                            selectedRow = selectedRow + 1;
+                            drawSudoku(canvas.getGraphicsContext2D());
+                        }
                     } else if (event.getCharacter().equals("d")) {
-                        selectedCol = selectedCol + 1;
-                        drawSudoku(canvas.getGraphicsContext2D());
+                        if (selectedCol < 8) {
+                            selectedCol = selectedCol + 1;
+                            drawSudoku(canvas.getGraphicsContext2D());
+                        }
                     } else if (event.getCharacter().equals("a")) {
-                        selectedCol = selectedCol - 1;
-                        drawSudoku(canvas.getGraphicsContext2D());
+                        if (selectedCol > 0) {
+                            selectedCol = selectedCol - 1;
+                            drawSudoku(canvas.getGraphicsContext2D());
+                        }
                     } else {
                         nro = Integer.parseInt(event.getCharacter());
                         if (us.getOriginalSudoku()[selectedRow][selectedCol] != 0) {
@@ -168,11 +176,12 @@ public class GameController implements Initializable {
                         }
                         drawSudoku(canvas.getGraphicsContext2D());
                     }
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     info.setText("Kirjaimet eivät kelpaa");
                 }
             }
-        });
+        }
+        );
     }
 
     public void checkSudoku() {
