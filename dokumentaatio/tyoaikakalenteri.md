@@ -167,7 +167,18 @@ __Mitä tehtiin__
 
 __Aikaa kului__
 
-10h
+* 1h
+
+## La 2.5.19
+
+__Mitä tehtiin__
+
+* SudokuChecker -olio lisättiin, joka tarkastaa käyttäjän sudokun.
+* Pelinäkymää muokattu: voi vaihtaa valintaa näppäimillä
+
+__Aikaa kului__
+
+* 2h
 
 ## Koonnos
 
@@ -187,5 +198,7 @@ __Aikaa kului__
 | 22.4.19 | 6h |
 | 23.4.19 | 8h |
 | 26.4.19 | 10h |
-|Yhteensä | 61,5h |
+| 27.4.19 | 1h |
+| 2.5.19 | 2h |
+|Yhteensä | 68,5h |
 

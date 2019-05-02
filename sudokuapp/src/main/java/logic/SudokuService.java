@@ -150,6 +150,10 @@ public class SudokuService {
      */
     public boolean checkSudoku(UserSudoku sudoku) {
         boolean correct = checker.checkSudoku(sudoku.getSudoku());
+        if (correct) {
+            sudoku.setCompleted();
+            save(sudoku);
+        }
         return correct;
     }
 }

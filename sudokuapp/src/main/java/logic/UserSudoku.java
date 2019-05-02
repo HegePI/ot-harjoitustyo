@@ -107,7 +107,12 @@ public class UserSudoku {
     @Override
     public String toString() {
         String toString = "";
-        toString += "difficulty: " + difficulty + "\n\n";
+        toString += "difficulty: " + difficulty;
+        if (completed) {
+            toString += ", ratkaistu" + "\n\n";
+        } else {
+            toString += ", keskeneräinen" + "\n\n";
+        }
 
         String sudokuString = "";
 

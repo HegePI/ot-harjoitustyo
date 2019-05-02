@@ -187,7 +187,7 @@ public class GameController implements Initializable {
     public void checkSudoku() {
         boolean wrong = server.checkSudoku(us);
         if (wrong) {
-            info.setText("Oikein meni");
+            info.setText("Onnittelut! Oikein meni");
         } else {
             info.setText("Väärin meni");
         }
