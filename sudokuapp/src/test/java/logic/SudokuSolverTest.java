@@ -1,4 +1,4 @@
-package sudokutests;
+package logic;
 
 
 import logic.Sudoku;

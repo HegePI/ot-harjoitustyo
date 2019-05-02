@@ -1,4 +1,4 @@
-package sudokutests;
+package dao;
 
 
 import dao.Database;

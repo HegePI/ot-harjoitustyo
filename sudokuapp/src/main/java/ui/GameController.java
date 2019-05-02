@@ -147,10 +147,20 @@ public class GameController implements Initializable {
             public void handle(KeyEvent event) {
                 int nro = 0;
                 try {
-                    nro = Integer.parseInt(event.getCharacter());
-                    if (nro == 0) {
-                        info.setText("0 ei kelpaa sudokuun");
+                    if (event.getCharacter().equals("w")) {
+                        selectedRow = selectedRow - 1;
+                        drawSudoku(canvas.getGraphicsContext2D());
+                    } else if (event.getCharacter().equals("s")) {
+                        selectedRow = selectedRow + 1;
+                        drawSudoku(canvas.getGraphicsContext2D());
+                    } else if (event.getCharacter().equals("d")) {
+                        selectedCol = selectedCol + 1;
+                        drawSudoku(canvas.getGraphicsContext2D());
+                    } else if (event.getCharacter().equals("a")) {
+                        selectedCol = selectedCol - 1;
+                        drawSudoku(canvas.getGraphicsContext2D());
                     } else {
+                        nro = Integer.parseInt(event.getCharacter());
                         if (us.getOriginalSudoku()[selectedRow][selectedCol] != 0) {
                             info.setText("Alkuperäistä lukua ei voi muuttaa");
                         } else {
