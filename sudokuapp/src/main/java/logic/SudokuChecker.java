@@ -20,14 +20,14 @@ public class SudokuChecker {
         if (!checkCols(s)) {
             return false;
         }
-        if (checkBoxes(s)) {
+        if (!checkBoxes(s)) {
             return false;
         }
         return true;
     }
 
     private boolean checkRows(int[][] s) {
-        this.values = new ArrayList[9];
+        values = new ArrayList[9];
 
         for (int row = 0; row < 9; row++) {
             values[row] = new ArrayList<>();
@@ -46,18 +46,18 @@ public class SudokuChecker {
     }
 
     private boolean checkCols(int[][] s) {
-        this.values = new ArrayList[9];
+        values = new ArrayList[9];
 
         for (int col = 0; col < 9; col++) {
             values[col] = new ArrayList<>();
             for (int row = 0; row < 9; row++) {
-                if (s[col][row] == 0) {
+                if (s[row][col] == 0) {
                     return false;
                 }
-                if (values[col].contains(s[col][row])) {
+                if (values[col].contains(s[row][col])) {
                     return false;
                 } else {
-                    values[col].add(s[col][row]);
+                    values[col].add(s[row][col]);
                 }
             }
         }
@@ -66,22 +66,22 @@ public class SudokuChecker {
     }
 
     private boolean checkBoxes(int[][] s) {
-        this.values = new ArrayList[9];
+        values = new ArrayList[9];
         int row = 3;
         int col = 3;
         int i = 0;
-        while (row < 9) {
-            while (col < 9) {
+        while (row <= 9) {
+            while (col <= 9) {
                 values[i] = new ArrayList<>();
                 for (int x = row - 3; x < row; x++) {
                     for (int y = col - 3; y < col; y++) {
-                        if (s[row][col] == 0) {
+                        if (s[x][y] == 0) {
                             return false;
                         }
-                        if (values[i].contains(s[row][col])) {
+                        if (values[i].contains(s[x][y])) {
                             return false;
                         } else {
-                            values[i].add(s[row][col]);
+                            values[i].add(s[x][y]);
                         }
                     }
                 }

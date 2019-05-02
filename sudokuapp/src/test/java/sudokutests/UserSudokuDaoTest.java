@@ -1,3 +1,5 @@
+package sudokutests;
+
 
 import dao.Database;
 import dao.UserSudokuDao;

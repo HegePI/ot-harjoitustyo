@@ -1,3 +1,5 @@
+package sudokutests;
+
 
 import java.sql.SQLException;
 import org.junit.Assert;

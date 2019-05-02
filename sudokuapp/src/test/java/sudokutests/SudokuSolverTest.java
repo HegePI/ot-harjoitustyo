@@ -1,3 +1,5 @@
+package sudokutests;
+
 
 import logic.Sudoku;
 import org.junit.Test;
