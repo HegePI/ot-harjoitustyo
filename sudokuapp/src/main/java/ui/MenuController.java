@@ -85,7 +85,7 @@ public class MenuController implements Initializable {
         Parent root = loader.getRoot();
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene s = new Scene(root);
-        window.setTitle("login");
+        window.setTitle("käyttäjän tiedot");
         window.setScene(s);
         window.show();
 
@@ -118,7 +118,7 @@ public class MenuController implements Initializable {
                 Parent root = loader.getRoot();
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene ss = new Scene(root);
-                window.setTitle("menu");
+                window.setTitle("sudokupeli, vaikeusaste: " + us.getDifficulty());
                 window.setScene(ss);
                 window.show();
 

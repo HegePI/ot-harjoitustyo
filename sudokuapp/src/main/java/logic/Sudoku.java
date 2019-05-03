@@ -78,18 +78,6 @@ public class Sudoku {
     }
 
     /**
-     * Ratkaisee sen sudokun, joka kutsuu tätä metodia. Metodi ei palauta
-     * kaikkia mahdollisia ratkaisuja, vaan yhden ratkaisun.
-     *
-     *
-     */
-    public void solve() {
-        System.out.println("testi");
-        int[][] solvedSudoku = SudokuSolver.solve(this.sudoku);
-        setSudoku(solvedSudoku);
-    }
-
-    /**
      * kertoo, onko kaksi sudokua samat. true: samat false: ei samat
      *
      * @param s - vertailtava Sudoku -olio

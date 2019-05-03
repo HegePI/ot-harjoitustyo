@@ -32,7 +32,7 @@ public class GameController implements Initializable {
     private int selectedCol;
 
     @FXML
-    private Button back, save, check;
+    private Button back, save, check, solve;
     @FXML
     private Canvas canvas;
     @FXML
@@ -55,7 +55,6 @@ public class GameController implements Initializable {
     }
 
     public void back(ActionEvent event) throws IOException, SQLException {
-        System.out.println("Takaisin valikkoon");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/menu.fxml"));
         loader.load();
@@ -191,5 +190,11 @@ public class GameController implements Initializable {
         } else {
             info.setText("Väärin meni");
         }
+    }
+
+    public void solveSudoku() {
+        us = server.solveSudoku(us);
+        drawSudoku(canvas.getGraphicsContext2D());
+        info.setText("Sudoku ratkaistiin automaattisesti");
     }
 }

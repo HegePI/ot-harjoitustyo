@@ -1,6 +1,5 @@
 package logic;
 
-
 import logic.Sudoku;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -40,16 +39,16 @@ public class SudokuSolverTest {
             {4, 1, 9, 2, 8, 5, 6, 3, 7},
             {5, 2, 7, 9, 6, 3, 8, 1, 4}
         };
-        Sudoku s1 = new Sudoku("a", sudoku);
-        Sudoku s2 = new Sudoku("a", solved);
-        s1.solve();
+        UserSudoku us1 = new UserSudoku(sudoku, sudoku, 1, 1, "easy");
+        UserSudoku us2 = new UserSudoku(solved, sudoku, 1, 1, "easy");
+        us1.solve();
 
         boolean same = false;
-        if (s1.equals(s2)) {
+        if (us1.equals(us2)) {
             same = true;
         }
 
-        assertEquals(same, true);
+        assertEquals(true, same);
 
     }
 

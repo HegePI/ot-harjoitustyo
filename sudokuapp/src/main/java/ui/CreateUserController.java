@@ -49,7 +49,6 @@ public class CreateUserController implements Initializable {
      * yhteyttä tietokantaan tai jos tietokantaa ei ollut olemassa.
      */
     public void createUser() throws SQLException {
-        System.out.println("Uusi käyttäjä");
         if (userName.getText().isEmpty() || password.getText().isEmpty()) {
             userName.setText("");
             password.setText("");

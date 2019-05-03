@@ -12,6 +12,7 @@ public class UserSudoku {
     private String difficulty;
     private int[][] sudoku;
     private int[][] originalSudoku;
+    private final SudokuSolver solver;
 
     /**
      * UserSudoku -olion luova konstruktori. Parametrina annetaan sudokun
@@ -31,6 +32,7 @@ public class UserSudoku {
         this.sudokuId = sudokuId;
         this.userId = userId;
         this.difficulty = difficulty;
+        this.solver = new SudokuSolver();
     }
 
     public int getSudokuId() {
@@ -127,6 +129,33 @@ public class UserSudoku {
         return sudokuString;
     }
 
+    /**
+     * Ratkaisee sen sudokun, joka kutsuu tätä metodia. Metodi ei palauta
+     * kaikkia mahdollisia ratkaisuja, vaan yhden ratkaisun.
+     *
+     *
+     */
+    public void solve() {
+        int[][] originalCopy = sudokuCopy(this.originalSudoku);
+        int[][] solvedSudoku = solver.solve(originalCopy);
+        setSudoku(solvedSudoku);
+        setCompleted();
+    }
+
+    public boolean equals(UserSudoku s) {
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < 9; x++) {
+                if (this.sudoku[y][x] != s.getSudoku()[y][x]) {
+                    return false;
+                }
+            }
+        }
+        if (this.difficulty.equals(s.getDifficulty())) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         String toString = "";
@@ -147,6 +176,16 @@ public class UserSudoku {
         }
         toString += sudokuString;
         return toString;
+    }
+
+    private int[][] sudokuCopy(int[][] originalSudoku) {
+        int[][] copy = new int[9][9];
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                copy[row][col] = this.originalSudoku[row][col];
+            }
+        }
+        return copy;
     }
 
 }

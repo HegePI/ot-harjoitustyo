@@ -63,7 +63,6 @@ public class LoginController implements Initializable {
                 password.setText("");
                 info.setText("Ei löydetty haluttua käyttäjää");
             } else {
-                System.out.println(loggedUser.toString() + "logged in");
 
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/fxml/menu.fxml"));
@@ -96,6 +95,7 @@ public class LoginController implements Initializable {
         Scene s = new Scene(root);
         window.setTitle("Luo käyttäjä");
         window.setScene(s);
+        window.setTitle("Luo käyttäjä");
         window.show();
 
     }

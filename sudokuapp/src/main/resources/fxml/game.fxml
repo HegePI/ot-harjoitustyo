@@ -18,7 +18,7 @@
         <Button fx:id="save" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" onAction="#save" text="tallenna" />
         <Canvas fx:id="canvas" height="450.0" layoutX="176.0" layoutY="175.0" onKeyTyped="#keyTyped" onMouseClicked="#canvasCellClicked" width="450.0" />
         <Label fx:id="info" alignment="CENTER" contentDisplay="CENTER" layoutX="216.0" layoutY="101.0" prefHeight="16.0" prefWidth="368.0" />
-        <Button fx:id="check" alignment="CENTER" contentDisplay="CENTER" layoutX="724.0" layoutY="83.0" mnemonicParsing="false" onAction="#checkSudoku" text="tarkista" textAlignment="CENTER" />
+        <Button fx:id="check" alignment="CENTER" contentDisplay="CENTER" layoutX="718.0" layoutY="42.0" mnemonicParsing="false" onAction="#checkSudoku" text="tarkista" textAlignment="CENTER" />
         <Label layoutX="49.0" layoutY="175.0" prefHeight="42.0" prefWidth="72.0" text="Näppäimet" />
         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="217.0" prefHeight="42.0" prefWidth="124.0" text="w - siirtää valintaa ylöspäin">
             <font>
@@ -46,5 +46,6 @@
             </font>
         </Label>
         <Text layoutX="95.0" layoutY="684.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Täytä tyhjät ruudut siten, että jokainen vaaka- ja pystysuora rivi sekä 3x3-ruudun laatikko sisältää numerot yhdestä yhdeksään - wikipedia" textAlignment="CENTER" wrappingWidth="609.47900390625" />
+      <Button fx:id="solve" alignment="CENTER" contentDisplay="CENTER" layoutX="716.0" layoutY="83.0" mnemonicParsing="false" onAction="#solveSudoku" text="ratkaise" textAlignment="CENTER" />
     </children>
 </Pane>

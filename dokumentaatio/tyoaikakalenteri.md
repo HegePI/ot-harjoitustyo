@@ -169,7 +169,7 @@ __Aikaa kului__
 
 * 1h
 
-## La 2.5.19
+## To 2.5.19
 
 __Mitä tehtiin__
 
@@ -179,6 +179,18 @@ __Mitä tehtiin__
 __Aikaa kului__
 
 * 2h
+
+## Pe 3.5.19
+
+__Mitä tehtiin__
+
+* Javadocit kuntoon
+* SudokuSolver -otettu käyttöön UserSudoku -olioissa
+* käyttöliittymään rustaamista, css harjoittelua
+
+__Aikaa kului__
+
+* 5h
 
 ## Koonnos
 
@@ -200,5 +212,6 @@ __Aikaa kului__
 | 26.4.19 | 10h |
 | 27.4.19 | 1h |
 | 2.5.19 | 2h |
-|Yhteensä | 68,5h |
+| 3.5.19 | 5h |
+|Yhteensä | 73,5h |
 

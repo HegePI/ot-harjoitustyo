@@ -50,7 +50,6 @@ public class UserInfoController implements Initializable {
     }
 
     public void setUser(User user) {
-        System.out.println(user.toString());
         this.loggedUser = user;
         userName.setText("Käyttäjän " + user.getUserName() + " tiedot");
         userSudokus.setText("Käyttäjän " + user.getUserName() + " sudokut");
@@ -78,12 +77,12 @@ public class UserInfoController implements Initializable {
                     } catch (IOException ex) {
                         Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    GameController c = loader.getController();
-                    c.setUserSudoku(s);
+                    GameController gc = loader.getController();
+                    gc.setUserSudoku(s);
                     Parent root = loader.getRoot();
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene ss = new Scene(root);
-                    window.setTitle("menu");
+                    window.setTitle("sudokupeli, vaikeusaste: " + s.getDifficulty());
                     window.setScene(ss);
                     window.show();
                 }
@@ -114,7 +113,6 @@ public class UserInfoController implements Initializable {
         if (allSudokus.isEmpty()) {
             userSudokus.setText("Ei vielä yhtään aloitettua sudoku peliä");
         } else {
-            System.out.println(allSudokus.size());
             sudokus.addAll(allSudokus);
         }
     }

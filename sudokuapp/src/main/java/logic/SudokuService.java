@@ -173,4 +173,10 @@ public class SudokuService {
         }
         return correct;
     }
+
+    public UserSudoku solveSudoku(UserSudoku us) {
+        us.solve();
+        save(us);
+        return us;
+    }
 }
