@@ -42,6 +42,5 @@ public class DatabaseTest {
             succes = false;
         }
         assertEquals(true, succes);
-
     }
 }
