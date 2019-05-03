@@ -31,25 +31,17 @@ public class DatabaseTest {
         }
     }
 
-    @After
-    public void deleteDB() {
+    @Test
+    public void initDB() throws ClassNotFoundException, SQLException {
+        boolean succes = true;
         File file = new File("sudoku.db");
-        if (file.exists()) {
-            file.delete();
-        }
-    }
 
-//    @Test
-//    public void initDB() throws ClassNotFoundException, SQLException {
-//        boolean succes = true;
-//        File file = new File("sudoku.db");
-//
-//        this.db = new Database();
-//
-//        if (!file.exists()) {
-//            succes = false;
-//        }
-//        assertEquals(true, succes);
-//
-//    }
+        this.db = new Database();
+
+        if (!file.exists()) {
+            succes = false;
+        }
+        assertEquals(true, succes);
+
+    }
 }

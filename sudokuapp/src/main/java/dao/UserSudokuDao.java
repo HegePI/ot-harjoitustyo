@@ -52,7 +52,7 @@ public class UserSudokuDao {
             us = contructUserSudoku(rs);
 
         } catch (Exception e) {
-            System.out.println("UserSudokuDao, getById(): " + e.getMessage());
+            System.out.println("UserSudokuDao, getByIds(): " + e.getMessage());
         }
         return us;
     }
@@ -94,7 +94,6 @@ public class UserSudokuDao {
     }
 
     public ArrayList<UserSudoku> getUsersSudokus(int userId) {
-        System.out.println(userId);
         ArrayList<UserSudoku> usersSudokus = new ArrayList<>();
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT * FROM UserSudoku WHERE user_id = ?");

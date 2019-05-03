@@ -1,6 +1,6 @@
 package logic;
 
-
+import com.sun.prism.Texture;
 import dao.Database;
 import dao.Sudokudao;
 import dao.UserSudokuDao;
@@ -120,36 +120,39 @@ public class SudokuServiceTest {
         assertEquals(4, allSudokus.size());
 
     }
-// jokin vielä tuntematon bugi aiheuttaa testi epäonnistumisen
-//    @Test
-//    public void play() throws SQLException {
-//        int[][] sa = {
-//            {0, 0, 0, 5, 0, 7, 0, 0, 0},
-//            {0, 0, 2, 4, 0, 6, 3, 0, 0},
-//            {0, 9, 0, 0, 1, 0, 0, 2, 0},
-//            {2, 7, 0, 0, 0, 0, 0, 6, 8},
-//            {0, 0, 3, 0, 0, 0, 1, 0, 0},
-//            {1, 4, 0, 0, 0, 0, 0, 9, 3},
-//            {0, 6, 0, 0, 4, 0, 0, 5, 0},
-//            {0, 0, 9, 2, 0, 5, 6, 0, 0},
-//            {0, 0, 0, 9, 0, 3, 0, 0, 0}
-//        };
-//        Sudoku s1 = new Sudoku("easy", sa);
-//        sudokus.addSudoku(s1);
-//        Sudoku s2 = sudokus.getById(1);
-//        server.play(s2, 1);
-//
-//        UserSudoku usd = UserSudokuDao.getByIds(1, 1);
-//
-//        boolean succes = false;
-//
-//        if (usd.sudokuToString().equals(s1.sudokuToString())) {
-//            if (usd.getSudokuId() == 1) {
-//                if (usd.getUserId() == 1) {
-//                    succes = true;
-//                }
-//            }
-//        }
-//        assertEquals(true, succes);
-//    }
+
+    @Test
+    public void play() throws SQLException {
+        User user = new User("A", "A");
+        users.addUser(user);
+
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        Sudoku s1 = new Sudoku("easy", sa);
+        sudokus.addSudoku(s1);
+        Sudoku s2 = sudokus.getById(1);
+        server.play(s2, 1);
+
+        UserSudoku usd = UserSudokuDao.getByIds(1, 1);
+
+        boolean succes = false;
+
+        if (usd.sudokuToString().equals(s1.sudokuToString())) {
+            if (usd.getSudokuId() == 1) {
+                if (usd.getUserId() == 1) {
+                    succes = true;
+                }
+            }
+        }
+        assertEquals(true, succes);
+    }
 }

@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import logic.User;
 import logic.UserSudoku;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,10 +17,13 @@ public class UserSudokuDaoTest {
     private Database db;
     private UserSudokuDao usd;
     private Sudokudao sd;
+    private Userdao ud;
 
     public UserSudokuDaoTest() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         this.usd = new UserSudokuDao(db);
+        this.sd = new Sudokudao(db);
+        this.ud = new Userdao(db);
 
     }
 
@@ -107,6 +111,8 @@ public class UserSudokuDaoTest {
 
     @Test
     public void getUsersSudokus() throws SQLException {
+        User user1 = new User("helppo", "heikki");
+        ud.addUser(user1);
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
