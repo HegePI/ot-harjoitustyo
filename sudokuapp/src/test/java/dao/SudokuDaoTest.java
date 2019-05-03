@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.Assert;
@@ -8,7 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import dao.Database;
 import dao.Sudokudao;
+import java.io.File;
 import logic.Sudoku;
+import org.junit.After;
 
 public class SudokuDaoTest {
 
@@ -21,9 +22,8 @@ public class SudokuDaoTest {
     }
 
     @Before
-    public void setUp() throws SQLException {
+    public void setUp() throws SQLException, ClassNotFoundException {
         sudokuDao.deleteAll();
-
     }
 
     @Test

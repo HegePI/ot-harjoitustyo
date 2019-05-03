@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,14 +7,16 @@ import org.junit.Test;
 import dao.Database;
 import logic.User;
 import dao.Userdao;
+import java.io.File;
 import java.util.*;
+import org.junit.After;
 
-public class userDaoTest {
+public class UserDaoTest {
 
     Database db;
     Userdao users;
 
-    public userDaoTest() throws ClassNotFoundException, SQLException {
+    public UserDaoTest() throws ClassNotFoundException, SQLException {
         db = new Database();
         users = new Userdao(db);
     }
@@ -30,7 +31,6 @@ public class userDaoTest {
         User user1 = new User("helppo", "heikki");
         users.addUser(user1);
         User user2 = users.getById(1);
-        System.out.println(user2.toString());
         boolean sameUsers = false;
 
         if (user1.equals(user2)) {
@@ -49,10 +49,6 @@ public class userDaoTest {
         users.addUser(new User("g", "h"));
 
         ArrayList<User> userList = users.getAll();
-        for (int i = 0; i < 4; i++) {
-            System.out.println(userList.get(i).toString());
-        }
-
         Assert.assertEquals(userList.size(), 4);
     }
 
