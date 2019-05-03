@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.*;
 import logic.User;
 
-public class Userdao {
+public class UserDao {
 
     private final Database database;
 
-    public Userdao(Database db) {
+    public UserDao(Database db) {
         this.database = db;
     }
 

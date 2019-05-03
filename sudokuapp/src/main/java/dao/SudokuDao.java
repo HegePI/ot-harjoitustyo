@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.Sudoku;
 
-public class Sudokudao {
+public class SudokuDao {
 
     private final Database database;
 
-    public Sudokudao(Database database) {
+    public SudokuDao(Database database) {
         this.database = database;
     }
 

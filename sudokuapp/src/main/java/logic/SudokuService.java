@@ -1,24 +1,24 @@
 package logic;
 
 import dao.Database;
-import dao.Sudokudao;
+import dao.SudokuDao;
 import dao.UserSudokuDao;
-import dao.Userdao;
+import dao.UserDao;
 import java.sql.*;
 import java.util.*;
 
 public class SudokuService {
 
     private final Database db;
-    private final Userdao users;
-    private final Sudokudao sudokus;
+    private final UserDao users;
+    private final SudokuDao sudokus;
     private final UserSudokuDao userSudokuDao;
     private final SudokuChecker checker;
 
     public SudokuService() throws ClassNotFoundException, SQLException {
         this.db = new Database();
-        this.users = new Userdao(db);
-        this.sudokus = new Sudokudao(db);
+        this.users = new UserDao(db);
+        this.sudokus = new SudokuDao(db);
         this.userSudokuDao = new UserSudokuDao(db);
         this.checker = new SudokuChecker();
     }

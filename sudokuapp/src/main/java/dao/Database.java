@@ -90,7 +90,7 @@ public class Database {
     }
 
     private void addEasySudoku() throws SQLException {
-        Sudokudao sd = new Sudokudao(this);
+        SudokuDao sd = new SudokuDao(this);
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -107,7 +107,7 @@ public class Database {
     }
 
     private void addMediumSudoku() throws SQLException {
-        Sudokudao sd = new Sudokudao(this);
+        SudokuDao sd = new SudokuDao(this);
         int[][] sa = {
             {0, 0, 0, 5, 4, 0, 0, 0, 8},
             {6, 0, 0, 0, 0, 2, 3, 0, 0},
@@ -124,7 +124,7 @@ public class Database {
     }
 
     private void addHardSudoku() throws SQLException {
-        Sudokudao sd = new Sudokudao(this);
+        SudokuDao sd = new SudokuDao(this);
         int[][] sb = {
             {0, 0, 5, 3, 0, 0, 0, 0, 0},
             {8, 0, 0, 0, 0, 0, 0, 2, 0},

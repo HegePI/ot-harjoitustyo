@@ -16,14 +16,14 @@ public class UserSudokuDaoTest {
 
     private Database db;
     private UserSudokuDao usd;
-    private Sudokudao sd;
-    private Userdao ud;
+    private SudokuDao sd;
+    private UserDao ud;
 
     public UserSudokuDaoTest() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         this.usd = new UserSudokuDao(db);
-        this.sd = new Sudokudao(db);
-        this.ud = new Userdao(db);
+        this.sd = new SudokuDao(db);
+        this.ud = new UserDao(db);
 
     }
 

@@ -2,9 +2,9 @@ package logic;
 
 import com.sun.prism.Texture;
 import dao.Database;
-import dao.Sudokudao;
+import dao.SudokuDao;
 import dao.UserSudokuDao;
-import dao.Userdao;
+import dao.UserDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.Sudoku;
@@ -18,16 +18,16 @@ import static org.junit.Assert.*;
 public class SudokuServiceTest {
 
     private final Database db;
-    private final Userdao users;
-    private final Sudokudao sudokus;
+    private final UserDao users;
+    private final SudokuDao sudokus;
     private final UserSudokuDao UserSudokuDao;
     private final SudokuService server;
 
     public SudokuServiceTest() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         this.UserSudokuDao = new UserSudokuDao(db);
-        this.users = new Userdao(db);
-        this.sudokus = new Sudokudao(db);
+        this.users = new UserDao(db);
+        this.sudokus = new SudokuDao(db);
         this.server = new SudokuService();
     }
 

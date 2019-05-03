@@ -10,11 +10,11 @@ import org.junit.Test;
 public class SudokuDaoTest {
 
     Database db;
-    dao.Sudokudao sudokuDao;
+    dao.SudokuDao sudokuDao;
 
     public SudokuDaoTest() throws ClassNotFoundException, SQLException {
         this.db = new Database();
-        sudokuDao = new Sudokudao(db);
+        sudokuDao = new SudokuDao(db);
     }
 
     @Before

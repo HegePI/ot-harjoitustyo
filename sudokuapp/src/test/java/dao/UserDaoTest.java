@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import dao.Database;
 import logic.User;
-import dao.Userdao;
+import dao.UserDao;
 import java.io.File;
 import java.util.*;
 import org.junit.After;
@@ -14,11 +14,11 @@ import org.junit.After;
 public class UserDaoTest {
 
     Database db;
-    Userdao users;
+    UserDao users;
 
     public UserDaoTest() throws ClassNotFoundException, SQLException {
         db = new Database();
-        users = new Userdao(db);
+        users = new UserDao(db);
     }
 
     @Before
