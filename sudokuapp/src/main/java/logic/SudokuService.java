@@ -20,6 +20,7 @@ public class SudokuService {
     private final SudokuChecker checker;
 
     /**
+     * SudokuService -olion luova konstruktori.
      *
      * @throws ClassNotFoundException
      * @throws SQLException
@@ -98,9 +99,11 @@ public class SudokuService {
     }
 
     /**
+     * Palauttaa kaikki käyttäjän aloittamat/valmiiksi saadut sudokut.
      *
-     * @param userId
-     * @return
+     * @param userId käyttäjän yksilöivä id.
+     * @return lista UserSudoku -olioita, jotka liittyvät parametrina saadun
+     * käyttäjän id:hen
      */
     public ArrayList<UserSudoku> getAllUsersSudokus(int userId) {
         ArrayList<UserSudoku> usersSudokus = userSudokuDao.getUsersSudokus(userId);

@@ -9,17 +9,19 @@ public class Sudoku {
     private int id;
     private String difficulty;
     private int[][] sudoku;
-    private final SudokuSolver suso;
+    private final SudokuSolver SudokuSolver;
 
     /**
+     * Sudoku -olion luova konstruktori. Parametrina annetaan sudoku 2d
+     * -taulukkona ja vaikeusaste.
      *
-     * @param difficulty
-     * @param sudoku
+     * @param difficulty Sudokun vaikeusaste
+     * @param sudoku sudoku 2d integer taulukkona
      */
     public Sudoku(String difficulty, int[][] sudoku) {
         this.difficulty = difficulty;
         this.sudoku = sudoku;
-        this.suso = new SudokuSolver();
+        this.SudokuSolver = new SudokuSolver();
     }
 
     public int getSudokuId() {
@@ -40,10 +42,6 @@ public class Sudoku {
 
     public int[][] getSudoku() {
         return sudoku;
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
     }
 
     @Override
@@ -87,7 +85,7 @@ public class Sudoku {
      */
     public void solve() {
         System.out.println("testi");
-        int[][] solvedSudoku = suso.solve(this.sudoku);
+        int[][] solvedSudoku = SudokuSolver.solve(this.sudoku);
         setSudoku(solvedSudoku);
     }
 

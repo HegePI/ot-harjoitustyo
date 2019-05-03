@@ -14,12 +14,15 @@ public class UserSudoku {
     private int[][] originalSudoku;
 
     /**
+     * UserSudoku -olion luova konstruktori. Parametrina annetaan sudokun
+     * nykyinen tilanne, alkuperäinen sudoku, sudokun yksilöivä id, käyttäjän
+     * yksilöivä id ja sudokun vaikeusaste.
      *
-     * @param sudoku
-     * @param originalSudoku
-     * @param sudokuId
-     * @param userId
-     * @param difficulty
+     * @param sudoku sudokun tilanne 2d integer taulukkona
+     * @param originalSudoku alkuperäinen sudoku 2d integer taulukkona
+     * @param sudokuId sudokun yksilöivä id
+     * @param userId käyttäjän yksilöivä id
+     * @param difficulty sudokun vaikeusaste
      */
     public UserSudoku(int[][] sudoku, int[][] originalSudoku, int sudokuId, int userId, String difficulty) {
         this.completed = false;
@@ -43,10 +46,12 @@ public class UserSudoku {
     }
 
     /**
+     * Asettaa parametrina saadun arvon row ja col parametrien osoittamaan
+     * sudokun ruutuun.
      *
-     * @param row
-     * @param col
-     * @param value
+     * @param row rivinumero
+     * @param col sarakenumero
+     * @param value ruutuun laitettava arvo
      */
     public void setCell(int row, int col, int value) {
         this.sudoku[row][col] = value;

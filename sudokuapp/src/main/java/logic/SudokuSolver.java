@@ -11,9 +11,10 @@ public class SudokuSolver {
     boolean[][] originals = new boolean[9][9];
 
     /**
+     * ratkaisee parametrina saaneensa sudokun.
      *
      * @param sudoku
-     * @return
+     * @return palauttaa true, jos sudokun voi ratkaista, muuten false
      */
     public int[][] solve(int[][] sudoku) {
         initialize(sudoku);

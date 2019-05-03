@@ -11,9 +11,10 @@ public class User {
     private String pswd;
 
     /**
+     * User -olion luova konstruktori. parametrina annetaan nimi ja salasana.
      *
-     * @param userName
-     * @param pswd
+     * @param userName käyttäjänimi
+     * @param pswd salasana
      */
     public User(String userName, String pswd) {
         this.userName = userName;

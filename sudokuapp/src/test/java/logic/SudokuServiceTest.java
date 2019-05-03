@@ -1,16 +1,11 @@
 package logic;
 
-import com.sun.prism.Texture;
 import dao.Database;
 import dao.SudokuDao;
 import dao.UserSudokuDao;
 import dao.UserDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import logic.Sudoku;
-import logic.SudokuService;
-import logic.User;
-import logic.UserSudoku;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
