@@ -7,14 +7,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.Sudoku;
 
+/**
+ *
+ * @author hepulli
+ */
 public class SudokuDao {
 
     private final Database database;
 
+    /**
+     * SudokuDaon konstruktori, joka ottaa parametriksi jo luodun database
+     * -olion.
+     *
+     * @param database Database olio, jolla dao saa yhteyden tietokantaan.
+     */
     public SudokuDao(Database database) {
         this.database = database;
     }
 
+    /**
+     * Lisää parametrina saaneensa sudokun tietokantaan.
+     *
+     * @param s Sudoku, joka lisätään tietokantaan.
+     * @return true, jos lisäys onnistui, muuten false.
+     * @throws SQLException
+     */
     public boolean addSudoku(Sudoku s) throws SQLException {
         boolean succes;
 
@@ -38,6 +55,12 @@ public class SudokuDao {
         return succes;
     }
 
+    /**
+     * Hakee sudokun tietokannasta, jonka id vastaa parametrina tullutta id:tä.
+     *
+     * @param id
+     * @return Palauttaa löydetyn Sudokun. Jos ei löytynyt, palauttaa null.
+     */
     public Sudoku getById(int id) {
         Sudoku s = null;
         try (Connection con = database.getConnection()) {
@@ -58,6 +81,12 @@ public class SudokuDao {
         return s;
     }
 
+    /**
+     * Palauttaa kaikki sudokut tietokannasta.
+     *
+     * @return palauttaa listan, joka sisältää tietokannan sudokut.
+     * @throws SQLException
+     */
     public ArrayList<Sudoku> getAll() throws SQLException {
         ArrayList<Sudoku> sudokus = new ArrayList<>();
         try (Connection con = database.getConnection()) {
@@ -80,6 +109,14 @@ public class SudokuDao {
         return sudokus;
     }
 
+    /**
+     * Poistaa tietokannasta sudokun, jonka id vastaa parametrina tullutta
+     * id:tä.
+     *
+     * @param id
+     * @return true, jos poistaminen onnistui, muuten false.
+     * @throws SQLException
+     */
     public boolean deleteById(int id) throws SQLException {
         boolean succes;
 
@@ -101,6 +138,12 @@ public class SudokuDao {
         return succes;
     }
 
+    /**
+     * Poistaa kaikki sudokut tietokannasta.
+     *
+     * @return palauttaa true, jos poistaminen onnistui, muuten false.
+     * @throws SQLException
+     */
     public boolean deleteAll() throws SQLException {
         boolean succes;
 

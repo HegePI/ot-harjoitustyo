@@ -1,11 +1,20 @@
 package logic;
 
+/**
+ *
+ * @author hepulli
+ */
 public class User {
 
     private int id;
     private String userName;
     private String pswd;
 
+    /**
+     *
+     * @param userName
+     * @param pswd
+     */
     public User(String userName, String pswd) {
         this.userName = userName;
         this.pswd = pswd;

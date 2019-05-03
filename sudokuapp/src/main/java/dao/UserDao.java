@@ -7,14 +7,31 @@ import java.sql.SQLException;
 import java.util.*;
 import logic.User;
 
+/**
+ *
+ * @author hepulli
+ */
 public class UserDao {
 
     private final Database database;
 
+    /**
+     * Konstruktori, jossa luodaan UserDao -olion. Saa parametrina jo luodun
+     * Database -olion, jolla luotu oli saa yhteyden tietokantaan.
+     *
+     * @param db Database -olio, jolla UserDao -olion saa yhteyden tietokantaan.
+     */
     public UserDao(Database db) {
         this.database = db;
     }
 
+    /**
+     * Lisää tietokantaan parametrina saadun User -olion tiedot.
+     *
+     * @param newUser Tietokantaan lisättävä käyttäjä.
+     * @return true, jos lisääminen onnistui, muuten false.
+     * @throws SQLException
+     */
     public boolean addUser(User newUser) throws SQLException {
         boolean succes;
 
@@ -37,6 +54,11 @@ public class UserDao {
         return succes;
     }
 
+    /**
+     * Palauttaa kaikki käyttäjät tietokannasta.
+     *
+     * @return Lista käyttäjistä, jotka ovat tietokannassa.
+     */
     public ArrayList<User> getAll() {
         ArrayList<User> users = new ArrayList<>();
 
@@ -61,6 +83,15 @@ public class UserDao {
         return users;
     }
 
+    /**
+     * Palauttaa User -olion, jonka nimi ja salasana vastaavat tietokannassa
+     * olevaa käyttäjää.
+     *
+     * @param name haetun käyttäjän nimi
+     * @param pswd haetun käyttäjän salasana
+     * @return tietojen perusteella löydetty User -olio
+     * @throws SQLException
+     */
     public User getByNameAndPswd(String name, String pswd) throws SQLException {
         User user = null;
 
@@ -85,6 +116,14 @@ public class UserDao {
         return user;
     }
 
+    /**
+     * Hakee tietokannasta User -olion tiedot, jonka id vastaa parametrina
+     * saatua id:tä.
+     *
+     * @param id haettavan User -olion id
+     * @return id:tä vastaava User -olio
+     * @throws SQLException
+     */
     public User getById(int id) throws SQLException {
         User user = null;
 
@@ -107,6 +146,11 @@ public class UserDao {
         return user;
     }
 
+    /**
+     * Poistaa kaikkien User -olioiden tideot tietokannasta.
+     *
+     * @return true, jos poistaminen onnistui, muuten false
+     */
     public boolean deleteAll() {
         boolean succes;
 
@@ -125,6 +169,13 @@ public class UserDao {
         return succes;
     }
 
+    /**
+     * Poistaa tietokannasta id:tä vastaavan User -olion tiedot.
+     *
+     * @param id Poistettavan User -oliota vastaava id.
+     * @return true, jos poistami
+     * @throws SQLException
+     */
     public boolean deleteById(int id) throws SQLException {
         boolean succes;
 

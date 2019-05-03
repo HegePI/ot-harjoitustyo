@@ -1,11 +1,20 @@
 package logic;
 
+/**
+ *
+ * @author hepulli
+ */
 public class SudokuSolver {
 
     private static int lastFixedRow = 0;
     private static int lastValue = 0;
     boolean[][] originals = new boolean[9][9];
 
+    /**
+     *
+     * @param sudoku
+     * @return
+     */
     public int[][] solve(int[][] sudoku) {
         initialize(sudoku);
         for (int value = 1; value <= 9; value++) {

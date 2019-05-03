@@ -1,5 +1,9 @@
 package logic;
 
+/**
+ *
+ * @author hepulli
+ */
 public class UserSudoku {
 
     private int sudokuId;
@@ -9,6 +13,14 @@ public class UserSudoku {
     private int[][] sudoku;
     private int[][] originalSudoku;
 
+    /**
+     *
+     * @param sudoku
+     * @param originalSudoku
+     * @param sudokuId
+     * @param userId
+     * @param difficulty
+     */
     public UserSudoku(int[][] sudoku, int[][] originalSudoku, int sudokuId, int userId, String difficulty) {
         this.completed = false;
         this.sudoku = sudoku;
@@ -30,6 +42,12 @@ public class UserSudoku {
         this.sudokuId = id;
     }
 
+    /**
+     *
+     * @param row
+     * @param col
+     * @param value
+     */
     public void setCell(int row, int col, int value) {
         this.sudoku[row][col] = value;
     }

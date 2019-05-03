@@ -8,10 +8,21 @@ import java.sql.Statement;
 import logic.Sudoku;
 import org.sqlite.SQLiteConfig;
 
+/**
+ *
+ * @author hepulli
+ */
 public class Database {
 
     SQLiteConfig config;
 
+    /**
+     * Database olion konstruktori, jossa tarkistetaan, onko ohjelmaa
+     * ajettavassa tiedostossa tietokantaa. jos ei ole, niin se luodaan sinne.
+     *
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public Database() throws ClassNotFoundException, SQLException {
         this.config = new SQLiteConfig();
         File file = new File("sudoku.db");
@@ -20,6 +31,12 @@ public class Database {
         }
     }
 
+    /**
+     * Luo yhteys olion tietokantaan Drivemanager -olion avulla ja palauttaa
+     * sen.
+     *
+     * @return @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
         config.enforceForeignKeys(true);
         File file = new File("sudoku.db");

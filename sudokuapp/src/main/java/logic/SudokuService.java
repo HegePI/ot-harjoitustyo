@@ -7,6 +7,10 @@ import dao.UserDao;
 import java.sql.*;
 import java.util.*;
 
+/**
+ *
+ * @author hepulli
+ */
 public class SudokuService {
 
     private final Database db;
@@ -15,6 +19,11 @@ public class SudokuService {
     private final UserSudokuDao userSudokuDao;
     private final SudokuChecker checker;
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public SudokuService() throws ClassNotFoundException, SQLException {
         this.db = new Database();
         this.users = new UserDao(db);
@@ -88,6 +97,11 @@ public class SudokuService {
         return allSudokus;
     }
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     public ArrayList<UserSudoku> getAllUsersSudokus(int userId) {
         ArrayList<UserSudoku> usersSudokus = userSudokuDao.getUsersSudokus(userId);
         return usersSudokus;

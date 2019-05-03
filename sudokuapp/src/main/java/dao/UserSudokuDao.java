@@ -7,14 +7,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import logic.UserSudoku;
 
+/**
+ *
+ * @author hepulli
+ */
 public class UserSudokuDao {
 
     private final Database database;
 
+    /**
+     * Konstruktori, joka luo UserSudokuDao -olion. konstruktori saa parametrina
+     * Database -olion, jonka avulla se saa yhteyden tietokantaan.
+     *
+     * @param database Database -olion, jonka avulla UserSudokuDao -olion saa
+     * yhteyden tietokantaan.
+     */
     public UserSudokuDao(Database database) {
         this.database = database;
     }
 
+    /**
+     * Lisää parametrina saadun UserSudoku -olion tiedot tietokantaan.
+     *
+     * @param us Lisättävä UserSudoku -olio.
+     * @return palauttaa true, jos lisäys onnistui, muuten false.
+     * @throws SQLException
+     */
     public boolean add(UserSudoku us) throws SQLException {
         boolean succes = true;
 
@@ -40,6 +58,15 @@ public class UserSudokuDao {
         return succes;
     }
 
+    /**
+     * Hakee tietokannasta UserSudoku -olion tiedot, jonka sudokuId ja UserId
+     * vastaavat parametrina saatuja id:jä.
+     *
+     * @param sudokuId sudokun yksilöivä id
+     * @param userId käyttäjän yksilöivä id
+     * @return tietokannasta löydetty UserSudoku -olio
+     * @throws SQLException
+     */
     public UserSudoku getByIds(int sudokuId, int userId) throws SQLException {
         UserSudoku us = null;
 
@@ -57,6 +84,12 @@ public class UserSudokuDao {
         return us;
     }
 
+    /**
+     * Tallentaa parametrina saaneensa UserSudoku -olion tiedot tietokantaan.
+     *
+     * @param us Tallennettava UserSudoku
+     * @return palauttaa true, jos tallennus onnistui, muuten false
+     */
     public boolean save(UserSudoku us) {
         boolean succes = true;
         try (Connection con = database.getConnection()) {
@@ -77,6 +110,11 @@ public class UserSudokuDao {
 
     }
 
+    /**
+     * Poistaa kaikki tietokannasta löytyvät UserSudoku -oliot.
+     *
+     * @return palauttaa true, jos poistaminen onnistui, muuten false
+     */
     public boolean deleteAll() {
         boolean succes = true;
         try (Connection con = database.getConnection()) {
@@ -93,6 +131,14 @@ public class UserSudokuDao {
         return succes;
     }
 
+    /**
+     * Palauttaa kaikki UserSudoku -oliot, joiden UserId vastaa parametrina
+     * saatua id:tä.
+     *
+     * @param userId käyttäjän yksilöivä id
+     * @return lista UserSudoku -olioita, jotka liittyvät parametrina saatuun
+     * id:hen.
+     */
     public ArrayList<UserSudoku> getUsersSudokus(int userId) {
         ArrayList<UserSudoku> usersSudokus = new ArrayList<>();
         try (Connection con = database.getConnection()) {

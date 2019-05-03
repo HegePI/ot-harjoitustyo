@@ -5,9 +5,10 @@
     "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress files="sudokuApp.ui.CreateUserController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="sudokuApp.ui.GameController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="sudokuApp.ui.LoginController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="sudokuApp.ui.MenuController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="sudokuApp.ui.Sudokuui.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.CreateUserController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.GameController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.LoginController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.MenuController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.Sudokuui.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ui.UserInfoController.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

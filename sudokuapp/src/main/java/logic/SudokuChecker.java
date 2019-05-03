@@ -2,6 +2,10 @@ package logic;
 
 import java.util.*;
 
+/**
+ *
+ * @author hepulli
+ */
 public class SudokuChecker {
 
     private ArrayList<Integer>[] values;

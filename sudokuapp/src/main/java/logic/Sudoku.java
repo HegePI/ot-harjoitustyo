@@ -1,5 +1,9 @@
 package logic;
 
+/**
+ *
+ * @author hepulli
+ */
 public class Sudoku {
 
     private int id;
@@ -7,6 +11,11 @@ public class Sudoku {
     private int[][] sudoku;
     private final SudokuSolver suso;
 
+    /**
+     *
+     * @param difficulty
+     * @param sudoku
+     */
     public Sudoku(String difficulty, int[][] sudoku) {
         this.difficulty = difficulty;
         this.sudoku = sudoku;
