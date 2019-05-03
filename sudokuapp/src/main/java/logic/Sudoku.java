@@ -77,6 +77,7 @@ public class Sudoku {
      *
      */
     public void solve() {
+        System.out.println("testi");
         int[][] solvedSudoku = suso.solve(this.sudoku);
         setSudoku(solvedSudoku);
     }
