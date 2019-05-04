@@ -10,9 +10,11 @@ Sovellus mahdollistaa käyttäjien pelata sudoku pelejä ja tallentaa sudoku pel
 
 [Vaatimusmäärittely](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Työaikakalenteri](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakalenteri.md)
-
 [Arkkitehtuuri suunnitelma](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
+[Testausdokumentti](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
+[Työaikakalenteri](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakalenteri.md)
 
 ## Releaset
 
@@ -24,7 +26,7 @@ Sovellus mahdollistaa käyttäjien pelata sudoku pelejä ja tallentaa sudoku pel
 `mvn test`
 
 ### Testikattavuusraportti
-`mvn test jacoco:report`
+`mvn jacoco:report`
 
 testikattavuusraportti löytyy **target/site/jacoco/index.html**
 
