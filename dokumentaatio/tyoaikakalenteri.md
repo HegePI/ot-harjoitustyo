@@ -197,10 +197,11 @@ __Aikaa kului__
 __Mitä tehtiin__
 
 * Testit täydennetty
+* dokumentaatio täydennetty
 
 __Aikaa kului__
 
-* 5h
+* 2h
 
 ## Koonnos
 
@@ -223,6 +224,6 @@ __Aikaa kului__
 | 27.4.19 | 1h |
 | 2.5.19 | 2h |
 | 3.5.19 | 5h |
-| 4.5.19 | |
-|Yhteensä | 73,5h |
+| 4.5.19 | 4h |
+|Yhteensä | 77,5h |
 
