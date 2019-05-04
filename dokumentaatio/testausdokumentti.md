@@ -38,6 +38,6 @@ Sovellusta on testattu käyttöohjeen kuvaamalla tavalla linux ja windows ympär
 
 Sovellus toteuttaa kaikki vaatimusmäärittelyssä listattuja tomintoja ja ne on käyty testeissä läpi. Lisäksi järjestelmätestauksen aikana on yritetty syöttää vääränlaista dataa, esim. kirjautuessa tai käyttäjää luodessa käyttäjänimi ja salasana ovat olleet tyhjinä.
 
-## Sovlluksen laatuongelmat
+## Sovelluksen laatuongelmat
 
 Tuntemattomasta syystä joskus uloskirjautuessa login näkymä näkyy mustana ja vähän ajan kuluttua se näkyy taas selvänä.
