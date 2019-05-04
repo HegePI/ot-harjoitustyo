@@ -23,7 +23,7 @@ public class SudokuDaoTest {
     }
 
     @Test
-    public void CanAddSudoku() throws SQLException {
+    public void addSudoku() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -41,7 +41,7 @@ public class SudokuDaoTest {
     }
 
     @Test
-    public void getSudokuById() throws SQLException {
+    public void getById() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -93,7 +93,7 @@ public class SudokuDaoTest {
     }
 
     @Test
-    public void canDeleteById() throws SQLException {
+    public void deleteById() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -114,7 +114,7 @@ public class SudokuDaoTest {
     }
 
     @Test
-    public void canDeleteAll() throws SQLException {
+    public void deleteAll() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},

@@ -33,7 +33,7 @@ public class UserSudokuDaoTest {
     }
 
     @Test
-    public void canAddUserSudoku() throws SQLException {
+    public void addUserSudoku() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -47,7 +47,7 @@ public class UserSudokuDaoTest {
         };
         UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
-        boolean succes = usd.add(us);
+        boolean succes = usd.addUserSudoku(us);
 
         Assert.assertEquals(true, succes);
     }
@@ -67,7 +67,7 @@ public class UserSudokuDaoTest {
         };
         UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
-        boolean succes = usd.add(us);
+        boolean succes = usd.addUserSudoku(us);
 
         UserSudoku us2 = usd.getByIds(1, 1);
 
@@ -79,7 +79,7 @@ public class UserSudokuDaoTest {
     }
 
     @Test
-    public void save() throws SQLException {
+    public void saveUserSudoku() throws SQLException {
         int[][] sa = {
             {0, 0, 0, 5, 0, 7, 0, 0, 0},
             {0, 0, 2, 4, 0, 6, 3, 0, 0},
@@ -93,11 +93,11 @@ public class UserSudokuDaoTest {
         };
         UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
 
-        boolean succes = usd.add(us);
+        boolean succes = usd.addUserSudoku(us);
 
         us.setCell(0, 0, 1);
 
-        usd.save(us);
+        usd.saveUserSudoku(us);
 
         UserSudoku us2 = usd.getByIds(1, 1);
 
@@ -107,6 +107,31 @@ public class UserSudokuDaoTest {
             succes2 = true;
         }
         Assert.assertEquals(true, succes2);
+    }
+
+    @Test
+    public void deleteAll() throws SQLException {
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
+        UserSudoku us1 = new UserSudoku(sa, sa, 2, 1, "easy");
+        UserSudoku us2 = new UserSudoku(sa, sa, 3, 1, "easy");
+
+        usd.addUserSudoku(us);
+        usd.addUserSudoku(us1);
+        usd.addUserSudoku(us2);
+
+        boolean succes = usd.deleteAll();
+        Assert.assertEquals(true, succes);
     }
 
     @Test
@@ -150,9 +175,9 @@ public class UserSudokuDaoTest {
         UserSudoku us2 = new UserSudoku(sb, sb, 2, 1, "medium");
         UserSudoku us3 = new UserSudoku(sc, sc, 3, 1, "Maailman vaikein sudoku");
 
-        usd.add(us1);
-        usd.add(us2);
-        usd.add(us3);
+        usd.addUserSudoku(us1);
+        usd.addUserSudoku(us2);
+        usd.addUserSudoku(us3);
 
         ArrayList<UserSudoku> sudokus = usd.getUsersSudokus(1);
 

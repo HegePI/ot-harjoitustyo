@@ -7,7 +7,6 @@ package dao;
 
 import java.io.File;
 import java.sql.SQLException;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

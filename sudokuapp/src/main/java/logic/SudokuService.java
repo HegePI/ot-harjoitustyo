@@ -126,7 +126,7 @@ public class SudokuService {
      */
     public UserSudoku play(Sudoku s, int userId) throws SQLException {
         UserSudoku us = new UserSudoku(s.getSudoku(), s.getSudoku(), s.getSudokuId(), userId, s.getDifficulty());
-        userSudokuDao.add(us);
+        userSudokuDao.addUserSudoku(us);
         UserSudoku us2 = userSudokuDao.getByIds(us.getSudokuId(), us.getUserId());
         return us2;
     }
@@ -141,7 +141,7 @@ public class SudokuService {
      * true, muuten false
      */
     public boolean save(UserSudoku us) {
-        boolean succes = userSudokuDao.save(us);
+        boolean succes = userSudokuDao.saveUserSudoku(us);
         return succes;
     }
 

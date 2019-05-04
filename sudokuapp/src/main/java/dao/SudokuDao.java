@@ -62,6 +62,7 @@ public class SudokuDao {
      * @return Palauttaa löydetyn Sudokun. Jos ei löytynyt, palauttaa null.
      */
     public Sudoku getById(int id) {
+
         Sudoku s = null;
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("SELECT * FROM Sudoku WHERE id = ?");

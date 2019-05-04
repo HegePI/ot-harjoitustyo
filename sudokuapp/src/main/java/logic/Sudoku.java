@@ -9,7 +9,7 @@ public class Sudoku {
     private int id;
     private String difficulty;
     private int[][] sudoku;
-    private final SudokuSolver SudokuSolver;
+    private final SudokuSolver sudokuSolver;
 
     /**
      * Sudoku -olion luova konstruktori. Parametrina annetaan sudoku 2d
@@ -21,7 +21,7 @@ public class Sudoku {
     public Sudoku(String difficulty, int[][] sudoku) {
         this.difficulty = difficulty;
         this.sudoku = sudoku;
-        this.SudokuSolver = new SudokuSolver();
+        this.sudokuSolver = new SudokuSolver();
     }
 
     public int getSudokuId() {
@@ -34,10 +34,6 @@ public class Sudoku {
 
     public String getDifficulty() {
         return difficulty;
-    }
-
-    public void setSudoku(int[][] sudoku) {
-        this.sudoku = sudoku;
     }
 
     public int[][] getSudoku() {

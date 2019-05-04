@@ -4,12 +4,8 @@ import java.sql.SQLException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import dao.Database;
 import logic.User;
-import dao.UserDao;
-import java.io.File;
 import java.util.*;
-import org.junit.After;
 
 public class UserDaoTest {
 
@@ -27,7 +23,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void canAddUserToDB() throws SQLException {
+    public void addUser() throws SQLException {
         User user1 = new User("helppo", "heikki");
         users.addUser(user1);
         User user2 = users.getById(1);
@@ -41,7 +37,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void canGetAllUsers() throws SQLException {
+    public void getAll() throws SQLException {
 
         users.addUser(new User("a", "b"));
         users.addUser(new User("c", "d"));
@@ -53,7 +49,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void userByUsernameAndPswd() throws SQLException {
+    public void getByNameAndPswd() throws SQLException {
 
         User user1 = new User("t", "t");
         users.addUser(user1);
@@ -70,7 +66,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void userById() throws SQLException {
+    public void getById() throws SQLException {
 
         User user1 = new User("b", "b");
 
@@ -90,7 +86,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void canDeleteAll() throws SQLException {
+    public void deleteAll() throws SQLException {
 
         users.addUser(new User("a", "a"));
         users.addUser(new User("b", "b"));
@@ -106,7 +102,7 @@ public class UserDaoTest {
     }
 
     @Test
-    public void canDeleteById() throws SQLException {
+    public void deleteById() throws SQLException {
 
         User user1 = new User("a", "a");
         User user2 = new User("b", "b");

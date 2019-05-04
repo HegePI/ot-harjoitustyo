@@ -33,7 +33,7 @@ public class UserSudokuDao {
      * @return palauttaa true, jos lisäys onnistui, muuten false.
      * @throws SQLException
      */
-    public boolean add(UserSudoku us) throws SQLException {
+    public boolean addUserSudoku(UserSudoku us) throws SQLException {
         boolean succes = true;
 
         try (Connection con = database.getConnection()) {
@@ -90,7 +90,7 @@ public class UserSudokuDao {
      * @param us Tallennettava UserSudoku
      * @return palauttaa true, jos tallennus onnistui, muuten false
      */
-    public boolean save(UserSudoku us) {
+    public boolean saveUserSudoku(UserSudoku us) {
         boolean succes = true;
         try (Connection con = database.getConnection()) {
             PreparedStatement stmnt = con.prepareStatement("UPDATE UserSudoku SET sudoku = ?, completed = ? WHERE id = ? AND user_id = ?");

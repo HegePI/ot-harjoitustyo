@@ -34,7 +34,7 @@ public class SudokuServiceTest {
     }
 
     @Test
-    public void createUser() throws SQLException {
+    public void createNewUser() throws SQLException {
         String name = "A";
         String pswd = "A";
         server.createNewUser(name, pswd);
@@ -117,6 +117,50 @@ public class SudokuServiceTest {
     }
 
     @Test
+    public void getAllUsersSudokus() throws SQLException {
+        User user = new User("A", "A");
+        users.addUser(user);
+
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        int[][] sc = {
+            {0, 0, 5, 3, 0, 0, 0, 0, 0},
+            {8, 0, 0, 0, 0, 0, 0, 2, 0},
+            {0, 7, 0, 0, 1, 0, 5, 0, 0},
+            {4, 0, 0, 0, 0, 5, 3, 0, 0},
+            {0, 1, 0, 0, 7, 0, 0, 0, 6},
+            {0, 0, 3, 2, 0, 0, 0, 8, 0},
+            {0, 6, 0, 5, 0, 0, 0, 0, 9},
+            {0, 0, 4, 0, 0, 0, 0, 3, 0},
+            {0, 0, 0, 0, 0, 9, 7, 0, 0}
+        };
+        Sudoku s1 = new Sudoku("easy", sa);
+        Sudoku s2 = new Sudoku("medium", sc);
+        sudokus.addSudoku(s1);
+        sudokus.addSudoku(s2);
+
+        UserSudoku us1 = new UserSudoku(sa, sa, 1, 1, "easy");
+        UserSudoku us2 = new UserSudoku(sc, sc, 2, 1, "medium");
+
+        UserSudokuDao.addUserSudoku(us1);
+        UserSudokuDao.addUserSudoku(us2);
+
+        ArrayList<UserSudoku> userSudokus = server.getAllUsersSudokus(1);
+
+        assertEquals(2, userSudokus.size());
+
+    }
+
+    @Test
     public void play() throws SQLException {
         User user = new User("A", "A");
         users.addUser(user);
@@ -149,5 +193,119 @@ public class SudokuServiceTest {
             }
         }
         assertEquals(true, succes);
+    }
+
+    @Test
+    public void save() throws SQLException {
+        User user = new User("A", "A");
+        users.addUser(user);
+
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        Sudoku s1 = new Sudoku("easy", sa);
+        sudokus.addSudoku(s1);
+
+        UserSudoku us = new UserSudoku(sa, sa, 1, 1, "easy");
+        boolean succes = server.save(us);
+
+        assertEquals(true, succes);
+    }
+
+    @Test
+    public void getUserById() throws SQLException {
+        User user = new User("A", "A");
+        users.addUser(user);
+
+        User u = server.getUserById(1);
+
+        boolean same = false;
+
+        if (u.equals(user)) {
+            same = true;
+        }
+        assertEquals(true, same);
+    }
+
+    @Test
+    public void checkSudoku() throws SQLException {
+        User user = new User("A", "A");
+        users.addUser(user);
+
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        int[][] solved = {
+            {8, 3, 1, 5, 2, 7, 9, 4, 6},
+            {7, 5, 2, 4, 9, 6, 3, 8, 1},
+            {6, 9, 4, 3, 1, 8, 7, 2, 5},
+            {2, 7, 5, 1, 3, 9, 4, 6, 8},
+            {9, 8, 3, 6, 5, 4, 1, 7, 2},
+            {1, 4, 6, 8, 7, 2, 5, 9, 3},
+            {3, 6, 8, 7, 4, 1, 2, 5, 9},
+            {4, 1, 9, 2, 8, 5, 6, 3, 7},
+            {5, 2, 7, 9, 6, 3, 8, 1, 4}
+        };
+        Sudoku s1 = new Sudoku("easy", sa);
+        UserSudoku us1 = new UserSudoku(solved, sa, 1, 1, "easy");
+        boolean correct = server.checkSudoku(us1);
+
+        assertEquals(true, correct);
+
+    }
+
+    @Test
+    public void solveSudoku() {
+        int[][] solved = {
+            {8, 3, 1, 5, 2, 7, 9, 4, 6},
+            {7, 5, 2, 4, 9, 6, 3, 8, 1},
+            {6, 9, 4, 3, 1, 8, 7, 2, 5},
+            {2, 7, 5, 1, 3, 9, 4, 6, 8},
+            {9, 8, 3, 6, 5, 4, 1, 7, 2},
+            {1, 4, 6, 8, 7, 2, 5, 9, 3},
+            {3, 6, 8, 7, 4, 1, 2, 5, 9},
+            {4, 1, 9, 2, 8, 5, 6, 3, 7},
+            {5, 2, 7, 9, 6, 3, 8, 1, 4}
+        };
+        int[][] sa = {
+            {0, 0, 0, 5, 0, 7, 0, 0, 0},
+            {0, 0, 2, 4, 0, 6, 3, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 2, 0},
+            {2, 7, 0, 0, 0, 0, 0, 6, 8},
+            {0, 0, 3, 0, 0, 0, 1, 0, 0},
+            {1, 4, 0, 0, 0, 0, 0, 9, 3},
+            {0, 6, 0, 0, 4, 0, 0, 5, 0},
+            {0, 0, 9, 2, 0, 5, 6, 0, 0},
+            {0, 0, 0, 9, 0, 3, 0, 0, 0}
+        };
+        Sudoku s1 = new Sudoku("easy", sa);
+        UserSudoku us1 = new UserSudoku(solved, sa, 1, 1, "easy");
+        UserSudoku us2 = new UserSudoku(sa, sa, 1, 1, "easy");
+
+        server.solveSudoku(us2);
+
+        boolean same = false;
+
+        if (us1.equals(us2)) {
+            same = true;
+        }
+
+        assertEquals(true, same);
     }
 }
