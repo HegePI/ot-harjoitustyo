@@ -28,9 +28,7 @@ public class Sudokuui extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.window = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        String css = Sudokuui.class.getResource("/styles/login.css").toExternalForm();
         Scene s = new Scene(root);
-        s.getStylesheets().add(css);
         window.setTitle("login");
         window.setScene(s);
         window.show();

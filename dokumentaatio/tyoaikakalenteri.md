@@ -192,6 +192,16 @@ __Aikaa kului__
 
 * 5h
 
+## La 4.5.19
+
+__Mitä tehtiin__
+
+* Testit täydennetty
+
+__Aikaa kului__
+
+* 5h
+
 ## Koonnos
 
 |  PVM.   | aikaa käytetty | 
@@ -213,5 +223,6 @@ __Aikaa kului__
 | 27.4.19 | 1h |
 | 2.5.19 | 2h |
 | 3.5.19 | 5h |
+| 4.5.19 | |
 |Yhteensä | 73,5h |
 

@@ -4,7 +4,7 @@ Lataa ensin sudokuApp.jar
 
 ## konfigurointi
 
-Tietokantojen konfigurointi tapahtuu soveeluksen sisällä, jolloin käyttäjän ei niistä tarvitse huolehtia.
+Tietokantojen konfigurointi tapahtuu sovelluksen sisällä, jolloin käyttäjän ei niistä tarvitse huolehtia.
 
 ## Ohjelman käynnistäminen
 
@@ -35,4 +35,6 @@ Kun käyttäjä on kirjautunut sisään, niin aukeaa pelivalikko, jossa näkyy, 
 
 Kun peli käynnistyy, niin näkyy pelaajalle pelin sudokuruudukko. Kaikki alkuperäiset sudokun luvut näkyvät punaisina. Valittu ruutu on vahvistettu sinisillä reunoilla. Pelaaja voi vaihtaa ruutua hiirennapilla painamalla haluaamansa ruutua, jonka jälkeen pelaaja voi antaa haluamansa luvun. (Huom! pelaaja saattaa joutua painamaan haluaamansa ruutua useamman kerran, jotta näkymän focus menee oikein. Pelaaja voi joutua myös samasta syystä painamaan haluamaansa lukua useamman kerran, jotta se ilmestyy ruutuun.) Pelaajan antamat luvut näkyvät mustina. Pelaaja voi tallentaa pelinsä tilanteen tallenna -napilla, jolloin pelintilanne tallennetaan UserSudoku -olioon, jonka tiedot tallennetaan tietokantaan. Pelaaja pääse takaisin pelivalikkoon takasin -napilla. 
 
-![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/gameView.png)
+Kun pelaaja on saanut täyettyä sudokunsa haluamallaan tavalla, niin hän voi tarkistaa sen tarkista -napilla. Jos sudoku on täytetty oikein, niin peli ilmoittaa tästä ja sudoku tallennetaan tietokantaan. Jos se oli väärin , niin peliä ei tallenneta ja peli ilmoittaa tästä. Pelaaja voi myös painaa ratkaise -nappia, joka ratkaisee sudokun pelaajan puolesta. Ratkaistu sudoku tallennetaan tietokantaan ja peli ilmoittaa tästä pelaajalle.
+
+![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/game_view.png)
