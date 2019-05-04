@@ -16,7 +16,7 @@ Pelissä on erilaisia sudokuja vaihtelevilla vaikeusasteilla. Kun pelaaja aloitt
 
 ### Käyttöliittymäluonnos
 
-![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sovellusnakyma.png)
+![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sovellus_nakyma.png)
 
 ### Perusversion tarjoama toiminnallisuus
 
