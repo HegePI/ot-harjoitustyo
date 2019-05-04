@@ -16,17 +16,13 @@ Pelissä on erilaisia sudokuja vaihtelevilla vaikeusasteilla. Kun pelaaja aloitt
 
 ### Käyttöliittymäluonnos
 
-![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/alustava_nakyma.png)
-
-* Pelinäkymä selkeytyy, kun sovelluksen tarkempi totetus selkeää.
+![alt text](https://github.com/HegePI/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sovellusnakyma.png)
 
 ### Perusversion tarjoama toiminnallisuus
 
 #### Ennen kirjautumista
 
 * Mahdollisuus kirjautua sisään tai luoda uusi käyttäjä peliin.
-
-   - Jos luo uuden käyttäjän niin käyttäjä kirjautuu suoraan sisään.
 
 #### Kirjautumisen jälkeen
 
@@ -35,7 +31,13 @@ Pelissä on erilaisia sudokuja vaihtelevilla vaikeusasteilla. Kun pelaaja aloitt
 * Pelin valinnan jälkeen aukeaa näkymä, jossa peliä pelataan.
 
    - Pelaaja voi tallenna napilla tallentaa sudokun tilanteen.
-   - Käyttäjä voi palata takaisin pelin valinta näkymään peli näkymästä.
+   - Pelaaja voi tarkistaa sudokunsa
+   - Pelaaja voi automaattisesti ratkaista sudokunsa
+   - Käyttäjä voi palata takaisin pelin valinta näkymään pelinäkymästä.
+
+* Mahdollisuus tarkastella aloittamiaan sudokuja käyttäjäinfo -näkymästä
+
+   - käyttäjäinfo -näkymästä pelaaja voi jatkaa tallentamaansa peliä
 
 * Mahdollisuus kirjautua ulos sovelluksesta.
 
@@ -47,7 +49,8 @@ Ajanpuitteissa ohjelmaa voidaan täydentää seuraavilla toiminnalisuuksilla:
 
    - Käyttäjien listaaminen pisteiden perusteella.
 
-* Mahdollisuus tallentaa keskeneräisen pelin tilanne ja jatkaa sitä myöhemmässä vaiheessa.
+* Mahdollisuus generoida lisää sudokuja, jotka tallennetaan tietokantaan.
 
-   - Mahdollisuus tallentaa useampia keskeneräisiä pelejä.
+* Pelaajalla mahdollisuus poistaa omat tietonsa sovelluksesta.
 
+* Sovelluksen kaunistaminen
