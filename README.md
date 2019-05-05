@@ -18,7 +18,8 @@ Sovellus mahdollistaa käyttäjien pelata sudoku pelejä ja tallentaa sudoku pel
 
 ## Releaset
 
-[viikko 6](https://github.com/HegePI/ot-harjoitustyo/releases)
+[viikko 6](https://github.com/HegePI/ot-harjoitustyo/releases/tag/1.0)
+[viikko 7](https://github.com/HegePI/ot-harjoitustyo/releases/tag/2.0)
 
 ## Komentorivi käskyt
 
