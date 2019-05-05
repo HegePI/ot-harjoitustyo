@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa ensin sudokuApp.jar
+Lataa ensin [sudokuApp.jar](https://github.com/HegePI/ot-harjoitustyo/releases/tag/2.0)
 
 ## konfigurointi
 
